@@ -41,12 +41,21 @@ start_date  | date      | not null
 end_date    | date      | not null
 admin_id    | integer   | not null, foreign key (references users)
 
+## requests
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+user_id     | integer   | not null, foreign key
+event_id    | integer   | not null, foreign key
+accepted    | boolean   | not null
+
 ## requirements
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-body        | string    | not null
+title       | string    | not null
 event_id    | integer   | not null
+icon_url    | string    |
 
 ## companies
 column name | data type | details
@@ -54,7 +63,7 @@ column name | data type | details
 id          | integer   | not null, primary key
 name        | string    | not null
 description | text      | not null
-logo_url    | string    | not null
-image_url   | string    | not null
-website_url | string    | not null
-facebook_url| string    | not null
+logo_url    | string    | 
+image_url   | string    |
+website_url | string    |
+facebook_url| string    |

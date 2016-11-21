@@ -1,0 +1,2 @@
+module Api::RequirementsHelper
+end

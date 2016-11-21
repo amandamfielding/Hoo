@@ -25,11 +25,19 @@
   - index of all events
 - `GET /api/events/:id`
   - event information
+- `POST /api/events`
+  - only for admins
+- `PATCH /api/events/:id`
+  - only for admins
+- `DELETE /api/events/:id`
+  - only for admins
 
 ### Companies
 
 - `POST /api/companies`
 - `GET /api/companies/:id`
+- `PATCH /api/companies/:id`
+- `DELETE /api/companies/:id`
 
 ### Requirements
 

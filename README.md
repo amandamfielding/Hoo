@@ -1,12 +1,14 @@
 # Hoo
 
+Collaboration between Amanda Fielding and Lindsey Whitley
+
 [AWS Production Link][aws]
 
 [aws]: lfkfslkjdf
 
 ## Minimum Viable Product
 
-Hoo is a recruitment application for event staffing. Administrative users can post job listings, and users can search for short-term gigs. Users can apply for events.
+Hoo is a recruitment application for event staffing. Administrative users can post job listings, and users can search for short-term gigs. Users can apply for events. This app will be built with a Rails backend (PostgreSQL db) and Vue.js/Vuex frontend.
 
 - [ ] Hosting on AWS
 - [ ] New account creation, login, and guest/demo login (as user, not admin)
@@ -33,7 +35,7 @@ Hoo is a recruitment application for event staffing. Administrative users can po
 
 ### Phase 1: Backend setup and Front End User Authentication (1 day)
 
-**Objective:** Functioning rails project with front-end Authentication
+**Objective:** Functioning rails project with front-end Authentication, use Cloudinary API to allow users to upload pdf resumes and profile pictures.
 
 ### Phase 2: Events (2 days)
 
@@ -41,7 +43,7 @@ Hoo is a recruitment application for event staffing. Administrative users can po
 
 ### Phase 3: Search (2 days)
 
-**Objective:** Users can search for events by location and date
+**Objective:** Users can search for events by location and date, use Google Places API.
 
 ### Phase 4: Event Application (1 day)
 

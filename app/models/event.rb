@@ -30,7 +30,7 @@ class Event < ActiveRecord::Base
 
   has_many :requests
   has_many :requirements
-  belongs_to :company,
-    through: :admin,
-    source: :company
+  # belongs_to :company,
+  #   through: :admin,
+  #   source: :company
 end

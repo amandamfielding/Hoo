@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121192910) do
+ActiveRecord::Schema.define(version: 20161128002419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,26 +64,26 @@ ActiveRecord::Schema.define(version: 20161121192910) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.string   "fname",           null: false
-    t.string   "lname",           null: false
-    t.string   "gender",          null: false
-    t.date     "dob",             null: false
-    t.string   "email",           null: false
-    t.string   "phone_number",    null: false
+    t.string   "username",                        null: false
+    t.string   "password_digest",                 null: false
+    t.string   "session_token",                   null: false
+    t.string   "fname",                           null: false
+    t.string   "lname",                           null: false
+    t.string   "gender",                          null: false
+    t.date     "dob",                             null: false
+    t.string   "email",                           null: false
+    t.string   "phone_number",                    null: false
     t.text     "about_me"
     t.string   "image_url"
     t.string   "resume_url"
-    t.boolean  "tips_cert",       null: false
-    t.boolean  "vis_tats",        null: false
-    t.boolean  "felonies",        null: false
-    t.boolean  "valid_dl",        null: false
-    t.boolean  "admin",           null: false
-    t.boolean  "company_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "company_id"
+    t.boolean  "tips_cert",       default: false
+    t.boolean  "vis_tats",        default: false
+    t.boolean  "felonies",        default: false
+    t.boolean  "valid_dl",        default: false
+    t.boolean  "admin",           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

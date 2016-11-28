@@ -5,7 +5,9 @@
 </template>
 
 <script>
-const data = {message: 'this is profile'}
+import store from '../store'
+const data = {message: 'this is profile', events: store.state.events}
+
 export default {
   data () {
     return data

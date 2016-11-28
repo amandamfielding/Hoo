@@ -10,9 +10,9 @@ class Api::RequirementsController < ApplicationController
     end
   end
 
-  def show
-    @requirement = Requirement.find(params[:id])
-    render :show
+  def index
+    @requirements = Event.find(params[:id]).requirements
+    render :index
   end
 
   def requirement_params

@@ -17,6 +17,7 @@ class Api::RequestsController < ApplicationController
   end
 
   def index
+    # all requests of the current user
     @requests = current_user.requests
     render :index
   end

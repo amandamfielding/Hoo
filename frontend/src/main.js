@@ -6,6 +6,7 @@ import Home from './components/Home.vue'
 import Profile from './components/Profile.vue'
 import Top from './components/Top.vue'
 import Events from './components/Events.vue'
+import store from './store'
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
@@ -36,6 +37,7 @@ const router = new VueRouter({
 })
 
 new Vue({
+  store,
   router,
   template: '<div><router-view name="top"></router-view><router-view></router-view></div>'
 }).$mount('#app')

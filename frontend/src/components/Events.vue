@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import store from '../store/index'
+import store from '../store'
 import $ from 'jquery'
 const data = {events: store.state.events}
 
@@ -18,7 +18,7 @@ export default {
       method: 'GET',
       url: '/api/events',
       success: function (data) {
-        console.log(data)
+        store.dispatch(store.actions.getEvents(data))
       }
     })
   }

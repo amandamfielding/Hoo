@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import store from '../store'
+import store from '../store/index'
 const data = {message: 'this is profile', events: store.state.events}
 
 export default {

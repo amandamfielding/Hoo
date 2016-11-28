@@ -1,1 +1,1 @@
-json.extract! requirement :title, :icon_url
+json.extract! requirement, :title, :icon_url

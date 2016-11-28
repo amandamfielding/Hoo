@@ -1,5 +1,6 @@
 class Api::EventsController < ApplicationController
   # before_action :require_logged_in
+  # before_action :add_header
 
   def create
     @event = Event.new(event_params)

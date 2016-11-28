@@ -2,13 +2,11 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
-import VueResource from 'vue-resource'
 import Home from './components/Home.vue'
 import Profile from './components/Profile.vue'
 import Top from './components/Top.vue'
 import Events from './components/Events.vue'
 Vue.use(VueRouter)
-Vue.use(VueResource)
 Vue.use(Vuex)
 
 const router = new VueRouter({

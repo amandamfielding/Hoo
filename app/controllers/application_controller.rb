@@ -23,4 +23,9 @@ class ApplicationController < ActionController::Base
   def require_logged_in
     render json: {base: ['invalid credentials']}, status: 401 if !current_user
   end
+
+  # def add_header
+  #   response.headers['Access-Control-Allow-Origin'] = true
+  # end
+
 end

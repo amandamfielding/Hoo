@@ -4,18 +4,25 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  events: []
+  events: [],
+  session: {currentUser: {}}
 }
 
 const mutations = {
   RECEIVE_EVENTS (state, events) {
     state.events = events
+  },
+  LOGIN (state, user) {
+    state.session.currentUser = user
   }
 }
 
 const actions = {
   getEvents ({ commit }, events) {
     commit('RECEIVE_EVENTS', events)
+  },
+  login ({commit}, user) {
+    commit('LOGIN', user)
   }
 }
 

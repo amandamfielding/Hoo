@@ -1,12 +1,17 @@
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
-import Profile from './components/Profile.vue'
-import Events from './components/Events.vue'
+import Authentication from './components/auth/Authentication'
+import Login from './components/auth/Login'
+import Signup from './components/auth/Signup'
+import Profile from './components/Profile'
+import Events from './components/Events'
 import store from './store'
+// import VueAuth from '@websanova/vue-auth'
+
 Vue.use(VueRouter)
 
-const router = new VueRouter({
+const Router = new VueRouter({
   mode: 'history',
   base: __dirname,
   routes: [
@@ -15,6 +20,23 @@ const router = new VueRouter({
       components: {
         default: App
       }
+    },
+    {
+      path: '/authentication',
+      component: Authentication,
+      redirect: '/authentication/login',
+      children: [
+        {
+          path: 'login',
+          component: Login
+          // meta: {auth: false}
+        },
+        {
+          path: 'signup',
+          component: Signup
+          // meta: {auth: false}
+        }
+      ]
     },
     {
       path: '/profile',
@@ -29,14 +51,17 @@ const router = new VueRouter({
   ]
 })
 
+// Vue.use(VueAuth, {
+//   router: Router,
+//   rolesVar: 'roles'
+// })
+
 export default new Vue({
   store,
   el: '#app',
-  router,
-  components: { App, Events },
-  template: `
-  <div>
-    <router-view></router-view>
-  </div>`
+  router: Router,
+  template: '<App/>',
+  components: { App }
 })
-// <router-view name="events"></router-view>
+
+window.store = store

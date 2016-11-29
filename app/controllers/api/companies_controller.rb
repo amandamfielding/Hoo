@@ -1,5 +1,5 @@
 class Api::CompaniesController < ApplicationController
-  before_action: :require_logged_in
+  # before_action :require_logged_in
 
   def create
     @company = Company.new(company_params)

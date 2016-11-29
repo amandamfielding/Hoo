@@ -5,5 +5,9 @@
   <% end %>
 </script>
 
+<script>
+    Vue.http.headers.common['X-CSRF-TOKEN'] = {{ csrf_token() }}
+</script>
+
 <div id="root">
 </div>

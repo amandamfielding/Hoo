@@ -1,5 +1,5 @@
 class Api::RequirementsController < ApplicationController
-  before_action: :require_logged_in
+  # before_action :require_logged_in
 
   def create
     @requirement = Requirement.new(requirement_params)

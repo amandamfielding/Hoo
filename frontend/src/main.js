@@ -6,7 +6,7 @@ import Events from './components/Events.vue'
 import store from './store'
 Vue.use(VueRouter)
 
-const router = new VueRouter({
+const Router = new VueRouter({
   mode: 'history',
   base: __dirname,
   routes: [
@@ -32,11 +32,7 @@ const router = new VueRouter({
 export default new Vue({
   store,
   el: '#app',
-  router,
-  components: { App, Events },
-  template: `
-  <div>
-    <router-view></router-view>
-  </div>`
+  router: Router,
+  template: '<App/>',
+  components: { App }
 })
-// <router-view name="events"></router-view>

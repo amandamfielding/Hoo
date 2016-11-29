@@ -1,19 +1,18 @@
 <template>
   <div id="app">
-    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import Events from './components/Events'
+import Home from './components/Home'
+import Profile from './components/Profile'
+
 export default {
-  name: 'app',
   components: {
+    Events,
+    Home,
+    Profile
   }
 }
 </script>
-
-<style>
-#app {
-
-}
-</style>

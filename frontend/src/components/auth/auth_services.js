@@ -15,8 +15,9 @@ export default {
       url: '/api/session',
       data: data,
       success: user => {
-        // debugger
+        debugger
         context.$localStorage.set('id_token', data.id_token)
+        context.$store.state.session.currentUser = user
         this.user.authenticated = true
         // Redirect to a specified route
         if (redirect) {

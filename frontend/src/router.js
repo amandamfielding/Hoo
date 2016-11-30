@@ -5,6 +5,7 @@ import Signup from './components/auth/Signup'
 import Profile from './components/Profile'
 import Events from './components/Events'
 import App from './App'
+import Top from './components/Top'
 
 export default new VueRouter({
   mode: 'history',
@@ -36,12 +37,16 @@ export default new VueRouter({
     {
       path: '/profile',
       components: {
-        default: Profile
+        default: Profile,
+        top: Top
       }
     },
     {
       path: '/events',
-      component: Events
+      components: {
+        default: Events,
+        top: Top
+      }
     }
   ]
 })

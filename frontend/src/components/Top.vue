@@ -1,13 +1,13 @@
 <template>
-  <div class="top">hey {{ message }}</div>
+  <header class="top">hey {{ userInfo.fname }}</header>
 </template>
 
 <script>
 export default {
   name: 'top',
-  data () {
-    return {
-      message: 'this is top'
+  computed: {
+    userInfo: function () {
+      return JSON.parse(window.localStorage.user)
     }
   }
 }

@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 const state = {
   events: [],
-  session: {currentUser: {}}
+  currentUser: {}
 }
 
 const mutations = {
@@ -13,7 +13,7 @@ const mutations = {
     state.events = events
   },
   LOGIN (state, user) {
-    state.session.currentUser = user
+    state.currentUser = user
   }
 }
 

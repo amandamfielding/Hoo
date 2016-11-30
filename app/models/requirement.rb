@@ -4,14 +4,17 @@
 #
 #  id         :integer          not null, primary key
 #  title      :string           not null
-#  event_id   :integer          not null
 #  icon_url   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 class Requirement < ActiveRecord::Base
-  validates :title, :event_id, presence: true
+  validates :title, presence: true
 
-  belongs_to :event
+  has_many :event_requirements
+
+  has_many :events,
+    through: :event_requirements,
+    source: :event
 end

@@ -15,14 +15,14 @@
 #  about_me        :text
 #  image_url       :string
 #  resume_url      :string
-#  tips_cert       :boolean          not null
-#  vis_tats        :boolean          not null
-#  felonies        :boolean          not null
-#  valid_dl        :boolean          not null
-#  admin           :boolean          not null
-#  company_id      :boolean
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  company_id      :integer
+#  tips_cert       :boolean          default(FALSE)
+#  vis_tats        :boolean          default(FALSE)
+#  felonies        :boolean          default(FALSE)
+#  valid_dl        :boolean          default(FALSE)
+#  admin           :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base

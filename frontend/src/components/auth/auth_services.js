@@ -1,4 +1,3 @@
-import Router from '../../router.js'
 import $ from 'jquery'
 
 export default {
@@ -15,13 +14,13 @@ export default {
       url: '/api/session',
       data: data,
       success: user => {
-        // debugger
-        context.$localStorage.set('id_token', data.id_token)
+        context.$localStorage.set('authToken', user.session_token)
+        context.$localStorage.set('user', JSON.stringify(user))
+        context.$store.dispatch('login', user)
         this.user.authenticated = true
-        // Redirect to a specified route
-        if (redirect) {
-          Router.go(redirect)
-        }
+        // if (redirect) {
+        //   context.$router.go(redirect)
+        // }
       },
       error: err => {
         context.error = err
@@ -31,7 +30,7 @@ export default {
 
   // signup (context, creds, redirect) {
   //   context.$http.post(SIGNUP_URL, creds, (data) => {
-  //     context.$localStorage.setItem('id_token', data.id_token)
+  //     conwindow.$localStorage.setItem('id_token', data.id_token)
   //
   //     this.user.authenticated = true
   //
@@ -45,24 +44,16 @@ export default {
   // },
 
   // To log out, we just need to remove the token
-  logout () {
-    this.$localStorage.removeItem('id_token')
+  logout (context) {
+    context.$localStorage.removeItem('authToken')
+    context.$localStorage.removeItem('user')
     this.user.authenticated = false
   },
 
-  checkAuth () {
-    var jwt = this.$localStorage.getItem('id_token')
-    if (jwt) {
-      this.user.authenticated = true
-    } else {
-      this.user.authenticated = false
-    }
-  },
-
   // The object to be passed as a header for authenticated requests
-  getAuthHeader () {
+  getAuthHeader (context) {
     return {
-      'Authorization': 'Bearer ' + this.$localStorage.getItem('id_token')
+      'Authorization': 'Bearer ' + context.$localStorage.getItem('authToken')
     }
   }
 }

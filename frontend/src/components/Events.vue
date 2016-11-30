@@ -20,7 +20,6 @@
 
 <script>
 import $ from 'jquery'
-
 export default {
   created () {
     this.getEvents()

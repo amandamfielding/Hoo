@@ -28,7 +28,7 @@
     },
     methods: {
       login: function (e) {
-        authServices.login(this, {user: {username: this.user.username, password: this.user.password}}, '/events')
+        authServices.login(this, {user: {username: this.user.username, password: this.user.password}}, 'Events')
       }
     }
   }

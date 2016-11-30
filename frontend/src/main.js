@@ -18,14 +18,9 @@ Vue.use(VueRouter)
 
 export default new Vue({
   localStorage: {
-    id_token: {
+    authToken: {
       default: null
     }
-    // methods: {
-    //   setIdToken (value) {
-    //     this.$localStorage.set('id_token', value)
-    //   }
-    // }
   },
   store,
   el: '#app',

@@ -9,7 +9,7 @@
       <div class="header-list">
         <img class="top-user-pic" :src="userInfo.image_url" />
         <ul id="user-dropdown">
-          <li>My Profile</li>
+          <li><router-link class="profile-link" to="/profile">My Profile</router-link></li>
           <li id="logout">Log Out</li>
         </ul>
       </div>
@@ -22,7 +22,6 @@ export default {
   name: 'top',
   computed: {
     userInfo: function () {
-      // debugger
       return this.$store.state.currentUser
     }
   }
@@ -89,7 +88,7 @@ export default {
   font-size: 15px;
   width: 100px;
   color: #4d4e50;
-  text-decoration: none;
+  list-style: none;
   margin: auto;
   right: 0;
   cursor: pointer;
@@ -105,5 +104,10 @@ export default {
 
 #user-dropdown > li:hover {
   background: #eee;
+}
+
+.profile-link {
+  text-decoration: none;
+  color: #4d4e50;
 }
 </style>

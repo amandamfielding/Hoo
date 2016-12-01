@@ -18,9 +18,9 @@ export default {
         context.$localStorage.set('user', JSON.stringify(user))
         context.$store.dispatch('login', user)
         this.user.authenticated = true
-        // if (redirect) {
-        //   context.$router.go(redirect)
-        // }
+        if (redirect) {
+          context.$router.push(redirect)
+        }
       },
       error: err => {
         context.error = err
@@ -28,20 +28,26 @@ export default {
     })
   },
 
-  // signup (context, creds, redirect) {
-  //   context.$http.post(SIGNUP_URL, creds, (data) => {
-  //     conwindow.$localStorage.setItem('id_token', data.id_token)
-  //
-  //     this.user.authenticated = true
-  //
-  //     if (redirect) {
-  //       Router.go(redirect)
-  //     }
-  //
-  //   }).error((err) => {
-  //     context.error = err
-  //   })
-  // },
+  signup (context, data, redirect) {
+    $.ajax({
+      method: 'POST',
+      url: '/api/users',
+      data: data,
+      success: user => {
+        context.$localStorage.set('authToken', user.session_token)
+        context.$localStorage.set('user', JSON.stringify(user))
+        context.$store.dispatch('login', user)
+        this.user.authenticated = true
+
+        if (redirect) {
+          context.$router.push(redirect)
+        }
+      },
+      error: err => {
+        context.error = err
+      }
+    })
+  },
 
   // To log out, we just need to remove the token
   logout (context) {

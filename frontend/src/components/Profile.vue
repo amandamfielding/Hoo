@@ -1,16 +1,15 @@
 <template>
-  <div>
-    hey {{ message }}
+  <div class="profile">
+    <div class="profile-left">
+      <!-- <img class="profile-pic" :src="userInfo.image_url" /> -->
+    </div>
   </div>
 </template>
 
 <script>
-import store from '../store'
-const data = {message: 'this is profile', events: store.state.events}
-
 export default {
+  name: 'profile',
   data () {
-    return data
   }
 }
 </script>

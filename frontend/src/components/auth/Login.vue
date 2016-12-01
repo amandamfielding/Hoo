@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="login">
     <h3 class="text-center">Login</h3>
     <input type="text" class="form-control" placeholder="Username"
       v-model="user.username">

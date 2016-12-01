@@ -7,14 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create!(username:"AMF",password:"password",fname:"Mandy",lname:"Fielding",gender:"female",dob:DateTime.new(1987, 3, 10),email:"amandamfielding@gmail.com",phone_number:"209-614-5459",tips_cert:true, vis_tats:true, valid_dl:true, admin:true, company_id: 1)
+User.create!(username:"AMF",password:"password",fname:"Mandy",lname:"Fielding",gender:"female",dob:DateTime.new(1987, 3, 10),email:"amandamfielding@gmail.com",phone_number:"209-614-5459",tips_cert:true, vis_tats:true, valid_dl:true, admin:true, company_id: 1, image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1480576832/demo_profile_pic_l6t2lm.jpg")
 User.create!(username:"lew",password:"123456",fname:"Lindsey",lname:"Whitley",gender:"female",dob:DateTime.new(1992, 12, 5),email:"lewhitley@gmail.com",phone_number:"714-343-0605", valid_dl:true, admin:true, company_id: 2)
 
 Company.create!(name:"Cerda Productions",description:"event staffing")
 Company.create!(name:"Dream a Little Dream Events",description:"event planning", website_url: "http://www.dreamalittledreamevents.com/")
 
 
-event1 = Event.create!(admin_id:1,title:"Coachella",lat:0, lng:0, city: "Indio", state: "CA", event_type: "concert", description: "This festival is attended by half a million people every year and is held at the Empire Polo Club in Indio, California. This year's lineup includes Guns N' Roses, LCD Soundsystem, Calvin Harris, Ice Cube, Sufjan Stevens, and so many more.", pay: 400, pay_freq: "day",start_date:DateTime.new(2017, 4, 14), end_date:DateTime.new(2017, 4, 16))
+event1 = Event.create!(admin_id:1,title:"Coachella",lat:0, lng:0, city: "Indio", state: "CA", event_type: "concert", description: "This festival is attended by half a million people every year and is held at the Empire Polo Club in Indio, California. This year's lineup includes Guns N' Roses, LCD Soundsystem, Calvin Harris, Ice Cube, Sufjan Stevens, and so many more.", pay: 400, pay_freq: "day",start_date:DateTime.new(2017, 4, 14),
+end_date:DateTime.new(2017, 4, 16), image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_600,w_800/v1480580675/Coachella-2013-Live-Stream-Channel-1_fx3wrg.jpg")
 event2 = Event.create!(admin_id:1,title:"Outside Lands",lat:0,lng:0,city:"San Francisco",state:"CA",description:"concert in the city",pay:300,pay_freq:"day",start_date:DateTime.new(2016, 12, 27),end_date:DateTime.new(2016, 12, 28),image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_600,w_800/v1480464979/2014-08-05-vintagewoodenwindmillsatOutsideLandsJeffKravitzFilmMagic_wsfnau.jpg")
 event3 = Event.create!(admin_id:2,title:"Gusto Banquet",lat:38.2085, lng:122.4518, city: "Sonoma", state: "CA", event_type: "banquet", description: "Start-up's end of the year celebration", pay: 15, pay_freq: "hour", start_date:DateTime.new(2016, 12, 20), end_date:DateTime.new(2016, 12, 20))
 event4 = Event.create!(admin_id:2,title:"Adam and Steve's Wedding",lat:37.7793, lng:122.4188, city: "San Francisco", state: "CA", event_type: "wedding", description: "A beautiful wedding in City Hall", pay: 17, pay_freq: "hour", start_date:DateTime.new(2017, 1, 1), end_date:DateTime.new(2017, 1, 1))

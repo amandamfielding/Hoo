@@ -22,7 +22,8 @@ export default {
   name: 'top',
   computed: {
     userInfo: function () {
-      return JSON.parse(window.localStorage.user)
+      // debugger
+      return this.$store.state.currentUser
     }
   }
 }

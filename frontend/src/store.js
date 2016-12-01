@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 const state = {
   events: [],
-  currentUser: {}
+  currentUser: JSON.parse(window.localStorage.user) || {}
 }
 
 const mutations = {
@@ -13,7 +13,10 @@ const mutations = {
     state.events = events
   },
   LOGIN (state, user) {
-    state.currentUser = user
+    state.currentUser = JSON.parse(window.localStorage.user)
+  },
+  LOGOUT (state) {
+    state.currentUser = {}
   }
 }
 
@@ -23,6 +26,9 @@ const actions = {
   },
   login ({commit}, user) {
     commit('LOGIN', user)
+  },
+  logout ({commit}) {
+    commit('LOGOUT')
   }
 }
 

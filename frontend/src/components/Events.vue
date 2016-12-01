@@ -6,7 +6,7 @@
        <div class="event-info">
          <h2>{{ event.title }}</h2>
          <div>{{ event.city }}, {{ event.state }}</div>
-         <div>{{ event.start_date }} - {{ event.end_date }}</div>
+         <div>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</div>
          <div>{{ event.description }}</div>
          <div>${{ event.pay }} per {{ event.pay_freq }}</div>
          <!-- <ul v-for='requirement in {{event.requirements}}'>
@@ -34,6 +34,11 @@ export default {
           this.$store.dispatch('getEvents', events)
         }
       })
+    },
+    calculateDate (date) {
+      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+      let newDate = new Date(date)
+      return monthNames[newDate.getMonth()] + ' ' + newDate.getDate() + ', ' + newDate.getFullYear()
     }
   },
   computed: {
@@ -45,6 +50,10 @@ export default {
 </script>
 
 <style>
+
+#events {
+  margin-top: 75px;
+}
 
 .events-list {
  list-style: none;
@@ -61,7 +70,6 @@ export default {
 .event-image {
  width: 35%;
  height: 100%;
- margin: 1%;
 }
 
 .event-info {

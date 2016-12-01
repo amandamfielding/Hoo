@@ -25,12 +25,10 @@ export default new VueRouter({
         {
           path: 'login',
           component: Login
-          // meta: {auth: false}
         },
         {
           path: 'signup',
           component: Signup
-          // meta: {auth: false}
         }
       ]
     },

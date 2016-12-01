@@ -16,7 +16,7 @@ export default {
       success: user => {
         context.$localStorage.set('authToken', user.session_token)
         context.$localStorage.set('user', JSON.stringify(user))
-        context.$store.dispatch('login', user)
+        context.$store.dispatch('login')
         this.user.authenticated = true
         if (redirect) {
           context.$router.push(redirect)
@@ -50,11 +50,29 @@ export default {
   },
 
   // To log out, we just need to remove the token
-  logout (context) {
-    context.$localStorage.removeItem('authToken')
-    context.$localStorage.removeItem('user')
-    this.user.authenticated = false
-  },
+  // logout (context) {
+  //   $.ajax({
+  //     method: 'DELETE',
+  //     url: `/api/users/{}`,
+  //     data: data,
+  //     success: user => {
+  //       context.$localStorage.set('authToken', user.session_token)
+  //       context.$localStorage.set('user', JSON.stringify(user))
+  //       context.$store.dispatch('login', user)
+  //       this.user.authenticated = true
+  //
+  //       if (redirect) {
+  //         context.$router.push(redirect)
+  //       }
+  //     },
+  //     error: err => {
+  //       context.error = err
+  //     }
+  //   })
+  //   context.$localStorage.removeItem('authToken')
+  //   context.$localStorage.removeItem('user')
+  //   this.user.authenticated = false
+  // },
 
   // The object to be passed as a header for authenticated requests
   getAuthHeader (context) {

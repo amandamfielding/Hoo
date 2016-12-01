@@ -12,20 +12,21 @@
            v-model="user.fname">
     <input type="text" class="form-control m-b-15" placeholder="Last Name"
            v-model="user.lname">
-    <label>Gender
+
+    <label>Gender</label>
       <input type="radio" id="woman" value="woman" name="gender" v-model="user.gender">
       <label for='woman'>Cis-woman</label>
-      <input type="radio" value="man" name="gender" v-model="user.gender">
+      <input type="radio" id="man" value="man" name="gender" v-model="user.gender">
       <label for='man'>Cis-man</label>
-      <input type="radio" value="trans-woman" name="gender" v-model="user.gender">
+      <input type="radio" id="trans-woman" value="trans-woman" name="gender" v-model="user.gender">
       <label for='trans-woman'>Trans-woman</label>
-      <input type="radio" value="trans-man" name="gender" v-model="user.gender">
+      <input type="radio" id="trans-man" value="trans-man" name="gender" v-model="user.gender">
       <label for='trans-man'>Trans-man</label>
-      <input type="radio" value="other" name="gender" v-model="user.gender">
+      <input type="radio" id="other" value="other" name="gender" v-model="user.gender">
       <label for='other'>Other</label>
-      <input type="radio" value="not-specified" name="gender" v-model="user.gender">
-      <label for='not-specified'>Prefer not to say</label>
-    </label>
+      <input type="radio" id="not-specified" value="not-specified" name="gender" v-model="user.gender">
+      <label for='not-specified'>Prefer not to state</label>
+
     <input type="date" class="form-control m-b-15" placeholder="Date of Birth"
            v-model="user.dob">
     <input type="text" class="form-control m-b-15" placeholder="Phone Number"
@@ -36,22 +37,20 @@
            v-model="user.image_url">
     <input type="text" class="form-control m-b-15" placeholder="Resume URL"
            v-model="user.resume_url">
-    <label>TIPS Certified
-      <input type="radio" value="true" name="tips_cert" v-model="user.tips_cert">Yes
-      <input type="radio" value="false" name="tips_cert" v-model="user.tips_cert">No
-    </label>
-    <label v-model="user.vis_tats">Visible Tattoos
-      <input type="radio" value="true" name="vis_tats">Yes
-      <input type="radio" value="false" name="vis_tats">No
-    </label>
-    <label v-model="user.felonies">Felonies
-      <input type="radio" value="true" name="felonies">Yes
-      <input type="radio" value="false" name="felonies">No
-    </label>
-    <label v-model="user.valid_dl">Valid Driver's License
-      <input type="radio" value="true" name="valid_dl">Yes
-      <input type="radio" value="false" name="valid_dl">No
-    </label>
+
+    <label>TIPS Certified</label>
+      <label><input type="radio" value="true" name="tips_cert" v-model="user.tips_cert">Yes</label>
+      <label><input type="radio" value="false" name="tips_cert" v-model="user.tips_cert">No</label>
+    <label>Visible Tattoos</label>
+      <label><input type="radio" value="true" name="vis_tats" v-model="user.vis_tats">Yes</label>
+      <label><input type="radio" value="false" name="vis_tats" v-model="user.vis_tats">No</label>
+    <label>Felonies</label>
+      <label><input type="radio" value="true" name="felonies" v-model="user.felonies">Yes</label>
+      <label><input type="radio" value="false" name="felonies" v-model="user.felonies">No</label>
+    <label>Valid Driver's License</label>
+      <label><input type="radio" value="true" name="valid_dl" v-model="user.valid_dl">Yes</label>
+      <label><input type="radio" value="false" name="valid_dl" v-model="user.valid_dl">No</label>
+
     <button class="btn btn-lg btn-primary btn-block m-b-15"
           @click="signup">Sign Up</button>
     <p class="text-center">

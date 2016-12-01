@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 const state = {
   events: [],
-  currentUser: JSON.parse(window.localStorage.user) || {}
+  currentUser: (window.localStorage.user !== '') ? JSON.parse(window.localStorage.user) : {}
 }
 
 const mutations = {
@@ -13,7 +13,9 @@ const mutations = {
     state.events = events
   },
   LOGIN (state, user) {
-    state.currentUser = JSON.parse(window.localStorage.user)
+    if (window.localStorage.user !== '') {
+      state.currentUser = JSON.parse(window.localStorage.user)
+    }
   },
   LOGOUT (state) {
     state.currentUser = {}

@@ -27,5 +27,4 @@ class ApplicationController < ActionController::Base
   # def add_header
   #   response.headers['Access-Control-Allow-Origin'] = true
   # end
-
 end

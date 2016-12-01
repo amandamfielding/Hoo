@@ -10,7 +10,7 @@
         <img class="top-user-pic" :src="userInfo.image_url" />
         <ul id="user-dropdown">
           <li>My Profile</li>
-          <li id="logout">Log Out</li>
+          <li id="logout" @click="logout">Log Out</li>
         </ul>
       </div>
     </div>
@@ -18,12 +18,18 @@
 </template>
 
 <script>
+import authServices from './auth/auth_services'
+
 export default {
   name: 'top',
   computed: {
     userInfo: function () {
-      // debugger
       return this.$store.state.currentUser
+    }
+  },
+  methods: {
+    logout: function (e) {
+      authServices.logout(this)
     }
   }
 }

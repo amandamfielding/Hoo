@@ -1,0 +1,113 @@
+<template>
+  <div class="top">
+    <div class="header-left">
+      <img class="top-logo" src="../assets/purple_owl2.png" />
+      <h1 class="top-title">Hoo</h1>
+    </div>
+    <div class="header-right">
+      <div class="greeting">Hey, {{ userInfo.fname }}</div>
+      <div class="header-list">
+        <img class="top-user-pic" :src="userInfo.image_url" />
+        <ul id="user-dropdown">
+          <li><router-link class="profile-link" to="/profile">My Profile</router-link></li>
+          <li id="logout">Log Out</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'top',
+  computed: {
+    userInfo: function () {
+      return this.$store.state.currentUser
+    }
+  }
+}
+
+</script>
+
+<style>
+.top {
+  background-color: #EDEDE6;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-left, .header-right {
+  display: flex;
+}
+
+.top-logo {
+  height: 45px;
+  margin: 2px 15px;
+}
+
+.top-title {
+  font-size: 34px;
+  vertical-align: middle;
+  margin: auto;
+}
+
+.greeting {
+  margin: auto;
+  font-size: 20px;
+}
+
+.top-user-pic {
+  border-radius: 50%;
+  height: 50px;
+  margin: 0 15px;
+}
+
+.top-user-pic:hover {
+  box-shadow: 0 0 6px black;
+  cursor: pointer;
+}
+
+.header-list:hover #user-dropdown {
+  display: block;
+}
+
+#user-dropdown {
+  position: absolute;
+  background: #faf8fd;
+  display: none;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+  z-index: 10;
+  top: 50px;
+  font-size: 15px;
+  width: 100px;
+  color: #4d4e50;
+  list-style: none;
+  margin: auto;
+  right: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+#user-dropdown > li {
+  text-align: center;
+  padding: 7px;
+  border-top: 1px solid #ccc;
+  color: #4d4e50;
+}
+
+#user-dropdown > li:hover {
+  background: #eee;
+}
+
+.profile-link {
+  text-decoration: none;
+  color: #4d4e50;
+}
+</style>

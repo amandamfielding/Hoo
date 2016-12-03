@@ -20,11 +20,10 @@
 
 <script>
 import $ from 'jquery'
-import authServices from './auth/auth_services'
 
 export default {
   created () {
-    if (authServices.user.authenticated) {
+    if (window.localStorage.user) {
       this.getEvents()
     } else {
       this.$router.replace('/')

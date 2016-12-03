@@ -5,11 +5,17 @@
       <ul class="profile-details">
         <li class="profile-name">{{userInfo.fname}} {{ userInfo.lname }}</li>
         <li class="profile-username">{{ userInfo.username }}</li>
-        <li class="resume">Resume</li>
-        <div class="age-and-gender">
-          <li class="age">{{ userInfo.dob - DateTime.new }}</li>
-          <li class="gender">{{ userInfo.gender }}</li>
-        </div>
+        <li class="resume" @click='openResumeModal'>Resume</li>
+        <div id="myModal" class="modal">
+            <div class="modal-resume">
+              <span id="close" @click='closeResumeModal'>x</span>
+              <img :src="userInfo.resume_url"/>
+            </div>
+            </div>
+        <li class="age-and-gender">
+          <div class="age">{{ userInfo.age }}</div>
+          <div class="gender">{{ userInfo.gender }}</div>
+        </li>
       </ul>
     </div>
     <div class="profile-right">
@@ -29,6 +35,16 @@ export default {
     userInfo: function () {
       return this.$store.state.currentUser
     }
+  },
+  methods: {
+    openResumeModal () {
+      let resumeModal = document.getElementById('myModal')
+      resumeModal.style.display = 'block'
+    },
+    closeResumeModal () {
+      let resumeModal = document.getElementById('myModal')
+      resumeModal.style.display = 'none'
+    }
   }
 }
 </script>
@@ -40,7 +56,8 @@ export default {
   justify-content: space-between;
   width: 100%;
   margin-top: 70px;
-  height: 85vh;
+  margin-bottom: 20px;
+  max-height: 90vh;
 }
 
 .profile-left {
@@ -77,5 +94,45 @@ export default {
 .age-and-gender {
   display: flex;
   justify-content: center;
+}
+
+.age {
+  margin-right: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-resume {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    font-size: 22px;
+}
+
+#close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#close:hover,
+#close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 </style>

@@ -20,9 +20,15 @@
 
 <script>
 import $ from 'jquery'
+import authServices from './auth/auth_services'
+
 export default {
   created () {
-    this.getEvents()
+    if (authServices.user.authenticated) {
+      this.getEvents()
+    } else {
+      this.$router.replace('/')
+    }
   },
   name: 'Events',
   methods: {

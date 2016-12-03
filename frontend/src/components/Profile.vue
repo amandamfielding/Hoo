@@ -23,7 +23,14 @@
 </template>
 
 <script>
+import authServices from './auth/auth_services'
+
 export default {
+  created () {
+    if (!authServices.user.authenticated) {
+      this.$router.replace('/')
+    }
+  },
   name: 'profile',
   computed: {
     userInfo: function () {

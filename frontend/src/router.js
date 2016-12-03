@@ -48,12 +48,5 @@ const Router = new VueRouter({
     }
   ]
 })
-// Router.beforeEach(function (transition) {
-//   if (transition.to.events && !window.currentUser) {
-//     transition.redirect('/')
-//   } else {
-//     transition.next()
-//   }
-// })
 
 export default Router

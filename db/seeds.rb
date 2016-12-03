@@ -7,7 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create!(username:"AMF",password:"password",fname:"Mandy",lname:"Fielding",gender:"female",dob:DateTime.new(1987, 3, 10),email:"amandamfielding@gmail.com",phone_number:"209-614-5459",tips_cert:true, vis_tats:true, valid_dl:true, admin:true, company_id: 1, image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1480576832/demo_profile_pic_l6t2lm.jpg")
+User.create!(username:"AMF",password:"password",fname:"Mandy",lname:"Fielding",gender:"female",dob:DateTime.new(1987, 3, 10),email:"amandamfielding@gmail.com",phone_number:"209-614-5459",tips_cert:true, vis_tats:true, valid_dl:true, admin:true, company_id: 1,
+image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1480576832/demo_profile_pic_l6t2lm.jpg", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1480737694/amanda_fielding_2_lesxtc.pdf")
 User.create!(username:"lew",password:"123456",fname:"Lindsey",lname:"Whitley",gender:"female",dob:DateTime.new(1992, 12, 5),email:"lewhitley@gmail.com",phone_number:"714-343-0605", valid_dl:true, admin:true, company_id: 2)
 
 Company.create!(name:"Cerda Productions",description:"event staffing")

@@ -7,7 +7,7 @@ import Events from './components/Events'
 import App from './App'
 import Top from './components/Top'
 
-export default new VueRouter({
+const Router = new VueRouter({
   mode: 'history',
   base: __dirname,
   routes: [
@@ -48,3 +48,12 @@ export default new VueRouter({
     }
   ]
 })
+// Router.beforeEach(function (transition) {
+//   if (transition.to.events && !window.currentUser) {
+//     transition.redirect('/')
+//   } else {
+//     transition.next()
+//   }
+// })
+
+export default Router

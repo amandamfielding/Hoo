@@ -59,8 +59,15 @@
   </div>
 </template>
 
-<script>
+<script type="text/javascript">
   import authServices from './auth_services'
+  // import jquery from 'jquery'
+  // import jquery.ui.widget from
+  // import jquery.iframe-transport.js
+  // import jquery.fileupload.js
+  // import jquery.cloudinary.js
+
+  // $.cloudinary.config({"api_key":"248296192615369","dbsxgncvx":"demo"});
 
   export default {
     name: 'signup',

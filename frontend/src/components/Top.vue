@@ -38,7 +38,7 @@ export default {
 
 <style>
 .top {
-  background-color: #EDEDE6;
+  background-color: #F4EDFF;
   position: fixed;
   width: 100%;
   top: 0;

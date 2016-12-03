@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dbsxgncvx
+  api_key: '248296192615369'
+  api_secret: 51Y6OkrcASLX8lIav29XBUr-5CI
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dbsxgncvx
+  api_key: '248296192615369'
+  api_secret: 51Y6OkrcASLX8lIav29XBUr-5CI
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dbsxgncvx
+  api_key: '248296192615369'
+  api_secret: 51Y6OkrcASLX8lIav29XBUr-5CI
+  enhance_image_tag: true
+  static_image_support: false

@@ -1,52 +1,29 @@
 # Hoo
 
-Collaboration between Amanda Fielding and Lindsey Whitley
+[Hoo Live][live]
 
-[AWS Production Link][aws]
+[live]: http://www../#/
 
-[aws]: lfkfslkjdf
+Hoo is a full-stack recruitment application for short-term event staffing. Administrative users can post job listings, and users can search for short-term gigs. Users can apply for events. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and Vue.js with a Vuex architectural framework on the frontend.
 
-## Minimum Viable Product
+## Features & Implementation
 
-Hoo is a recruitment application for event staffing. Administrative users can post job listings, and users can search for short-term gigs. Users can apply for events. This app will be built with a Rails backend (PostgreSQL db) and Vue.js/Vuex frontend.
+![image of splash](docs/screenshots/hoo-splash.png)
 
-- [ ] Hosting on AWS
-- [ ] New account creation, login, and guest/demo login (as user, not admin)
-- [ ] Profile page for users
-- [ ] Events index that can be filtered by location (radius) and date
-- [ ] Event profile
-- [ ] Users can respond to events
-- [ ] Production README
+In our implementation of this app, we used VueRouter to handle the route and component changes, as well as the transitions between the routes. Each component is built as a single-file Vue component and given access to the store with the `App` component's `<router-view>` tag. As AJAX requests are made to the backend from the component's methods, the success response dispatches actions to commit mutations on the state.
 
-## Design Docs
-* [View Wireframes][wireframes]
-* [React Components][components]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
-* [Sample State][sample-state]
+### Events
 
-[wireframes]: docs/wireframes
-[components]: docs/component-hierarchy.md
-[sample-state]: docs/sample-state.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
+  Upon log in, the store saves user data and puts it into `localStorage`. A logged in user has access to the `Events` component, which lists all of the future events posted by admin users (event planners or staffing agencies). The index of `Events` shows the user a short description, location, dates, and estimated pay rate for each event. Upon selecting an `Event`, the user is taken to the `EventShow`
 
-## Implementation Timeline
+## Future Directions for the Project
 
-### Phase 1: Backend setup and Front End User Authentication (1 day)
+In addition to the features already implemented, we plan to continue work on this project.  The next steps for Hoo are outlined below.
 
-**Objective:** Functioning rails project with front-end Authentication, use Cloudinary API to allow users to upload pdf resumes and profile pictures.
+### Admin User Functionality
 
-### Phase 2: Events (2 days)
+Searching for tracks is a standard feature of Genius. This will search all track titles that contain the input string.
 
-**Objective:** Users can view EventsIndex and EventDetail
+### Playing Songs on Track Show
 
-### Phase 3: Search (2 days)
-
-**Objective:** Users can search for events by location and date, use Google Places API.
-
-### Phase 4: Event Application (1 day)
-
-**Objective:** Users can apply to events
-
-### Phase 6: Production README (1/2 day)
+Although this is less essential functionality, I also plan to implement the ability to listen to the music while on the track show page.  To do this, I plan to use the react-player gem.

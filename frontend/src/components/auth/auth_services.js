@@ -11,7 +11,6 @@ export default {
       url: '/api/session',
       data: data,
       success: user => {
-        debugger
         context.$localStorage.set('authToken', user.session_token)
         context.$localStorage.set('user', JSON.stringify(user))
         context.$store.dispatch('login')

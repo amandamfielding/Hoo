@@ -1,15 +1,15 @@
 <template>
   <div class="login">
-    <h3 class="text-center">Login</h3>
+    <h3 class="login-text">Log In</h3>
     <input type="text" class="form-control" placeholder="Username"
       v-model="user.username">
     <input type="password" class="form-control" placeholder="Password"
       v-model="user.password">
     <button class="login-button"
-      @click="login">Sign in</button>
-    <p class="text-center">
+      @click="login">Log In</button>
+    <span class="redirect">
       Don't have an account? <router-link to="/authentication/signup">Sign up!</router-link>
-   </p>
+   </span>
   </div>
 </template>
 
@@ -35,4 +35,37 @@
 </script>
 
 <style>
+
+.login {
+  width: 300px;
+	margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-text {
+  font-size: 30px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.form-control {
+  margin: 5px 0;
+  padding: 2% 1%;
+  font-size: 18px;
+}
+
+.login-button {
+  font-size: 20px;
+  padding: 8px;
+  margin-top: 5px;
+  cursor: pointer;
+  font-family: Raleway;
+}
+
+.redirect {
+  font-size: 18px;
+  text-align: center;
+  margin: 15px 0;
+}
 </style>

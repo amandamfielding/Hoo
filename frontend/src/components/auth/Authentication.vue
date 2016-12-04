@@ -3,7 +3,6 @@
      <div class="authForm">
        <div class="auth-header">
          <img class="logo" src='../../assets/purple_owl2.png' />
-         <h1 class="text-center">Hoo</h1>
        </div>
        <transition name="fade">
          <router-view></router-view>
@@ -29,13 +28,16 @@
 }
 
 .authForm {
- background: #EDEDE6 ;
+ background: rgba(237,237,230,.8);
  padding: 5%;
  margin: auto;
+ margin-top: 70px;
+ box-shadow: 0 0 10px darkslategray;
 }
 
 .logo {
- width: 30%;
+ width: 80px;
  height: 100%;
+ margin: auto;
 }
 </style>

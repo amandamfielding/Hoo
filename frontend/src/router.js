@@ -4,6 +4,8 @@ import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import Profile from './components/Profile'
 import Events from './components/Events'
+import EventShow from './components/EventShow'
+import Home from 'components/Home'
 import App from './App'
 import Top from './components/Top'
 
@@ -14,7 +16,8 @@ const Router = new VueRouter({
     {
       path: '/',
       components: {
-        default: App
+        default: Home,
+        app: App
       }
     },
     {
@@ -42,7 +45,14 @@ const Router = new VueRouter({
     {
       path: '/events',
       components: {
-        default: Events,
+        top: Top,
+        default: Events
+      }
+    },
+    {
+      path: '/events/:eventId',
+      components: {
+        default: EventShow,
         top: Top
       }
     }

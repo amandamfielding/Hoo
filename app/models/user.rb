@@ -19,8 +19,8 @@
 #  updated_at      :datetime         not null
 #  company_id      :integer
 #  tips_cert       :boolean          default(FALSE)
-#  vis_tats        :boolean          default(FALSE)
-#  felonies        :boolean          default(FALSE)
+#  no_vis_tats     :boolean          default(FALSE)
+#  no_felonies     :boolean          default(FALSE)
 #  valid_dl        :boolean          default(FALSE)
 #  admin           :boolean          default(FALSE)
 #

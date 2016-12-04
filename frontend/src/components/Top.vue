@@ -1,6 +1,6 @@
 <template>
   <div class="top">
-    <div class="header-left">
+    <div @click="navToHome" class="header-left">
       <img class="top-logo" src="../assets/purple_owl2.png" />
       <h1 class="top-title">Hoo</h1>
     </div>
@@ -30,6 +30,9 @@ export default {
   methods: {
     logout: function (e) {
       authServices.logout(this)
+    },
+    navToHome: function () {
+      this.$router.replace('/')
     }
   }
 }
@@ -45,6 +48,7 @@ export default {
   height: 50px;
   display: flex;
   justify-content: space-between;
+  z-index: 60;
 }
 
 .header-left, .header-right {
@@ -54,12 +58,18 @@ export default {
 .top-logo {
   height: 45px;
   margin: 2px 15px;
+  cursor: pointer;
 }
 
 .top-title {
   font-size: 34px;
   vertical-align: middle;
   margin: auto;
+  cursor: pointer;
+}
+
+.top-title:hover {
+  text-shadow: 0 0 1px black;
 }
 
 .greeting {
@@ -90,7 +100,7 @@ export default {
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   overflow: hidden;
-  z-index: 10;
+  z-index: 50;
   top: 50px;
   font-size: 15px;
   width: 100px;

@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 const state = {
   events: [],
+  miles: '',
   event: [],
   errors: [],
   currentUser: (window.localStorage.user !== '') ? JSON.parse(window.localStorage.user) : {}
@@ -12,6 +13,9 @@ const state = {
 
 const mutations = {
   RECEIVE_EVENTS (state, events) {
+    state.events = events
+  },
+  RECEIVE_EVENTS_BY_FILTER (state, events, miles) {
     state.events = events
   },
   RECEIVE_EVENT (state, event) {
@@ -36,6 +40,9 @@ const mutations = {
 const actions = {
   getEvents ({ commit }, events) {
     commit('RECEIVE_EVENTS', events)
+  },
+  getEventsByFilter ({ commit }, events, miles) {
+    commit('RECEIVE_EVENTS_BY_FILTER', events, miles)
   },
   getEvent ({ commit }, event) {
     commit('RECEIVE_EVENT', event)

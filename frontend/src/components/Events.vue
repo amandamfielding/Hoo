@@ -1,6 +1,30 @@
 <template>
   <div id='events'>
-   <ul class="events-list">
+    <div class="search">
+      <input class="city-search" placeholder="City"></input>
+      <select onChange="filter(miles,value)" class="miles">
+        <option value="5">5 mi</option>
+        <option value="10">10 mi</option>
+        <option value="15">15 mi</option>
+        <option value="20">20 mi</option>
+        <option value="25">25 mi</option>
+        <option value="30">30 mi</option>
+        <option value="35">35 mi</option>
+        <option selected value="40">40+ mi</option>
+      </select>
+      <div class="date-div">
+        <div class="date-prompt">Within the next:
+          <select onChange="filter" class="date-search">
+            <option value="week">week</option>
+            <option value="month">month</option>
+            <option value="3 months">3 months</option>
+            <option value="6 months">6 months</option>
+            <option value="year">year</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <ul class="events-list">
      <li class="event" v-for='event in allEvents'>
        <img @click="navToEventShow(event.id)" class="event-image" v-bind:id="event.id" :src="event.image_url" />
        <div class="event-info">
@@ -46,11 +70,24 @@ export default {
     },
     navToEventShow (eventId) {
       this.$router.replace('events/' + eventId)
+    },
+    filter (type, value) {
+      debugger
+      $.ajax({
+        method: 'GET',
+        url: '/api/events',
+        success: events => {
+          this.$store.dispatch('getEventsByFilter', events, this.miles)
+        }
+      })
     }
   },
   computed: {
     allEvents: function () {
       return this.$store.state.events
+    },
+    miles: function () {
+      return this.$store.state.miles
     }
   }
 }
@@ -111,5 +148,43 @@ export default {
   padding: 8px 10px;
   border-bottom-left-radius: 5px;
   font-size: 20px;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+}
+
+.city-search {
+  width: 25%;
+  font-size: 18px;
+  padding: 5px 10px;
+  margin-right: 2%;
+}
+
+.miles {
+  font-size: 18px;
+  padding: 5px 10px;
+  margin-right: 3%;
+}
+
+.date-prompt {
+  font-size: 18px;
+  width: 320px;
+}
+
+.date-search {
+  width: 120px;
+  font-size: 18px;
+  padding: 5px 10px;
+}
+
+.date-div {
+  padding: 5px 10px;
+}
+
+.date-search option {
+  padding: 5px 10px;
+  font-size: 18px;
 }
 </style>

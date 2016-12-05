@@ -3,8 +3,6 @@
     <h2>{{event.title}}</h2>
     <div class="">{{event.city}}, {{event.state}}</div>
     <div>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</div>
-    <div class=""></div>
-    <div class=""></div>
   </div>
 </template>
 
@@ -34,6 +32,8 @@ export default {
       const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
       let newDate = new Date(date)
       return monthNames[newDate.getMonth()] + ' ' + newDate.getDate() + ', ' + newDate.getFullYear()
+    },
+    apply () {
     }
   },
   computed: {

@@ -8,6 +8,7 @@
         <h2>Staffing Made Easy</h2>
         <button type="button" @click="$router.replace('/authentication/login')">Log In</button>
         <button type="button" @click="$router.replace('/authentication/signup')">Sign Up</button>
+        <button type="button" @click="demo">Use Demo Account</button>
       </div>
     </div>
     <div class="home-bottom">
@@ -18,16 +19,19 @@
 </template>
 
 <script>
-// debugger
-// const video = document.getElementsByTagName('iframe')
-// video.mute()
+import authServices from './auth/auth_services'
+
 export default {
+  methods: {
+    demo: function (e) {
+      const demoUser = Math.floor(Math.random() * 2) === 0 ? {username: 'AMF', password: 'password'} : {username: 'lew', password: '123456'}
+      authServices.login(this, {user: demoUser}, '/events')
+    }
+  }
 }
 </script>
 
 <style>
-
-
 iframe {
   position: fixed;
   top: 40%;

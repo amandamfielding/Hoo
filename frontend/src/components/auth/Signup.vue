@@ -1,6 +1,11 @@
 <template>
   <div>
     <div class="signup">
+      <ul class="login-errors">
+        <li v-for="error in errors">
+          {{error}}
+        </li>
+      </ul>
       <h3 class="signup-text">Sign Up</h3>
       <input type="email" class="form-control" placeholder="Email address"
              v-model="user.email">
@@ -101,6 +106,11 @@
           felonies: null,
           valid_dl: null
         }
+      }
+    },
+    computed: {
+      errors: function () {
+        return this.$store.state.errors
       }
     },
     methods: {

@@ -12,6 +12,10 @@ Hoo is a full-stack recruitment application for short-term event staffing. Admin
 
 In our implementation of this app, we used VueRouter to handle the route and component changes, as well as the transitions between the routes. Each component is built as a single-file Vue component and given access to the store with the `App` component's `<router-view>` tag. As AJAX requests are made to the backend's REST api from the component's methods, the success response dispatches actions to commit mutations on the state.
 
+### Home
+
+The root route has links to login, signup, or use the demo account as well as information explaining the purpose of the website from both the admin and staff sides. To enhance user interaction, we used the iFrame Player API to embed a video for the first panel.
+
 ### User Login and Signup
 
 

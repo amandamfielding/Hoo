@@ -6,6 +6,7 @@ Vue.use(Vuex)
 const state = {
   events: [],
   event: [],
+  errors: [],
   currentUser: (window.localStorage.user !== '') ? JSON.parse(window.localStorage.user) : {}
 }
 
@@ -23,6 +24,12 @@ const mutations = {
   },
   LOGOUT (state) {
     state.currentUser = {}
+  },
+  RECEIVE_ERRORS (state, err) {
+    state.errors = JSON.parse(err.responseText)
+  },
+  CLEAR_ERRORS () {
+    state.errors = []
   }
 }
 
@@ -38,6 +45,12 @@ const actions = {
   },
   logout ({commit}) {
     commit('LOGOUT')
+  },
+  getErrors ({commit}, err) {
+    commit('RECEIVE_ERRORS', err)
+  },
+  clearErrors ({commit}) {
+    commit('CLEAR_ERRORS')
   }
 }
 

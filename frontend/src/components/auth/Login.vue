@@ -1,5 +1,10 @@
 <template>
   <div class="login">
+    <ul class="login-errors">
+      <li v-for="error in errors">
+        {{error}}
+      </li>
+    </ul>
     <h3 class="login-text">Log In</h3>
     <input type="text" class="form-control" placeholder="Username"
       v-model="user.username">
@@ -24,6 +29,11 @@
           username: '',
           password: ''
         }
+      }
+    },
+    computed: {
+      errors: function () {
+        return this.$store.state.errors
       }
     },
     methods: {

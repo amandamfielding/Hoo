@@ -6,6 +6,7 @@ export default {
   },
 
   login (context, data, redirect) {
+    context.$store.dispatch('clearErrors')
     $.ajax({
       method: 'POST',
       url: '/api/session',
@@ -20,12 +21,13 @@ export default {
         }
       },
       error: err => {
-        context.error = err
+        context.$store.dispatch('getErrors', err)
       }
     })
   },
 
   signup (context, data, redirect) {
+    context.$store.dispatch('clearErrors')
     $.ajax({
       method: 'POST',
       url: '/api/users',
@@ -41,7 +43,7 @@ export default {
         }
       },
       error: err => {
-        context.error = err
+        context.$store.dispatch('getErrors', err)
       }
     })
   },

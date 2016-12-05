@@ -1,10 +1,10 @@
 <template>
   <div class="event-show">
     <h2>{{event.title}}</h2>
-    <div class="">{{event.city}}, {{event.state}}</div>
-    <div>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</div>
-    <div class=""></div>
-    <div class=""></div>
+    <p class="">{{event.city}}, {{event.state}}</p>
+    <p>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</p>
+    <p class=""></p>
+    <p class=""></p>
   </div>
 </template>
 
@@ -22,6 +22,7 @@ export default {
   },
   methods: {
     getEvent (eventId) {
+      debugger
       $.ajax({
         method: 'GET',
         url: '/api/events/' + eventId,

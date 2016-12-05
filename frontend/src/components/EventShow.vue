@@ -3,8 +3,12 @@
     <h2>{{event.title}}</h2>
     <p class="">{{event.city}}, {{event.state}}</p>
     <p>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</p>
-    <p class=""></p>
-    <p class=""></p>
+    <p class="">{{event.description}}</p>
+    <p class="">${{event.pay}} per {{event.pay_freq}}</p>
+    <!-- <p class="">{{event}}</p> -->
+    <ul class="event-requirement-list">
+      <li  class="event-requirement" v-for='requirement in requirements'>{{requirement.title}}</li>
+    </ul>
   </div>
 </template>
 
@@ -22,7 +26,6 @@ export default {
   },
   methods: {
     getEvent (eventId) {
-      debugger
       $.ajax({
         method: 'GET',
         url: '/api/events/' + eventId,
@@ -40,6 +43,9 @@ export default {
   computed: {
     event: function () {
       return this.$store.state.event
+    },
+    requirements: function () {
+      return this.event.requirements
     }
   }
 }

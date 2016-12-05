@@ -10,11 +10,23 @@ Hoo is a full-stack recruitment application for short-term event staffing. Admin
 
 ![image of splash](docs/screenshots/hoo-splash.png)
 
-In our implementation of this app, we used VueRouter to handle the route and component changes, as well as the transitions between the routes. Each component is built as a single-file Vue component and given access to the store with the `App` component's `<router-view>` tag. As AJAX requests are made to the backend from the component's methods, the success response dispatches actions to commit mutations on the state.
+In our implementation of this app, we used VueRouter to handle the route and component changes, as well as the transitions between the routes. Each component is built as a single-file Vue component and given access to the store with the `App` component's `<router-view>` tag. As AJAX requests are made to the backend's REST api from the component's methods, the success response dispatches actions to commit mutations on the state.
+
+### User Login and Signup
+
+
 
 ### Events
 
-  Upon log in, the store saves user data and puts it into `localStorage`. A logged in user has access to the `Events` component, which lists all of the future events posted by admin users (event planners or staffing agencies). The index of `Events` shows the user a short description, location, dates, and estimated pay rate for each event. Upon selecting an `Event`, the user is taken to the `EventShow`
+Upon log in, the store saves user data and puts it into `localStorage`. A logged in user has access to the `Events` component, which lists all of the future events posted by admin users (event planners or staffing agencies). To get the `Events` index, an AJAX request is made to the backend and a jbuilder view returns  The index of `Events` shows the user the location, dates, and estimated pay rate for each event.
+
+### EventShow
+
+Upon selecting an `Event` from the index, the user is taken to the `EventShow` component which lists all of the information given in creating the event and allows a user to "apply" to the .
+
+### Profile
+
+
 
 ## Future Directions for the Project
 
@@ -22,8 +34,8 @@ In addition to the features already implemented, we plan to continue work on thi
 
 ### Admin User Functionality
 
-Searching for tracks is a standard feature of Genius. This will search all track titles that contain the input string.
+Admin users can create or join companies, create/update/destroy events, view event staff requests to deny or accept them, and view user profile pages.
 
-### Playing Songs on Track Show
+### Staff Management Phase
 
-Although this is less essential functionality, I also plan to implement the ability to listen to the music while on the track show page.  To do this, I plan to use the react-player gem.
+Once the recruitment side of the app is fully built out, we plan to give admin users more functionality in using Hoo to manage their short-term staff. More data from event staffing agencies will be collected, but some possible features include: tracking staff location within the event, allow users and admins to rate and review each other, and use DocuSign or another API to quickly handle paperwork.

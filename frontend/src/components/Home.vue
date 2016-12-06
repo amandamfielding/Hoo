@@ -22,6 +22,11 @@
 import authServices from './auth/auth_services'
 
 export default {
+  created () {
+    if (window.localStorage.user) {
+      this.$router.replace('/events')
+    }
+  },
   methods: {
     demo: function (e) {
       const demoUser = Math.floor(Math.random() * 2) === 0 ? {username: 'AMF', password: 'password'} : {username: 'lew', password: '123456'}

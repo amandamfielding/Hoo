@@ -1,6 +1,8 @@
 <template>
   <div class="event-show">
     <h2>{{event.title}}</h2>
+<<<<<<< HEAD
+=======
     <p class="">{{event.city}}, {{event.state}}</p>
     <p>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</p>
     <p class="">{{event.description}}</p>
@@ -8,6 +10,7 @@
     <ul class="event-requirement-list">
       <li  class="event-requirement" v-for='requirement in requirements'>{{requirement.title}}</li>
     </ul>
+>>>>>>> master
   </div>
 </template>
 
@@ -37,6 +40,8 @@ export default {
       const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
       let newDate = new Date(date)
       return monthNames[newDate.getMonth()] + ' ' + newDate.getDate() + ', ' + newDate.getFullYear()
+    },
+    apply () {
     }
   },
   computed: {

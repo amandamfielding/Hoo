@@ -1,8 +1,8 @@
 <template>
   <div id='events'>
     <div class="search">
-      <input class="city-search" placeholder="City"></input>
-      <select onChange="filter(miles,value)" class="miles">
+      <input v-model="city" @input="filter" class="city-search" placeholder="City"></input>
+      <select v-model="miles" @change="filter" class="miles">
         <option value="5">5 mi</option>
         <option value="10">10 mi</option>
         <option value="15">15 mi</option>
@@ -10,20 +10,21 @@
         <option value="25">25 mi</option>
         <option value="30">30 mi</option>
         <option value="35">35 mi</option>
-        <option selected value="40">40+ mi</option>
+        <option value="40">40+ mi</option>
       </select>
       <div class="date-div">
         <div class="date-prompt">Within the next:
-          <select onChange="filter" class="date-search">
-            <option value="week">week</option>
-            <option value="month">month</option>
-            <option value="3 months">3 months</option>
-            <option value="6 months">6 months</option>
-            <option value="year">year</option>
+          <select v-model="date" @change="filter" class="date-search">
+            <option>week</option>
+            <option>month</option>
+            <option>3 months</option>
+            <option>6 months</option>
+            <option>year</option>
           </select>
         </div>
       </div>
     </div>
+
     <ul class="events-list">
      <li class="event" v-for='event in allEvents'>
        <img @click="navToEventShow(event.id)" class="event-image" v-bind:id="event.id" :src="event.image_url" />
@@ -43,6 +44,7 @@
 import $ from 'jquery'
 
 export default {
+  name: 'Events',
   created () {
     if (window.localStorage.user) {
       this.getEvents()
@@ -50,7 +52,13 @@ export default {
       this.$router.replace('/')
     }
   },
-  name: 'Events',
+  data: function () {
+    return {
+      city: '',
+      miles: '',
+      date: ''
+    }
+  },
   methods: {
     getEvents () {
       $.ajax({
@@ -69,13 +77,12 @@ export default {
     navToEventShow (eventId) {
       this.$router.replace('events/' + eventId)
     },
-    filter (type, value) {
-      debugger
+    filter () {
       $.ajax({
         method: 'GET',
         url: '/api/events',
         success: events => {
-          this.$store.dispatch('getEventsByFilter', events, this.miles)
+          this.$store.dispatch('getEventsByFilter', events)
         }
       })
     }
@@ -83,9 +90,6 @@ export default {
   computed: {
     allEvents: function () {
       return this.$store.state.events
-    },
-    miles: function () {
-      return this.$store.state.miles
     }
   }
 }

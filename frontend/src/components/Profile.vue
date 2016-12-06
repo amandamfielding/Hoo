@@ -8,12 +8,12 @@
           <li class="profile-name">{{userInfo.fname}} {{ userInfo.lname }}</li>
           <li class="profile-username">@{{ userInfo.username }}</li>
           <li class="resume" @click='openResumeModal'>Resume</li>
-          <div id="myModal" class="modal">
+            <div id="myModal" class="modal">
               <div class="modal-resume">
                 <span id="close" @click='closeResumeModal'>x</span>
                 <img :src="userInfo.resume_url"/>
               </div>
-              </div>
+            </div>
           <li class="age-and-gender">
             <div class="age">{{ userInfo.age }}</div>
             <div class="gender">{{ userInfo.gender }}</div>
@@ -29,10 +29,11 @@
           <div class="qual-tats" v-if=userInfo.no_vis_tats><img class="checkmark" :src=checkMark(userInfo.no_vis_tats) /> No Visible Tattoos</div>
           <div class="qual-felonies" v-if=userInfo.no_felonies><img class="checkmark" :src=checkMark(userInfo.no_felonies) /> No Felonies</div>
         </div>
+        <router-link to="/events" class="events-nav">Back to Events</router-link>
       </div>
 
     </div>
-    <router-link to="/events" class="events-nav">Back to Events</router-link>
+
   </div>
 </template>
 
@@ -74,15 +75,14 @@ export default {
   justify-content: space-between;
   width: 100%;
   margin-top: 70px;
-  margin-bottom: 20px;
-  max-height: 80vh;
+  max-height: 90vh;
   z-index: 1;
 }
 
 .profile-left {
   width: 40%;
   text-align: center;
-  background-color: #EDEDE6;
+  background-color: rgba(237, 237, 230, .7);
   margin-left: 3%;
 }
 
@@ -93,7 +93,7 @@ export default {
 
 .profile-right {
   width: 50%;
-  background-color: #EDEDE6;
+  background-color: rgba(237, 237, 230, .7);
   margin-right: 3%;
   position: relative;
 }
@@ -125,19 +125,6 @@ export default {
   cursor: pointer;
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
-
 .modal-resume {
   background-color: #fefefe;
   margin: 5% auto;
@@ -146,25 +133,13 @@ export default {
   width: 80%;
 }
 
-#close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-#close:hover,
-#close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
 .events-nav {
-  display: flex;
-  justify-content: center;
-  color: #EDEDE6;
-  font-size: 26px;
+  position: absolute;
+  bottom: 0;
+  font-size: 24px;
+  width: 100%;
+  margin: 10px 0;
+  text-align: center;
 }
 
 .checkmark {
@@ -179,7 +154,7 @@ export default {
 .qualifications {
   display: flex;
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   margin: 5% 2%;
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="signup">
       <ul class="login-errors">
         <li v-for="error in errors">
-          {{error}}
+          {{ error }}
         </li>
       </ul>
       <h3 class="signup-text">Sign Up</h3>

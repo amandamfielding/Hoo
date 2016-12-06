@@ -63,7 +63,6 @@ export default {
   },
   methods: {
     getEvents () {
-      // need to test the differences
       $.ajax({
         method: 'GET',
         url: '/api/events',

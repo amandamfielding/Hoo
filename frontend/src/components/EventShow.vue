@@ -5,7 +5,6 @@
     <p>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</p>
     <p class="">{{event.description}}</p>
     <p class="">${{event.pay}} per {{event.pay_freq}}</p>
-    <!-- <p class="">{{event}}</p> -->
     <ul class="event-requirement-list">
       <li  class="event-requirement" v-for='requirement in requirements'>{{requirement.title}}</li>
     </ul>

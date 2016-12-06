@@ -18,11 +18,11 @@ The root route has links to login, signup, or use the demo account as well as in
 
 ### User Login and Signup
 
-
+For login, a POST request is made to the session controller in Rails, which sends back a `User` object. The store saves user data and puts it into `localStorage` where it is accessible throughout the app and does not need to be re-fetched between pages or on refresh. For signup, a POST request is made to the users controller in Rails, which logs the user in and 
 
 ### Events
 
-Upon log in, the store saves user data and puts it into `localStorage`. A logged in user has access to the `Events` component, which lists all of the future events posted by admin users (event planners or staffing agencies). To get the `Events` index, an AJAX request is made to the backend and a jbuilder view returns  The index of `Events` shows the user the location, dates, and estimated pay rate for each event.
+A logged in user has access to the `Events` component, which lists all of the future events posted by admin users (event planners or staffing agencies). To get the `Events` index, an AJAX request is made to the backend and a jbuilder view returns  The index of `Events` shows the user the location, dates, and estimated pay rate for each event.
 
 ### EventShow
 

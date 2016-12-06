@@ -27,8 +27,8 @@
     <ul class="events-list">
      <li class="event" v-for='event in allEvents'>
        <img @click="navToEventShow(event.id)" class="event-image" v-bind:id="event.id" :src="event.image_url" />
-       <div class="event-info">
-         <h2 @click="navToEventShow">{{ event.title }}</h2>
+       <div class="event-info" @click="navToEventShow(event.id)" v-bind:id="event.id">
+         <h2>{{ event.title }}</h2>
          <div>{{ event.city }}, {{ event.state }}</div>
          <div>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</div>
          <div class="pay">${{ event.pay }} per {{ event.pay_freq }}</div>

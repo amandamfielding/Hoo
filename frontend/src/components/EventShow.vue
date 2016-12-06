@@ -1,8 +1,16 @@
 <template>
   <div class="event-show">
     <h2>{{event.title}}</h2>
-    <div class="">{{event.city}}, {{event.state}}</div>
-    <div>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</div>
+<<<<<<< HEAD
+=======
+    <p class="">{{event.city}}, {{event.state}}</p>
+    <p>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</p>
+    <p class="">{{event.description}}</p>
+    <p class="">${{event.pay}} per {{event.pay_freq}}</p>
+    <ul class="event-requirement-list">
+      <li  class="event-requirement" v-for='requirement in requirements'>{{requirement.title}}</li>
+    </ul>
+>>>>>>> master
   </div>
 </template>
 
@@ -39,6 +47,9 @@ export default {
   computed: {
     event: function () {
       return this.$store.state.event
+    },
+    requirements: function () {
+      return this.event.requirements
     }
   }
 }

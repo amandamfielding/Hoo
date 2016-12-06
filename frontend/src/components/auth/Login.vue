@@ -2,7 +2,7 @@
   <div class="login">
     <ul class="login-errors">
       <li v-for="error in errors">
-        {{error}}
+        {{ error }}
       </li>
     </ul>
     <h3 class="login-text">Log In</h3>

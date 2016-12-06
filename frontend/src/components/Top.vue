@@ -10,6 +10,7 @@
         <img class="top-user-pic" :src="userInfo.image_url" />
         <ul id="user-dropdown">
           <li><router-link class="profile-link" to="/profile">My Profile</router-link></li>
+          <li><router-link class="events-link" to="/events">Events</router-link></li>
           <li @click="logout"><router-link class="logout-link" to="/">Log Out</router-link></li>
         </ul>
       </div>
@@ -123,7 +124,7 @@ export default {
   background: #eee;
 }
 
-.profile-link, .logout-link {
+.profile-link, .events-link, .logout-link {
   text-decoration: none;
   color: #4d4e50;
 }

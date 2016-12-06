@@ -33,7 +33,7 @@ class Event < ActiveRecord::Base
   has_many :requirements,
     through: :event_requirements,
     source: :requirement
-  # belongs_to :company,
-  #   through: :admin,
-  #   source: :company
+  has_one :company,
+    through: :admin,
+    source: :company
 end

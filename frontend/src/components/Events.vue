@@ -27,14 +27,12 @@
     <ul class="events-list">
      <li class="event" v-for='event in allEvents'>
        <img @click="navToEventShow(event.id)" class="event-image" v-bind:id="event.id" :src="event.image_url" />
-       <div class="event-info" @click="navToEventShow(event.id)" v-bind:id="event.id">
-         <h2>{{ event.title }}</h2>
+       <div class="event-info">
+         <h2 class="event-title">{{ event.title }}</h2>
          <div>{{ event.city }}, {{ event.state }}</div>
          <div>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</div>
+         <div class="show-link" v-bind:id="event.id" @click="navToEventShow(event.id)">Event Details</div>
          <div class="pay">${{ event.pay }} per {{ event.pay_freq }}</div>
-         <!-- <ul v-for='requirement in {{event.requirements}}'>
-         <li>{{requirement.title}}</li>
-         </ul> -->
        </div>
      </li>
    </ul>
@@ -105,15 +103,15 @@ export default {
 }
 
 .event {
- margin: 2% 5%;
- background-color: #EDEDE6 ;
+ margin: 2% 10%;
+ background-color: rgba(237, 237, 230, .7);
  padding: 1% 2%;
  display: flex;
  position: relative;
 }
 
 .event-image {
- width: 35%;
+ width: 28%;
  height: 100%;
  cursor: pointer;
 }
@@ -127,27 +125,29 @@ export default {
 }
 
 .event-info div {
- margin: 5px 0;
+  margin: 10px 0;
+  font-size: 1.2em;
 }
 
-.event-info h2 {
+.event-title {
  margin-bottom: 10px;
- font-size: 30px;
+ font-size: 2.2em;
  cursor: pointer;
+ text-align: left;
 }
 
-.event-info h2:hover {
-  text-shadow: 0 0 1px black;
+.show-link {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .pay {
   position: absolute;
   right: 0;
-  top: -5px;
+  top: -10px;
   background: #9882CF;
-  padding: 8px 10px;
+  padding: 10px;
   border-bottom-left-radius: 5px;
-  font-size: 20px;
 }
 
 .search {

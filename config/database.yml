@@ -17,6 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: postgres
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -80,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: Hoo_production
-  username: Hoo
-  password: <%= ENV['HOO_DATABASE_PASSWORD'] %>
+  database: hoo_production
+  username: ubuntu
+  password: 'testing'
+  #<%= ENV['HOO_DATABASE_PASSWORD'] %>

@@ -11,10 +11,18 @@
         <button type="button" @click="demo">Use Demo Account</button>
       </div>
     </div>
-    <div class="home-bottom">
-      <p>Are you a bartender or server looking for your next short term gig?</p>
-      <p>Are you a recruiter who tired </p>
-    </div>
+    <section class="home-bottom">
+      <div class="user-blurb">
+        <h3>Looking for your next short term gig?</h3>
+        <p>Search for awesome upcoming events near you and apply with the click of a button.</p>
+        <img class="splash-img search-feature"src=""/>
+      </div>
+      <div class="recruiter-blurb">
+        <h3>Staffing a concert? Planning a wedding? Or just having an epic private party?</h3>
+        <p>Don't sift through hundreds of emails from a craigslist ad. Let Hoo make finding your service staff easy.</p>
+        <img class="splash-img profile"src=""/>
+      </div>
+    </section>
   </div>
 </template>
 

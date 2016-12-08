@@ -8,33 +8,41 @@ Hoo is a full-stack recruitment application for short-term event staffing. Admin
 
 ## Features & Implementation
 
-![image of splash](docs/screenshots/hoo-splash.png)
-
 In our implementation of this app, we used VueRouter to handle the route and component changes, as well as the transitions between the routes. Each component is built as a single-file Vue component and given access to the store with the `App` component's `<router-view>` tag. As AJAX requests are made to the backend's REST api from the component's methods, the success response dispatches actions to commit mutations on the state.
 
 ### Home
 
-The root route has links to login, signup, or use the demo account as well as information explaining the purpose of the website from both the admin and staff sides. To enhance user interaction, we used the iFrame Player API to embed a video for the first panel.
+![image of splash](docs/screenshots/hoo-splash.png)
+
+The root route has links to login, signup, or use the demo account as well as information explaining the purpose of the website from both the admin and staff sides. To enhance user interaction, we used the iFrame Player API to embed a video for the first panel. A logged in user may not access this route; they are redirected to `/events`.
 
 ### User Login and Signup
 
-For login, a POST request is made to the session controller in Rails, which sends back a `User` object. The store saves user data and puts it into `localStorage` where it is accessible throughout the app and does not need to be re-fetched between pages or on refresh. For signup, a POST request is made to the users controller in Rails, which logs the user in and 
+For login, a POST request is made to the session controller in Rails, which sends back a `User` object. For signup, a POST request is made to the users controller in Rails, which logs the user in and returns the new user to the frontend.
+
+During signup, the user is able to provide a pdf version of his/her resume and/or a brief summary in "About Me". Additionally, users provide personal information and qualification information. These help the site decide what they may apply to and help admins decide who to hire.
+
+The store saves user data and an authentication service puts it into `localStorage` where it is accessible throughout the app. Storing the user in `localStorage` prevents the user from needing to be re-fetched between pages or on refresh.
 
 ### Events
 
-A logged in user has access to the `Events` component, which lists all of the future events posted by admin users (event planners or staffing agencies). To get the `Events` index, an AJAX request is made to the backend and a jbuilder view returns  The index of `Events` shows the user the location, dates, and estimated pay rate for each event.
+A logged in user has access to the `Events` component, which lists all of the future events posted by admin users (event planners or staffing agencies). To get the `Events` index, an AJAX request is made to the backend and a jbuilder view returns  The index of `Events` shows the user the location, dates, and estimated pay rate for each event. We leveraged Vue's straightforward interface to iterate through the array of events with `v-for` inside `<li>` elements.
 
 ### EventShow
 
-Upon selecting an `Event` from the index, the user is taken to the `EventShow` component which lists all of the information given in creating the event and allows a user to "apply" to the .
+![image of event-show](docs/screenshots/hoo-event-show.png)
+
+Upon selecting an `Event` from the index, the user is taken to the `EventShow` component which lists all of the information given in creating the event. This component also contains logic to allow a user to toggle their "application" to work the event, if they are eligible (by meeting the requirements for the event).
 
 ### Profile
 
+![image of profile](docs/screenshots/hoo-profile.png)
 
+On a user's `Profile`, his/her information is displayed, using the data stored in `localStorage`. The resume is available in a modal to make viewing easier for the recruiter. Check marks provide an easy to understand UI for which requirements the candidate meets.
 
 ## Future Directions for the Project
 
-In addition to the features already implemented, we plan to continue work on this project.  The next steps for Hoo are outlined below.
+In addition to the features already implemented, we plan to continue work on this project to give users more control and further simplification of work flow. The next steps for Hoo are outlined below.
 
 ### Admin User Functionality
 

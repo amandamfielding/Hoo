@@ -42,7 +42,7 @@ export default {
 
 <style>
 .top {
-  background-color: #F4EDFF;
+  background-color: rgba(18,18,18,1);
   position: fixed;
   width: 100%;
   top: 0;
@@ -50,6 +50,7 @@ export default {
   display: flex;
   justify-content: space-between;
   z-index: 60;
+  color: rgba(237, 237, 230, 1);
 }
 
 .header-left, .header-right {

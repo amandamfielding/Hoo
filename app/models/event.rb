@@ -65,7 +65,6 @@ class Event < ActiveRecord::Base
     end
 
     return events if dist == "40" || !dist
-
     coordinates = LOCATIONS[city]
     latitude = coordinates["lat"]
     longitude = coordinates["lng"]

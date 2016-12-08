@@ -1,11 +1,11 @@
 <template>
   <div class="home">
     <div class="home-top">
-      <iframe id="bgvid" width="560" height="315" volume="0"
-      src="https://www.youtube.com/embed/jXv7eRZ8Eto?enablejsapi=1&autoplay=1&loop=1" frameborder="0" allowfullscreen></iframe>
+      <video src="http://res.cloudinary.com/dbsxgncvx/video/upload/v1481232528/hoo5_gk2ww5.mp4" autoplay loop>
+      </video>
       <div id="hoo">
         <h1>Hoo</h1>
-        <h2>Staffing Made Easy</h2>
+        <div id="sub-header">Staffing Made Easy</div>
         <button type="button" @click="$router.replace('/authentication/login')">Log In</button>
         <button type="button" @click="$router.replace('/authentication/signup')">Sign Up</button>
         <button type="button" @click="demo">Use Demo Account</button>
@@ -13,14 +13,18 @@
     </div>
     <section class="home-bottom">
       <div class="user-blurb">
-        <h3>Looking for your next short term gig?</h3>
-        <p>Search for awesome upcoming events near you and apply with the click of a button.</p>
-        <img class="splash-img search-feature"src=""/>
+        <div class="blurb-text">
+          <h3 class="blurb-heading">Looking for your next short term gig?</h3>
+          <div>Search for awesome upcoming events near you and apply with the click of a button.</div>
+        </div>
+        <img class="splash-img"src=""/>
       </div>
       <div class="recruiter-blurb">
-        <h3>Staffing a concert? Planning a wedding? Or just having an epic private party?</h3>
-        <p>Don't sift through hundreds of emails from a craigslist ad. Let Hoo make finding your service staff easy.</p>
-        <img class="splash-img profile"src=""/>
+        <img class="splash-img"src=""/>
+        <div class="blurb-text">
+          <h3 class="blurb-heading">Staffing a concert? Planning a wedding? Or just having an epic private party?</h3>
+          <div>Don't sift through hundreds of emails from a craigslist ad. Let Hoo make finding your service staff easy.</div>
+        </div>
       </div>
     </section>
   </div>
@@ -45,26 +49,20 @@ export default {
 </script>
 
 <style>
-iframe {
-  /*position: fixed;*/
-  top: 40%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 700px;
+video {
   height: 100%;
-  width: auto;
-  height: auto;
+  width: 100%;
   z-index: -1;
-  /*transform: translateX(-50%) translateY(-50%);*/
   background-size: cover;
   transition: 1s opacity;
+  position: relative;
 }
 
 #hoo {
   position: absolute;
   left: 27%;
   top: 7%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.3);
   color: white;
   padding: 2rem;
   width: 33%;
@@ -75,12 +73,14 @@ h1 {
   text-align: center;
   font-size: 3rem;
   letter-spacing: .3rem;
+  margin: 10px;
 }
 
-h2 {
+#sub-header {
   text-align: center;
-  font-size: 2rem;
-  letter-spacing: .3rem;
+  font-size: 1.8rem;
+  letter-spacing: .1rem;
+  margin: 20px;
 }
 #hoo button {
   display: block;
@@ -100,14 +100,27 @@ h2 {
 }
 
 .home-top {
-  min-height: 100vh;
+  height: 100vh;
 }
 .home-bottom {
   background-color: white;
-  min-height: 500px;
+  height: 100vh;
 }
 
-p {
-  font-size: 30px;
+.user-blurb, .recruiter-blurb {
+  padding: 20px;
+  display: flex;
+}
+
+.blurb-heading {
+  font-size: 26px;
+}
+
+.blurb-text {
+  width: 50%;
+}
+
+.splash-img {
+  width: 50%;
 }
 </style>

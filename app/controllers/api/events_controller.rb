@@ -18,7 +18,7 @@ class Api::EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @events = Event.find_by_search(params[:city], params[:miles], params[:date])
     render :index
   end
 

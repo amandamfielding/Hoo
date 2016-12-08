@@ -1,33 +1,35 @@
 <template>
   <div id='events'>
     <div class="search">
-      <select v-model="searchParams.city" @change="filter" class="miles">
-        <option>San Francisco, CA</option>
-        <option>Berkeley, CA</option>
-        <option>Napa, CA</option>
-        <option>Los Angeles, CA</option>
-        <option>Indio, CA</option>
-      </select>
-      <select v-model="searchParams.miles" @change="filter" class="miles">
-        <option value="5">5 mi</option>
-        <option value="10">10 mi</option>
-        <option value="15">15 mi</option>
-        <option value="20">20 mi</option>
-        <option value="25">25 mi</option>
-        <option value="30">30 mi</option>
-        <option value="35">35 mi</option>
-        <option value="40">40+ mi</option>
-      </select>
-      <div class="date-div">
-        <div class="date-prompt">Within the next:
-          <select v-model="searchParams.date" @change="filter" class="date-search">
-            <option>week</option>
-            <option>month</option>
-            <option>3 months</option>
-            <option>6 months</option>
-            <option>year</option>
-            <option>any date</option>
-          </select>
+      <div class="search-bar">
+        <select v-model="searchParams.city" @change="filter" class="miles">
+          <option>San Francisco, CA</option>
+          <option>Berkeley, CA</option>
+          <option>Napa, CA</option>
+          <option>Los Angeles, CA</option>
+          <option>Indio, CA</option>
+        </select>
+        <select v-model="searchParams.miles" @change="filter" class="miles">
+          <option value="5">5 mi</option>
+          <option value="10">10 mi</option>
+          <option value="15">15 mi</option>
+          <option value="20">20 mi</option>
+          <option value="25">25 mi</option>
+          <option value="30">30 mi</option>
+          <option value="35">35 mi</option>
+          <option value="40">40+ mi</option>
+        </select>
+        <div class="date-div">
+          <div class="date-prompt">Within the next:
+            <select v-model="searchParams.date" @change="filter" class="date-search">
+              <option>week</option>
+              <option>month</option>
+              <option>3 months</option>
+              <option>6 months</option>
+              <option>year</option>
+              <option>any date</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
@@ -92,6 +94,7 @@ export default {
         url: '/api/events',
         data: this.searchParams,
         success: events => {
+          debugger
           this.$store.dispatch('getEvents', events)
         }
       })
@@ -118,20 +121,21 @@ export default {
 
 .event {
  margin: 2% 10%;
- background-color: rgba(237, 237, 230, .7);
+ background-color: rgba(237, 237, 230, .8);
  padding: 1% 2%;
  display: flex;
  position: relative;
+ box-shadow: 0 0 4px rgba(237, 237, 230, .8);
 }
 
 .event-image {
- width: 28%;
+ width: 275px;;
  height: 100%;
  cursor: pointer;
 }
 
 .event-image:hover {
-  box-shadow: 0 0 4px black;
+  box-shadow: 0 0 6px black;
 }
 
 .event-info {
@@ -159,39 +163,48 @@ export default {
   position: absolute;
   right: 0;
   top: -10px;
-  background: #9882CF;
+  background: rgba(86, 54, 165, 1);
   padding: 10px;
   border-bottom-left-radius: 5px;
+  color: rgba(237, 237, 230, 1);
 }
 
 .search {
+  padding-top: 5px;
+}
+.search-bar {
   display: flex;
   justify-content: center;
-  padding-top: 15px;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.5);
+  width: 78%;
+  color: rgba(237, 237, 230, 1);
+  margin: auto;
+  margin-top: 20px;
 }
 
 .city-search {
   width: 25%;
-  font-size: 18px;
   padding: 5px 10px;
   margin-right: 2%;
+  font-size: 16px;
 }
 
 .miles {
-  font-size: 18px;
   padding: 5px 10px;
   margin-right: 3%;
+  font-size: 16px;
 }
 
 .date-prompt {
-  font-size: 18px;
-  width: 320px;
+  width: auto;
+  font-size: 16px;
 }
 
 .date-search {
   width: 120px;
-  font-size: 18px;
   padding: 5px 10px;
+  font-size: 16px;
 }
 
 .date-div {

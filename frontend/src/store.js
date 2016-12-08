@@ -51,16 +51,11 @@ const actions = {
   getEvents ({ commit }, events) {
     commit('RECEIVE_EVENTS', events)
   },
-<<<<<<< HEAD
   getRequest ({ commit }, request) {
     commit('RECEIVE_REQUEST', request)
   },
-  getEventsByFilter ({ commit }, events, miles) {
-    commit('RECEIVE_EVENTS_BY_FILTER', events, miles)
-=======
   getEventsByFilter ({ commit }, events) {
     commit('RECEIVE_EVENTS_BY_FILTER', events)
->>>>>>> c424ddb86618b4948476636f496b18275643b191
   },
   getEvent ({ commit }, event) {
     commit('RECEIVE_EVENT', event)

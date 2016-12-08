@@ -74,13 +74,14 @@ export default {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 70px;
+  margin-top: 50px;
   max-height: 90vh;
   z-index: 1;
 }
 
 .profile-left {
   width: 40%;
+  margin-top: 50px;
   text-align: center;
   background-color: rgba(237, 237, 230, .7);
   margin-left: 3%;
@@ -93,6 +94,7 @@ export default {
 
 .profile-right {
   width: 50%;
+  margin-top: 50px;
   background-color: rgba(237, 237, 230, .7);
   margin-right: 3%;
   position: relative;

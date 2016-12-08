@@ -1,9 +1,17 @@
-body {
+body{
+  font-family: 'Raleway';
+  position: relative;
+  background: transparent;
+}
+
+body .background {
   background-image: url('http://res.cloudinary.com/dbsxgncvx/image/upload/v1480821949/FreeVector-Bokeh-Background-Template_iz8crz.jpg');
   background-size: cover;
   margin: 0;
+  width: 100%;
   height: 100%;
-  font-family: 'Raleway';
+  position: fixed;
+  z-index: -2;
 }
 
 h1, h2, h3, h4, h5 {

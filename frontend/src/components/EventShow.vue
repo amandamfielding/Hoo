@@ -126,7 +126,7 @@ export default {
 
 .event-show {
   margin: 10%;
-  margin-top: 100px;
+  margin-top: 50px;
   margin-bottom: 20px;
   display: flex;
   min-height: 75vh;
@@ -139,6 +139,7 @@ export default {
 
 .show-left {
   width: 37%;
+  margin-top: 50px;
   background-color: rgba(237, 237, 230, .7);
   padding: 30px;
   text-align: center;
@@ -159,6 +160,7 @@ export default {
 
 .show-right {
   width: 45%;
+  margin-top: 50px;
   margin-left: 3%;
   background-color: rgba(237, 237, 230, .7);
   padding: 24px;
@@ -171,6 +173,7 @@ export default {
 
 .event-requirement-list {
   background-color: rgba(86, 54, 165, .6);
+  margin-top: 50px;
   padding: 15px;
   list-style: none;
   text-align: center;

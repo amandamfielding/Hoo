@@ -46,15 +46,16 @@ export default {
 
 <style>
 iframe {
-  position: fixed;
+  /*position: fixed;*/
   top: 40%;
   left: 50%;
   min-width: 100%;
-  min-height: 100%;
+  min-height: 700px;
+  height: 100%;
   width: auto;
   height: auto;
-  z-index: -100;
-  transform: translateX(-50%) translateY(-50%);
+  z-index: -1;
+  /*transform: translateX(-50%) translateY(-50%);*/
   background-size: cover;
   transition: 1s opacity;
 }

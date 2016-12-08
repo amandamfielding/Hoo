@@ -108,7 +108,7 @@ export default {
 <style>
 
 #events {
-  margin-top: 75px;
+  margin-top: 50px;
 }
 
 .events-list {
@@ -167,6 +167,7 @@ export default {
 .search {
   display: flex;
   justify-content: center;
+  padding-top: 15px;
 }
 
 .city-search {

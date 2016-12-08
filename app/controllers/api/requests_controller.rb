@@ -17,13 +17,16 @@ class Api::RequestsController < ApplicationController
   end
 
   def index
-    # all requests of the current user
-    @requests = current_user.requests
+    if params[:event_id]
+      @requests = current_user.requests.where(event_id: params[:event_id])
+    else
+      @requests = Request.all
+    end
     render :index
   end
 
   def destroy
-    @request = Request.find_by_user_id(params[:user_id])
+    @request = Request.find_by(request_params)
     if current_user.id == @request.user_id
       @request.destroy
       render :index

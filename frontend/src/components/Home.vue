@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="home-top">
-      <iframe id="bgvid" width="560" height="315"
+      <iframe id="bgvid" width="560" height="315" volume="0"
       src="https://www.youtube.com/embed/jXv7eRZ8Eto?enablejsapi=1&autoplay=1&loop=1" frameborder="0" allowfullscreen></iframe>
       <div id="hoo">
         <h1>Hoo</h1>

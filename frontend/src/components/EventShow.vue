@@ -6,29 +6,13 @@
       <li>{{ event.city }}, {{ event.state }}</li>
       <li>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</li>
       <li>${{ event.pay }} per {{ event.pay_freq }}</li>
-      <button class="apply" type="button" @click='openApplyModal'>Apply</button>
+      <button class="apply" type="button" @click='submit'>{{ showButton() }}</button>
         <div id="applyModal" class="modal">
           <div class="modal-apply">
-            <span id="close" @click='closeApplyModal'>x</span>
-            <form class="apply-form" action="index.html" method="post">
-            </br>
-              <div class="attach-resume">
-                <label for="resume">Attach your resume?
-                  <label>Yes
-                    <input type="radio" id="yes">
-                    </label>
-                    <label>No
-                      <input type="radio" id="no">
-                    </label>
-                </label>
-              </div>
-              <div class="cover-letter">
-                <textarea rows="8" cols="50" placeholder="Why do you want to work this event? Why should the recruiter hire you?"></textarea>
-              </div>
-              <div class="submit">
-                <button id="submit-button" type="button" @click="submit">Submit</button>
-              </div>
-            </form>
+            <p class="apply-response">
+              Thank you for applying! The recruiter has been sent your details and will accept or deny your application shortly.
+            </p>
+            <button id="ok" @click='closeApplyModal'>OK</button>
           </div>
         </div>
     </div>
@@ -38,7 +22,8 @@
       <div class=""><a :href="event.company_website">Company Website</a></div>
     </div>
     <ul class="event-requirement-list">
-      Requirements: <li  class="event-requirement" v-for='requirement in requirements'>{{ requirement.title }}</li>
+      <span id="req-header">Requirements</span>
+        <li  class="event-requirement" v-for='requirement in requirements'>{{ requirement.title }}</li>
     </ul>
   </div>
 </template>
@@ -51,6 +36,7 @@ export default {
   created () {
     if (window.localStorage.user) {
       this.getEvent(this.$route.params.eventId)
+      this.getRequest(this.$route.params.eventId)
     } else {
       this.$router.replace('/')
     }
@@ -62,6 +48,16 @@ export default {
         url: '/api/events/' + eventId,
         success: event => {
           this.$store.dispatch('getEvent', event)
+        }
+      })
+    },
+    getRequest (eventId) {
+      $.ajax({
+        method: 'GET',
+        url: '/api/requests',
+        data: {event_id: eventId},
+        success: request => {
+          this.$store.dispatch('getRequest', request)
         }
       })
     },
@@ -79,12 +75,39 @@ export default {
       applyModal.style.display = 'none'
     },
     submit () {
+      if (this.$store.state.request) {
+        $.ajax({
+          method: 'DELETE',
+          url: '/api/requests/' + this.event.id,
+          data: {request: {event_id: this.event.id}},
+          success: request => {
+            this.$store.dispatch('deleteRequest', request)
+          }
+        })
+      } else {
+        $.ajax({
+          method: 'POST',
+          url: '/api/requests',
+          data: {request: {event_id: this.event.id}},
+          success: request => {
+            this.$store.dispatch('createRequest', request)
+            this.openApplyModal()
+          }
+        })
+      }
     },
     showAdmin (admin, company) {
       if (company) {
         return ('Posted by: ' + admin + ' from ' + company)
       } else {
         return ('Posted by: ' + admin)
+      }
+    },
+    showButton () {
+      if (this.$store.state.request) {
+        return ('Cancel Application')
+      } else {
+        return ('Apply')
       }
     }
   },
@@ -117,7 +140,7 @@ export default {
 .show-left {
   width: 37%;
   background-color: rgba(237, 237, 230, .7);
-  padding-top: 6%;
+  padding: 30px;
   text-align: center;
 }
 
@@ -151,8 +174,12 @@ export default {
   padding: 15px;
   list-style: none;
   text-align: center;
-  font-size: 20px;
   color: rgba(237, 237, 230, 1);
+}
+
+#req-header {
+  font-size: 20px;
+  text-decoration: underline;
 }
 
 .event-requirement {
@@ -174,7 +201,7 @@ a {
   padding: 20px;
   border: 1px solid #888;
   width: 60%;
-  margin: 60px auto;
+  margin: 10% auto;
 }
 
 .apply-form {
@@ -187,12 +214,17 @@ a {
 }
 
 .cover-letter textarea {
+  padding: 10px;
   font-size: 18px;
 }
 
-#submit-button {
+#ok {
   font-size: 20px;
   padding: 6px 12px;
   cursor: pointer;
+}
+
+.apply-response {
+  font-size: 20px;
 }
 </style>

@@ -8,7 +8,8 @@ const state = {
   miles: '',
   event: [],
   errors: [],
-  currentUser: (window.localStorage.user !== '') ? JSON.parse(window.localStorage.user) : {}
+  currentUser: (window.localStorage.user !== '') ? JSON.parse(window.localStorage.user) : {},
+  request: null
 }
 
 const mutations = {
@@ -32,14 +33,26 @@ const mutations = {
   RECEIVE_ERRORS (state, err) {
     state.errors = JSON.parse(err.responseText)
   },
-  CLEAR_ERRORS () {
+  CLEAR_ERRORS (state) {
     state.errors = []
+  },
+  RECEIVE_NEW_REQUEST (state, request) {
+    state.request = request
+  },
+  RECEIVE_REQUEST (state, request) {
+    state.request = request[0]
+  },
+  DELETE_REQUEST (state, request) {
+    state.request = null
   }
 }
 
 const actions = {
   getEvents ({ commit }, events) {
     commit('RECEIVE_EVENTS', events)
+  },
+  getRequest ({ commit }, request) {
+    commit('RECEIVE_REQUEST', request)
   },
   getEventsByFilter ({ commit }, events, miles) {
     commit('RECEIVE_EVENTS_BY_FILTER', events, miles)
@@ -58,6 +71,12 @@ const actions = {
   },
   clearErrors ({commit}) {
     commit('CLEAR_ERRORS')
+  },
+  createRequest ({commit}, request) {
+    commit('RECEIVE_NEW_REQUEST', request)
+  },
+  deleteRequest ({commit}, request) {
+    commit('DELETE_REQUEST', request)
   }
 }
 

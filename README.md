@@ -14,13 +14,13 @@ In our implementation of this app, we used VueRouter to handle the route and com
 
 ![image of splash](docs/screenshots/hoo-splash.png)
 
-The root route has links to login, signup, or use the demo account as well as information explaining the purpose of the website from both the admin and staff sides. To enhance user interaction, we used the iFrame Player API to embed a video for the first panel. A logged in user may not access this route; they are redirected to `/events`.
+The root route has links to login, signup, or use the demo account as well as information explaining the purpose of the website from both the admin and staff sides. To enhance user interaction, the first panel contains a looped video that helps explain what kind of staffing Hoo is designed to help with. A logged in user may not access this route; they are redirected to `/events`.
 
 ### User Login and Signup
 
 For login, a POST request is made to the session controller in Rails, which sends back a `User` object. For signup, a POST request is made to the users controller in Rails, which logs the user in and returns the new user to the frontend.
 
-During signup, the user is able to provide a pdf version of his/her resume and/or a brief summary in "About Me". Additionally, users provide personal information and qualification information. These help the site decide what they may apply to and help admins decide who to hire.
+During signup, the user is able to provide a pdf version of his/her resume and/or a brief summary in "About Me". Additionally, users provide personal information and qualification information. These help the site decide what they may apply to and help admins decide who to hire. Cloudinary's API is utilized to allow new users to upload a profile picture and pdf resume.
 
 The store saves user data and an authentication service puts it into `localStorage` where it is accessible throughout the app. Storing the user in `localStorage` prevents the user from needing to be re-fetched between pages or on refresh.
 

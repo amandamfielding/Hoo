@@ -86,7 +86,7 @@ export default {
       return monthNames[newDate.getMonth()] + ' ' + newDate.getDate() + ', ' + newDate.getFullYear()
     },
     navToEventShow (eventId) {
-      this.$router.replace('events/' + eventId)
+      this.$router.push('events/' + eventId)
     },
     filter () {
       $.ajax({

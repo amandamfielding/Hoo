@@ -2,7 +2,8 @@ mandy = User.create!(username:"AMF",password:"password",fname:"Mandy",lname:"Fie
 image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1480576832/demo_profile_pic_l6t2lm.jpg", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1480737694/amanda_fielding_2_lesxtc.pdf", about_me:"Software Engineer looking for a job!")
 
 lindsey = User.create!(username:"lew",password:"123456",fname:"Lindsey",lname:"Whitley",gender:"female",dob:DateTime.new(1992, 12, 5),email:"lewhitley@gmail.com",phone_number:"714-343-0605", valid_dl:true, admin:true, no_vis_tats:true, no_felonies:true, company_id: 2,
-image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1481307753/lindsey_mctsqn.jpg")
+image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1481307753/lindsey_mctsqn.jpg", resume_url:"",
+about_me:"I am a Software Engineer looking for a job! I deliver excellent results, on-time, without pain or panic. When it comes to writing code, I can be expected to tackle problems with determination, learn new languages, contribute my perspective, and be a committed member of the team.")
 
 Company.create!(name:"Cerda Productions",description:"event staffing", website_url:"http://cerdaproductions.com/")
 Company.create!(name:"Dream a Little Dream Events",description:"event planning", website_url: "http://www.dreamalittledreamevents.com/")
@@ -23,7 +24,7 @@ start_date:DateTime.new(2017, 1, 1), end_date:DateTime.new(2017, 1, 1),image_url
 event5 = Event.create!(admin_id:2,title:"SalesForce Holiday Party",lat:37.79, lng:-122.39, city: "San Francisco", state: "CA", event_type: "company party", description: "We need 10 bartenders and 7 servers to pour drinks and pass out appetizers for a private party. Awesome location and venue; good potential for tips. Hours needed are from 6pm to 11pm.", pay: 18, pay_freq: "hour",
 start_date:DateTime.new(2016, 12, 16), end_date:DateTime.new(2016, 12, 16),image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_600,w_800/v1480798020/e19448image3_mg6iua.jpg")
 
-event6 = Event.create!(admin_id:2,title:"Cooney Wedding",lat: 34.2172, lng:- 119.0180, city: "Camarillo", state: "CA", event_type: "wedding", description: "https://thecooneytoons.com", pay: 14, pay_freq: "hour",
+event6 = Event.create!(admin_id:2,title:"Cooney Wedding",lat: 34.2172, lng:- 119.0180, city: "Camarillo", state: "CA", event_type: "wedding", description: "The reception will take place in a barn, so being able to carry and unload ice and supplies is required. Need 6 servers and 3 bartenders to help set plates, serve dinner, and pour drinks. Hours are 4pm to 10pm.", pay: 14, pay_freq: "hour",
 start_date:DateTime.new(2017, 1, 14), end_date:DateTime.new(2017, 1, 14),image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_600,w_800/v1480797495/original_mb3jmk.jpg")
 
 event7 = Event.create!(admin_id:2,title:"Graduation Party",lat:37.87, lng:-122.27, city: "Berkeley", state: "CA", event_type: "private party", description: "We need 1 bartender and 1 server to pour wine and beer and serve dinner for a graduation party. Hours needed are from 2pm to 5pm.", pay: 18, pay_freq: "hour",

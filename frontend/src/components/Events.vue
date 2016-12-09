@@ -94,7 +94,6 @@ export default {
         url: '/api/events',
         data: this.searchParams,
         success: events => {
-          debugger
           this.$store.dispatch('getEvents', events)
         }
       })

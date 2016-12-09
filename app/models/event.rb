@@ -41,7 +41,7 @@ class Event < ActiveRecord::Base
     "San Francisco, CA" => {"lat" => 37.7749, "lng" => -122.4194},
     "Napa, CA" => {"lat" => 38.2975, "lng" => -122.2869},
     "Berkeley, CA" => {"lat" => 37.8716, "lng" => -122.2727},
-    "Los Angeles, CA" => {"lat" => 34.0522, "lng" => -118.2437},
+    "Los Angeles, CA" => {"lat" => 34.074195, "lng" => -118.328934},
     "Indio, CA" => {"lat" => 33.7206, "lng" => -116.2156}
   }
 

@@ -8,7 +8,7 @@ const state = {
   miles: '',
   event: [],
   errors: [],
-  currentUser: (window.localStorage.user !== '') ? JSON.parse(window.localStorage.user) : {},
+  currentUser: (window.localStorage.user) ? JSON.parse(window.localStorage.user) : {},
   request: null
 }
 

@@ -86,7 +86,7 @@ export default {
       return monthNames[newDate.getMonth()] + ' ' + newDate.getDate() + ', ' + newDate.getFullYear()
     },
     navToEventShow (eventId) {
-      this.$router.replace('events/' + eventId)
+      this.$router.push('events/' + eventId)
     },
     filter () {
       $.ajax({
@@ -94,7 +94,6 @@ export default {
         url: '/api/events',
         data: this.searchParams,
         success: events => {
-          debugger
           this.$store.dispatch('getEvents', events)
         }
       })

@@ -1,7 +1,7 @@
 <template>
   <div class="top">
     <div @click="navToHome" class="header-left">
-      <img class="top-logo" src="../assets/purple_owl2.png" />
+      <img class="top-logo" src="http://res.cloudinary.com/dbsxgncvx/image/upload/v1481047967/olivia3_outline_white_ktjfyt.png" />
       <h1 class="top-title">Hoo</h1>
     </div>
     <div class="header-right">
@@ -42,7 +42,7 @@ export default {
 
 <style>
 .top {
-  background-color: rgba(18,18,18,1);
+  background-color: rgba(86, 54, 165, 1);
   position: fixed;
   width: 100%;
   top: 0;
@@ -50,7 +50,7 @@ export default {
   display: flex;
   justify-content: space-between;
   z-index: 60;
-  color: rgba(237, 237, 230, 1);
+  color: rgb(249,249,255);
 }
 
 .header-left, .header-right {

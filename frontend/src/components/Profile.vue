@@ -7,22 +7,22 @@
         <ul class="profile-details">
           <li class="profile-name">{{userInfo.fname}} {{ userInfo.lname }}</li>
           <li class="profile-username">@{{ userInfo.username }}</li>
-          <li class="resume" @click='openResumeModal'>Resume</li>
-            <div id="myModal" class="modal">
-              <div class="modal-resume">
-                <span id="close" @click='closeResumeModal'>x</span>
-                <img :src="userInfo.resume_url"/>
-              </div>
-            </div>
           <li class="age-and-gender">
             <div class="age">{{ userInfo.age }}</div>
-            <div class="gender">{{ userInfo.gender }}</div>
+            <div class="profile-gender">{{ userInfo.gender }}</div>
           </li>
         </ul>
       </div>
 
       <div class="profile-right">
         <div class="about-me">{{ userInfo.about_me }}</div>
+        <li class="resume" @click='openResumeModal'>Resume</li>
+          <div id="myModal" class="modal">
+            <div class="modal-resume">
+              <span id="close" @click='closeResumeModal'>x</span>
+              <img :src="userInfo.resume_url"/>
+            </div>
+          </div>
         <div class="qualifications">
           <div class="qual-tips" v-if=userInfo.tips_cert><img class="checkmark" :src=checkMark(userInfo.tips_cert) /> TIPS Certified</div>
           <div class="qual-dl" v-if=userInfo.valid_dl><img class="checkmark" :src=checkMark(userInfo.valid_dl) /> Drivers License</div>
@@ -70,61 +70,72 @@ export default {
 
 <style>
 
+.profile-page {
+  margin: 2% 6%;
+}
+
 .profile {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-  margin-top: 50px;
-  max-height: 90vh;
+  max-height: 92vh;
   z-index: 1;
 }
 
 .profile-left {
-  width: 40%;
+  width: 35%;
   margin-top: 50px;
   text-align: center;
-  background-color: rgba(237, 237, 230, .7);
-  margin-left: 3%;
+  background-color: rgba(86, 54, 165, 1);
+  color: rgb(249,249,255);
+  box-shadow: 0 0 4px white;
 }
 
 .profile-pic {
-  width: 290px;
-  margin-top: 25px;
+  width: 100%;
+}
+
+.profile-name {
+  font-family: 'Playball';
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
 }
 
 .profile-right {
   width: 50%;
   margin-top: 50px;
-  background-color: rgba(237, 237, 230, .7);
-  margin-right: 3%;
+  background-color: rgb(249,249,255);
   position: relative;
+  padding: 3%;
+  box-shadow: 0 0 4px white;
 }
 
 .profile-details {
   list-style: none;
   margin: 10px;
+  font-weight: 700;
 }
 
 .profile-details li {
   margin: 7px;
-}
-
-.profile-name {
-  font-size: 22px;
+  padding-bottom: 5px;
 }
 
 .age-and-gender {
   display: flex;
   justify-content: center;
+  font-size: 18px;
 }
 
 .age {
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .resume {
   text-decoration: underline;
   cursor: pointer;
+  list-style: none;
 }
 
 .modal-resume {
@@ -137,8 +148,8 @@ export default {
 
 .events-nav {
   position: absolute;
-  bottom: 0;
-  font-size: 24px;
+  bottom: 20px;
+  font-size: 20px;
   width: 100%;
   margin: 10px 0;
   text-align: center;
@@ -149,14 +160,19 @@ export default {
 }
 
 .about-me {
-  margin: 5%;
+  margin: 20px 0;
   font-size: 20px;
 }
 
 .qualifications {
   display: flex;
+  justify-content: center;
   position: absolute;
-  bottom: 20px;
+  bottom: 45px;
   margin: 5% 2%;
+}
+
+.qualifications div {
+  margin: 0 5px;
 }
 </style>

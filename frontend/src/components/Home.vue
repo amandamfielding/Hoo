@@ -68,6 +68,7 @@ video {
   width: 33%;
   margin:2rem;
   font-size: 1.2rem;
+  border-radius: 10px;
 }
 
 h1 {
@@ -99,7 +100,6 @@ h1 {
 #hoo button:hover {
    background: rgba(86, 54, 165, 1);
 }
-
 .home-top {
   height: 100vh;
 }
@@ -115,6 +115,7 @@ h1 {
 
 .blurb-heading {
   font-size: 26px;
+  color: rgba(86, 54, 165, 1);
 }
 
 .blurb-text {

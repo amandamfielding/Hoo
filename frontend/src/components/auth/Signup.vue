@@ -7,18 +7,28 @@
         </li>
       </ul>
       <h3 class="signup-text">Sign Up</h3>
-      <input type="email" class="form-control" placeholder="Email address"
-             v-model="user.email">
-      <input type="text" class="form-control" placeholder="Username"
-             v-model="user.username">
-      <input type="password" class="form-control" placeholder="Password"
-             v-model="user.password">
-      <input type="text" class="form-control" placeholder="First Name"
-             v-model="user.fname">
-      <input type="text" class="form-control" placeholder="Last Name"
-             v-model="user.lname">
+      <div class="inputs">
+        <input type="text" class="form-control input-width" placeholder="First Name"
+               v-model="user.fname">
+        <input type="text" class="form-control input-width" placeholder="Last Name"
+               v-model="user.lname">
+        <input type="text" class="form-control input-width" placeholder="Username"
+               v-model="user.username">
+        <input type="password" class="form-control input-width" placeholder="Password"
+               v-model="user.password">
+        <input type="email" class="form-control input-width" placeholder="Email address"
+               v-model="user.email">
+        <input type="text" class="form-control input-width" placeholder="Phone Number"
+               v-model="user.phone_number">
+         <input type="text" class="form-control input-width" placeholder="Profile Picture URL"
+                v-model="user.image_url">
+         <input type="text" class="form-control input-width" placeholder="Resume URL"
+                v-model="user.resume_url">
+        <label class="dob">
+        DOB: <input type="date" class="form-control dob-input" v-model="user.dob">
+        </label>
 
-      <label class="gender">Gender</label>
+      <div class="gender">Gender:
         <label for='woman'>
           <input type="radio" id="woman" value="female" name="gender" v-model="user.gender">
         Female</label>
@@ -35,37 +45,30 @@
           <input type="radio" id="other" value="other" name="gender" v-model="user.gender">
         Other</label>
         <label for='not-specified'>
-        <input type="radio" id="not-specified" value="not-specified" name="gender" v-model="user.gender">
-        Prefer not to state</label>
+      </div>
 
-      <input type="date" class="form-control" placeholder="Date of Birth"
-             v-model="user.dob">
-      <input type="text" class="form-control" placeholder="Phone Number"
-             v-model="user.phone_number">
-      <textarea class="form-control" placeholder="About Me"
-             v-model="user.about_me"></textarea>
-      <input type="text" class="form-control" placeholder="Profile Picture URL"
-             v-model="user.image_url">
-      <input type="text" class="form-control" placeholder="Resume URL"
-             v-model="user.resume_url">
+       <div class="quals">
+        <label class="auth-qualifications">TIPS Certified:
+          <label class="qual"><input type="radio" value="true" name="tips_cert" v-model="user.tips_cert">Yes</label>
+          <label class="qual"><input type="radio" value="false" name="tips_cert" v-model="user.tips_cert">No</label>
+        </label>
+        <label class="auth-qualifications">Visible Tattoos:
+          <label class="qual"><input type="radio" value="false" name="no_vis_tats" v-model="user.no_vis_tats">Yes</label>
+          <label class="qual"><input type="radio" value="true" name="no_vis_tats" v-model="user.no_vis_tats">No</label>
+        </label>
+        <label class="auth-qualifications">Felonies:
+          <label class="qual"><input type="radio" value="false" name="no_felonies" v-model="user.no_felonies">Yes</label>
+          <label class="qual"><input type="radio" value="true" name="no_felonies" v-model="user.no_felonies">No</label>
+        </label>
+        <label class="auth-qualifications">Valid Driver's License:
+          <label class="qual"><input type="radio" value="true" name="valid_dl" v-model="user.valid_dl">Yes</label>
+          <label class="qual"><input type="radio" value="false" name="valid_dl" v-model="user.valid_dl">No</label>
+        </label>
+      </div>
+    </div>
 
-      <label class="auth-qualifications">TIPS Certified
-        <label class="qual"><input type="radio" value="true" name="tips_cert" v-model="user.tips_cert">Yes</label>
-        <label class="qual"><input type="radio" value="false" name="tips_cert" v-model="user.tips_cert">No</label>
-      </label>
-      <label class="auth-qualifications">Visible Tattoos
-        <label class="qual"><input type="radio" value="false" name="no_vis_tats" v-model="user.no_vis_tats">Yes</label>
-        <label class="qual"><input type="radio" value="true" name="no_vis_tats" v-model="user.no_vis_tats">No</label>
-      </label>
-      <label class="auth-qualifications">Felonies
-        <label class="qual"><input type="radio" value="false" name="no_felonies" v-model="user.no_felonies">Yes</label>
-        <label class="qual"><input type="radio" value="true" name="no_felonies" v-model="user.no_felonies">No</label>
-      </label>
-      <label class="auth-qualifications">Valid Driver's License
-        <label class="qual"><input type="radio" value="true" name="valid_dl" v-model="user.valid_dl">Yes</label>
-        <label class="qual"><input type="radio" value="false" name="valid_dl" v-model="user.valid_dl">No</label>
-      </label>
-
+    <textarea class="form-control" placeholder="About Me" rows="5" cols="40"
+       v-model="user.about_me"></textarea>
       <button class="signup-button"
             @click="signup">Sign Up</button>
       <span class="redirect">
@@ -124,10 +127,29 @@
 <style>
 
 .signup {
-  width: 300px;
+  width: 600px;
 	margin: auto;
   display: flex;
   flex-direction: column;
+}
+
+.inputs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.input-width {
+  margin-right: 10px;
+  width: 45%;
+}
+
+.dob {
+  margin: auto;
+}
+
+.dob-input {
+  width: 75%;
 }
 
 .signup-text {
@@ -137,35 +159,46 @@
 }
 
 .redirect {
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   margin: 15px 0;
 }
 
 .gender {
-  font-size: 18px;
-  margin: 5px;
+  font-size: 16px;
+  margin: 10px auto;
 }
 
 .auth-qualifications {
-  display: flex;
-  margin: 10px 0;
+  margin: 15px;
 }
 
-.qual {
-  margin-left: 10px;
+.quals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .signup-button {
-  font-size: 20px;
+  font-size: 18px;
   padding: 8px;
-  margin-top: 5px;
+  margin: auto;
+  margin-top: 10px;
   cursor: pointer;
-  font-family: Raleway;
+  font-family: 'Raleway';
+  width: 30%;
 }
 
 input, textarea {
-  background-color: #EDEDE6;
+  /*background-color: #EDEDE6;*/
   font-family: Raleway;
+}
+
+textarea {
+  font-size: 14px;
+}
+
+input:focus {
+  outline: rgba(86, 54, 165, 1) auto 5px;
 }
 </style>

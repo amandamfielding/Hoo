@@ -86,7 +86,7 @@ export default {
       return monthNames[newDate.getMonth()] + ' ' + newDate.getDate() + ', ' + newDate.getFullYear()
     },
     navToEventShow (eventId) {
-      this.$router.replace('events/' + eventId)
+      this.$router.push('events/' + eventId)
     },
     filter () {
       $.ajax({
@@ -94,7 +94,6 @@ export default {
         url: '/api/events',
         data: this.searchParams,
         success: events => {
-          debugger
           this.$store.dispatch('getEvents', events)
         }
       })
@@ -110,18 +109,15 @@ export default {
 
 <style>
 
-#events {
-  margin-top: 50px;
-}
-
 .events-list {
  list-style: none;
  padding: 0;
+ margin-top: 125px;
 }
 
 .event {
  margin: 2% 10%;
- background-color: rgba(237, 237, 230, .8);
+ background-color: rgb(249,249,255);
  padding: 1% 2%;
  display: flex;
  position: relative;
@@ -166,7 +162,7 @@ export default {
   background: rgba(86, 54, 165, 1);
   padding: 10px;
   border-bottom-left-radius: 5px;
-  color: rgba(237, 237, 230, 1);
+  color: rgb(249,249,255);
 }
 
 .search {
@@ -176,11 +172,13 @@ export default {
   display: flex;
   justify-content: center;
   padding: 10px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(216, 200, 255, 0.9);
   width: 78%;
-  color: rgba(237, 237, 230, 1);
-  margin: auto;
-  margin-top: 20px;
+  color: rgb(249,249,255);
+  position: fixed;
+  top: 64px;
+  left: 10%;
+  z-index: 20;
 }
 
 .city-search {

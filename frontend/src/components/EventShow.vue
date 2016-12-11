@@ -125,7 +125,7 @@ export default {
 <style>
 
 .event-show {
-  margin: 10%;
+  margin: 9%;
   margin-top: 50px;
   margin-bottom: 20px;
   display: flex;
@@ -138,11 +138,12 @@ export default {
 }
 
 .show-left {
-  width: 37%;
+  width: 35%;
   margin-top: 50px;
-  background-color: rgba(237, 237, 230, .7);
+  background-color: rgb(249,249,255);
   padding: 30px;
   text-align: center;
+  box-shadow: 0 0 8px white;
 }
 
 .show-left li {
@@ -159,25 +160,28 @@ export default {
 }
 
 .show-right {
-  width: 45%;
+  width: 55%;
   margin-top: 50px;
-  margin-left: 3%;
-  background-color: rgba(237, 237, 230, .7);
-  padding: 24px;
-  font-size: 19px;
+  background-color: rgba(216, 200, 255, 1);
+  padding: 30px;
+
+  box-shadow: 0 0 8px white;
+  line-height: 1.4;
 }
 
 .show-description {
   margin-bottom: 20px;
+  font-size: 18px;
 }
 
 .event-requirement-list {
-  background-color: rgba(86, 54, 165, .6);
+  background-color: rgba(86, 54, 165, 1);
   margin-top: 50px;
   padding: 15px;
   list-style: none;
   text-align: center;
-  color: rgba(237, 237, 230, 1);
+  color: rgb(249,249,255);
+  box-shadow: 0 0 2px white;
 }
 
 #req-header {
@@ -193,6 +197,10 @@ export default {
 
 a {
   color: rgba(86, 54, 165, 1);
+}
+
+.show-company {
+  font-size: 16px;
 }
 
 .show-type {

@@ -197,6 +197,7 @@ export default {
 .date-prompt {
   width: auto;
   font-size: 16px;
+  color: rgb(35,35,35);
 }
 
 .date-search {

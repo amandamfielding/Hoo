@@ -1,9 +1,6 @@
 <template>
    <div id="auth">
      <div class="authForm">
-       <div class="auth-header">
-         <img class="logo" src='../../assets/purple_owl2.png' />
-       </div>
        <transition name="fade">
          <router-view></router-view>
        </transition>
@@ -19,7 +16,7 @@
 
 <style scoped>
  #auth {
-   height: 100%;
+   min-height: 100vh;
    display: flex;
  }
 
@@ -28,16 +25,10 @@
 }
 
 .authForm {
- background: rgba(237,237,230,.8);
- padding: 5%;
+ background: rgb(249,249,255);
+ padding: 2% 5%;
  margin: auto;
- margin-top: 70px;
  box-shadow: 0 0 10px darkslategray;
 }
 
-.logo {
- width: 80px;
- height: 100%;
- margin: auto;
-}
 </style>

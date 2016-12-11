@@ -69,6 +69,7 @@ video {
   margin:2rem;
   font-size: 1.2rem;
 }
+
 h1 {
   text-align: center;
   font-size: 3rem;
@@ -96,7 +97,7 @@ h1 {
   transition: .3s background;
 }
 #hoo button:hover {
-   background: rgba(0,0,0,0.5);
+   background: rgba(86, 54, 165, 1);
 }
 
 .home-top {

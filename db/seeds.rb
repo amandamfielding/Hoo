@@ -2,7 +2,7 @@ mandy = User.create!(username:"AMF",password:"password",fname:"Mandy",lname:"Fie
 image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1480576832/demo_profile_pic_l6t2lm.jpg", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481433604/amanda_fielding_-_Google_Docs_j61182.pdf", about_me:"Software Engineer looking for a job!")
 
 lindsey = User.create!(username:"lew",password:"123456",fname:"Lindsey",lname:"Whitley",gender:"female",dob:DateTime.new(1992, 12, 5),email:"lewhitley@gmail.com",phone_number:"714-343-0605", valid_dl:true, admin:true, no_vis_tats:true, no_felonies:true, company_id: 2,
-image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1481307753/lindsey_mctsqn.jpg", resume_url:"",
+image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1481307753/lindsey_mctsqn.jpg", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481434940/resume_12-10-16_qaqs8m.pdf",
 about_me:"I am a Software Engineer looking for a job! I deliver excellent results, on-time, without pain or panic. When it comes to writing code, I can be expected to tackle problems with determination, learn new languages, contribute my perspective, and be a committed member of the team.")
 
 Company.create!(name:"Cerda Productions",description:"event staffing", website_url:"http://cerdaproductions.com/")

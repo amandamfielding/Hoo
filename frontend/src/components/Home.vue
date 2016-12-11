@@ -17,10 +17,10 @@
           <h3 class="blurb-heading">Looking for your next short term gig?</h3>
           <div>Search for awesome upcoming events near you and apply with the click of a button.</div>
         </div>
-        <img class="splash-img"src=""/>
+        <img class="splash-img"src="http://res.cloudinary.com/dbsxgncvx/image/upload/v1481439213/search_1_ryfldb.gif"/>
       </div>
       <div class="recruiter-blurb">
-        <img class="splash-img"src=""/>
+        <img class="splash-img"src="http://res.cloudinary.com/dbsxgncvx/image/upload/v1481439234/profile-resume_yeae6o.gif"/>
         <div class="blurb-text">
           <h3 class="blurb-heading">Staffing a concert? Planning a wedding? Or just having an epic private party?</h3>
           <div>Don't sift through hundreds of emails from a craigslist ad. Let Hoo make finding your service staff easy.</div>
@@ -70,6 +70,7 @@ video {
   font-size: 1.2rem;
   border-radius: 10px;
 }
+
 h1 {
   text-align: center;
   font-size: 3rem;
@@ -97,32 +98,40 @@ h1 {
   transition: .3s background;
 }
 #hoo button:hover {
-  background: rgba(86, 54, 165, 1);
+   background: rgba(86, 54, 165, 1);
 }
-
 .home-top {
   height: 100vh;
 }
 .home-bottom {
-  background-color: white;
-  height: 100vh;
+  background-color: rgb(249,249,255);
 }
 
+.user-blurb {
+  padding: 3% 4%;
+}
 .user-blurb, .recruiter-blurb {
-  padding: 20px;
   display: flex;
 }
 
 .blurb-heading {
-  font-size: 26px;
+  font-size: 30px;
   color: rgba(86, 54, 165, 1);
 }
 
 .blurb-text {
-  width: 50%;
+  width: 45%;
+  margin: 2% 5%;
+  font-size: 22px;
 }
 
 .splash-img {
-  width: 50%;
+  margin: 2% 5%;
+  width: 33%;
+  height: 33%;
+}
+
+button:focus {
+  outline: rgba(86, 54, 165, 1) auto 5px;
 }
 </style>

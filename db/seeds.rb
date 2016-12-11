@@ -98,7 +98,7 @@ start_date:DateTime.new(2017,10,14), end_date:DateTime.new(2017,10,15), image_ur
 
 
 requirement1 = Requirement.create!(title:"no visible tattoos")
-requirement2 = Requirement.create!(title:"valid drive's license")
+requirement2 = Requirement.create!(title:"valid driver's license")
 requirement3 = Requirement.create!(title:"valid TIPS certification")
 requirement4 = Requirement.create!(title:"no felonies")
 

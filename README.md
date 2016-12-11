@@ -2,7 +2,7 @@
 
 [Hoo Live][live]
 
-[live]: http://www../#/
+[live]: http://www.hoostaffing.com/
 
 Hoo is a full-stack recruitment application for short-term event staffing. Administrative users can post job listings, and users can search for short-term gigs. Users can apply for events. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and Vue.js with a Vuex architectural framework on the frontend.
 
@@ -12,7 +12,7 @@ In our implementation of this app, we used VueRouter to handle the route and com
 
 ### Home
 
-![image of splash](docs/screenshots/hoo-splash.png)
+![image of splash](docs/screencasts/hoo-splash.png)
 
 The root route has links to login, signup, or use the demo account as well as information explaining the purpose of the website from both the admin and staff sides. To enhance user interaction, the first panel contains a looped video that helps explain what kind of staffing Hoo is designed to help with. A logged in user may not access this route; they are redirected to `/events`.
 
@@ -26,17 +26,17 @@ The store saves user data and an authentication service puts it into `localStora
 
 ### Events
 
-A logged in user has access to the `Events` component, which lists all of the future events posted by admin users (event planners or staffing agencies). To get the `Events` index, an AJAX request is made to the backend and a jbuilder view returns  The index of `Events` shows the user the location, dates, and estimated pay rate for each event. We leveraged Vue's straightforward interface to iterate through the array of events with `v-for` inside `<li>` elements.
+A logged in user has access to the `Events` component, which lists all of the future events posted by admin users (event planners or staffing agencies). To get the `Events` index, an AJAX request is made to the backend with the search parameters. The `Event` model's search function filters the events, and a jbuilder view returns only the requested events. The index of `Events` shows the user the location, dates, and estimated pay rate for each event. We leveraged Vue's straightforward interface to iterate through the array of events with `v-for` inside `<li>` elements.
 
 ### EventShow
 
-![image of event-show](docs/screenshots/hoo-event-show.png)
+![gif of event-show](docs/screencasts/search.gif)
 
 Upon selecting an `Event` from the index, the user is taken to the `EventShow` component which lists all of the information given in creating the event. This component also contains logic to allow a user to toggle their "application" to work the event, if they are eligible (by meeting the requirements for the event).
 
 ### Profile
 
-![image of profile](docs/screenshots/hoo-profile.png)
+![gif of profile](docs/screencasts/profile-resume.gif)
 
 On a user's `Profile`, his/her information is displayed, using the data stored in `localStorage`. The resume is available in a modal to make viewing easier for the recruiter. Check marks provide an easy to understand UI for which requirements the candidate meets.
 

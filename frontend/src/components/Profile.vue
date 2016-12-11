@@ -20,7 +20,7 @@
           <div id="myModal" class="modal">
             <div class="modal-resume">
               <span id="close" @click='closeResumeModal'>x</span>
-              <img :src="userInfo.resume_url"/>
+              <embed class="resume-pdf" :src="userInfo.resume_url"/>
             </div>
           </div>
         <div class="qualifications">
@@ -140,7 +140,7 @@ export default {
 
 .modal-resume {
   background-color: #fefefe;
-  margin: 5% auto;
+  margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
@@ -174,5 +174,11 @@ export default {
 
 .qualifications div {
   margin: 0 5px;
+}
+
+.resume-pdf {
+  margin: auto;
+  width: 100%;
+  height: 400px;
 }
 </style>

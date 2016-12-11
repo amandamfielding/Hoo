@@ -36,7 +36,7 @@ Upon selecting an `Event` from the index, the user is taken to the `EventShow` c
 
 ### Profile
 
-![gif of profile](docs/screencasts/profile.gif)
+![gif of profile](docs/screencasts/profile-resume.gif)
 
 On a user's `Profile`, his/her information is displayed, using the data stored in `localStorage`. The resume is available in a modal to make viewing easier for the recruiter. Check marks provide an easy to understand UI for which requirements the candidate meets.
 

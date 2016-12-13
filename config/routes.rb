@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :companies, only: [:show, :create]
     resources :requirements, only: [:index, :create]
     resources :requests, only: [:show, :index, :create, :destroy]
+    get "test", to: "sessions#test"
   end
 
   root "static_pages#root"

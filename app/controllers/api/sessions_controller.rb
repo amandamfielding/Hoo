@@ -17,4 +17,8 @@ class Api::SessionsController < ApplicationController
       render json: ["No user currently logged in"], status: 404
     end
   end
+
+  def test
+    render json: {message: "hello"}
+  end
 end

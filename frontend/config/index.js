@@ -22,7 +22,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {'/api':{
-      target: 'http://localhost:3000',
+      target: (NODE_ENV === 'production' ? 'http://api.hoostaffing.com' : 'http://localhost:3000'),
       changeOrigin: true
     }},
     // CSS Sourcemaps off by default because relative paths are "buggy"

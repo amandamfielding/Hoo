@@ -1,5 +1,4 @@
 <template>
-  <div class="profile-page">
     <div class="profile">
 
       <div class="profile-left">
@@ -16,7 +15,7 @@
 
       <div class="profile-right">
         <div class="about-me">{{ userInfo.about_me }}</div>
-        <li class="resume" @click='openResumeModal'>Resume</li>
+        <button class="resume" @click='openResumeModal'>Resume</button>
           <div id="myModal" class="modal">
             <div class="modal-resume">
               <span id="close" @click='closeResumeModal'>x</span>
@@ -33,8 +32,6 @@
       </div>
 
     </div>
-
-  </div>
 </template>
 
 <script>
@@ -70,25 +67,19 @@ export default {
 
 <style>
 
-.profile-page {
-  margin: 2% 6%;
-}
-
 .profile {
+  margin: 8% 12%;
   display: flex;
   justify-content: center;
-  width: 100%;
   max-height: 92vh;
   z-index: 1;
+  box-shadow: 0 2px 4px rgb(180,180,190);
 }
 
 .profile-left {
-  width: 35%;
-  margin-top: 50px;
+  width: 40%;
   text-align: center;
-  background-color: rgba(86, 54, 165, 1);
-  color: rgb(249,249,255);
-  box-shadow: 0 0 4px white;
+  background-color: rgba(86, 54, 165, 0.7);
 }
 
 .profile-pic {
@@ -103,12 +94,10 @@ export default {
 }
 
 .profile-right {
-  width: 50%;
-  margin-top: 50px;
-  background-color: rgb(249,249,255);
+  width: 60%;
+  background-color: rgba(226, 226, 255, 0.9);
   position: relative;
   padding: 3%;
-  box-shadow: 0 0 4px white;
 }
 
 .profile-details {
@@ -133,9 +122,12 @@ export default {
 }
 
 .resume {
-  text-decoration: underline;
+  font-family: 'Raleway';
+  font-size: 18px;
   cursor: pointer;
-  list-style: none;
+  display: block;
+  margin: auto;
+  padding: 6px 12px;
 }
 
 .modal-resume {
@@ -148,11 +140,9 @@ export default {
 
 .events-nav {
   position: absolute;
-  bottom: 20px;
-  font-size: 20px;
-  width: 100%;
-  margin: 10px 0;
-  text-align: center;
+  bottom: 5%;
+  font-size: 16px;
+  left: 33%;
 }
 
 .checkmark {
@@ -161,14 +151,15 @@ export default {
 
 .about-me {
   margin: 20px 0;
-  font-size: 20px;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .qualifications {
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 45px;
+  bottom: 10%;
   margin: 5% 2%;
 }
 

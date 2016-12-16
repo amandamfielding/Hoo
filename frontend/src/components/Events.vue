@@ -116,16 +116,16 @@ export default {
 }
 
 .event {
- margin: 2% 10%;
- background-color: rgb(249,249,255);
+ margin: 2% 16%;
+ background-color: rgba(226, 226, 255, 0.9);
  padding: 1% 2%;
  display: flex;
  position: relative;
- box-shadow: 0 0 4px rgba(237, 237, 230, .8);
+ box-shadow: 0 2px 4px rgb(180,180,190);
 }
 
 .event-image {
- width: 275px;;
+ width: 260px;;
  height: 100%;
  cursor: pointer;
 }
@@ -172,12 +172,12 @@ export default {
   display: flex;
   justify-content: center;
   padding: 10px;
-  background-color: rgba(216, 200, 255, 0.9);
-  width: 78%;
+  background-color: rgba(86, 54, 165, 1);
+  width: 70%;
   color: rgb(249,249,255);
   position: fixed;
   top: 64px;
-  left: 10%;
+  left: 14%;
   z-index: 20;
 }
 
@@ -197,7 +197,6 @@ export default {
 .date-prompt {
   width: auto;
   font-size: 16px;
-  color: rgb(35,35,35);
 }
 
 .date-search {

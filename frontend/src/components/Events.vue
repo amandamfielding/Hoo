@@ -35,18 +35,20 @@
     </div>
 
     <ul class="events-list">
-     <li class="event" v-for='event in allEvents'>
-       <img @click="navToEventShow(event.id)" class="event-image" v-bind:id="event.id" :src="event.image_url" />
-       <div class="event-info">
-         <h2 class="event-title">{{ event.title }}</h2>
-         <div>{{ event.city }}, {{ event.state }}</div>
-         <div>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</div>
-         <div class="show-link" v-bind:id="event.id" @click="navToEventShow(event.id)">Event Details</div>
-         <div class="pay">${{ event.pay }} per {{ event.pay_freq }}</div>
-       </div>
-     </li>
-   </ul>
- </div>
+      <li class="event" v-for='event in allEvents'>
+        <div class="event-image-container">
+          <img @click="navToEventShow(event.id)" class="event-image" v-bind:id="event.id" v-bind:src="event.image_url" />
+        </div>
+        <div class="event-info">
+          <h2 class="event-title">{{ event.title }}</h2>
+          <div>{{ event.city }}, {{ event.state }}</div>
+          <div>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</div>
+          <div class="show-link" v-bind:id="event.id" @click="navToEventShow(event.id)">Event Details</div>
+          <div class="pay">${{ event.pay }} per {{ event.pay_freq }}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -110,24 +112,29 @@ export default {
 <style>
 
 .events-list {
- list-style: none;
- padding: 0;
- margin-top: 125px;
+  list-style: none;
+  padding: 0;
+  margin-top: 125px;
 }
 
 .event {
- margin: 2% 16%;
- background-color: rgba(226, 226, 255, 0.9);
- padding: 1% 2%;
- display: flex;
- position: relative;
- box-shadow: 0 2px 4px rgb(180,180,190);
+  margin: 2% 16%;
+  background-color: rgba(226, 226, 255, 0.9);
+  padding: 1% 2%;
+  display: flex;
+  position: relative;
+  box-shadow: 0 2px 4px rgb(180,180,190);
+}
+
+.event-image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .event-image {
- width: 260px;;
- height: 100%;
- cursor: pointer;
+  width: 260px;;
+  cursor: pointer;
 }
 
 .event-image:hover {
@@ -135,7 +142,7 @@ export default {
 }
 
 .event-info {
- margin-left: 2%;
+  margin-left: 2%;
 }
 
 .event-info div {
@@ -144,10 +151,10 @@ export default {
 }
 
 .event-title {
- margin-bottom: 10px;
- font-size: 2.2em;
- cursor: pointer;
- text-align: left;
+  margin-bottom: 10px;
+  font-size: 2.2em;
+  cursor: pointer;
+  text-align: left;
 }
 
 .show-link {

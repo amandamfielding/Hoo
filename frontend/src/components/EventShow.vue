@@ -18,13 +18,14 @@
     </div>
     <div class="show-right">
       <div class="show-description">{{ event.description }}</div>
-      <div class="show-company">{{ showAdmin(event.admin_name,event.company_name) }}</div>
-      <div class=""><a :href="event.company_website">Company Website</a></div>
+      <ul class="event-requirement-list">
+          <li  class="event-requirement" v-for='requirement in requirements'>{{ requirement.title }}</li>
+      </ul>
+      <div class="show-company">{{ showAdmin(event.admin_name,event.company_name) }}
+        <div class=""><a :href="event.company_website">Company Website</a></div>
+      </div>
     </div>
-    <ul class="event-requirement-list">
-      <span id="req-header">Requirements</span>
-        <li  class="event-requirement" v-for='requirement in requirements'>{{ requirement.title }}</li>
-    </ul>
+
   </div>
 </template>
 
@@ -125,11 +126,10 @@ export default {
 <style>
 
 .event-show {
-  margin: 9%;
-  margin-top: 50px;
-  margin-bottom: 20px;
+  margin: 8% 12%;
   display: flex;
   min-height: 75vh;
+  box-shadow: 0 2px 4px rgb(180,180,190);
 }
 
 .event-show h2 {
@@ -139,11 +139,9 @@ export default {
 
 .show-left {
   width: 35%;
-  margin-top: 50px;
-  background-color: rgb(249,249,255);
-  padding: 30px;
+  background-color: rgba(226, 226, 255, 0.9);
+  padding: 5%;
   text-align: center;
-  box-shadow: 0 0 8px white;
 }
 
 .show-left li {
@@ -161,27 +159,22 @@ export default {
 
 .show-right {
   width: 55%;
-  margin-top: 50px;
-  background-color: rgba(216, 200, 255, 1);
-  padding: 30px;
-
-  box-shadow: 0 0 8px white;
-  line-height: 1.4;
+  background-color: rgba(226, 226, 255, 0.9);
+  padding: 5%;
+  position: relative;
 }
 
 .show-description {
   margin-bottom: 20px;
   font-size: 18px;
+  line-height: 1.6;
 }
 
 .event-requirement-list {
-  background-color: rgba(86, 54, 165, 1);
-  margin-top: 50px;
-  padding: 15px;
   list-style: none;
-  text-align: center;
-  color: rgb(249,249,255);
-  box-shadow: 0 0 2px white;
+  color: rgba(86, 54, 165, 1);
+  display: flex;
+  justify-content: center;
 }
 
 #req-header {
@@ -193,6 +186,9 @@ export default {
   padding: 10px;
   font-weight: 700;
   font-size: 16px;
+  background-color: rgb(210,215,225);
+  box-shadow: 0 0 2px white;
+  margin: 3%;
 }
 
 a {
@@ -201,6 +197,8 @@ a {
 
 .show-company {
   font-size: 16px;
+  position: absolute;
+  bottom: 7%;
 }
 
 .show-type {

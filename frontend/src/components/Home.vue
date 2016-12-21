@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="home-top">
-      <video src="http://res.cloudinary.com/dbsxgncvx/video/upload/v1481232528/hoo5_gk2ww5.mp4" autoplay loop>
+      <video src="http://res.cloudinary.com/dknvmmpj7/video/upload/v1482355767/hoo-promo_dnhazd.mp4" autoplay loop>
       </video>
       <div id="hoo">
         <h1>Hoo</h1>

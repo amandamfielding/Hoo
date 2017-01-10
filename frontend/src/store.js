@@ -9,7 +9,8 @@ const state = {
   event: [],
   errors: [],
   currentUser: (window.localStorage.user) ? JSON.parse(window.localStorage.user) : {},
-  request: null
+  request: null,
+  createdEvents: []
 }
 
 const mutations = {

@@ -37,7 +37,7 @@
     <ul class="created-events-list">
       <li class="event" v-for='event in createdEvents'>
         <div class="event-image-container">
-          <img @click="navToEventShow(event.id)" class="event-image" v-bind:id="event.id" v-bind:src="event.image_url" />
+          <img @click="navToCreatedEventShow(event.id)" class="event-image" v-bind:id="event.id" v-bind:src="event.image_url" />
         </div>
         <div class="event-info">
           <h2 class="event-title">{{ event.title }}</h2>
@@ -53,10 +53,10 @@
 import $ from 'jquery'
 
 export default {
-  name: 'Events',
+  name: 'CreatedEvents',
   created () {
     if (window.localStorage.user) {
-      this.getEvents()
+      this.getCreatedEvents()
     } else {
       this.$router.replace('/')
     }
@@ -66,17 +66,18 @@ export default {
       searchParams: {
         city: 'San Francisco, CA',
         miles: '40',
-        date: 'any date'
+        date: 'any date',
+        created: true
       }
     }
   },
   methods: {
-    getEvents () {
+    getCreatedEvents () {
       $.ajax({
         method: 'GET',
         url: '/api/events',
         success: events => {
-          this.$store.dispatch('getEvents', events)
+          this.$store.dispatch('getCreatedEvents', events)
         }
       })
     },
@@ -85,8 +86,8 @@ export default {
       let newDate = new Date(date)
       return monthNames[newDate.getMonth()] + ' ' + newDate.getDate() + ', ' + newDate.getFullYear()
     },
-    navToEventShow (eventId) {
-      this.$router.push('events/' + eventId)
+    navToCreatedEventShow (eventId) {
+      this.$router.push('created-events/' + eventId)
     },
     filter () {
       $.ajax({
@@ -94,28 +95,27 @@ export default {
         url: '/api/events',
         data: this.searchParams,
         success: events => {
-          this.$store.dispatch('getEvents', events)
+          this.$store.dispatch('getCreatedEvents', events)
         }
       })
     }
   },
   computed: {
     createdEvents: function () {
-      return this.$store.state.events
+      return this.$store.state.createdEvents
     }
   }
 }
 </script>
 
 <style>
-
-.events-list {
+.created-events-list {
   list-style: none;
   padding: 0;
   margin-top: 125px;
 }
 
-.event {
+.created-event {
   margin: 2% 16%;
   background-color: rgba(226, 226, 255, 0.9);
   padding: 1% 2%;
@@ -170,10 +170,10 @@ export default {
   color: rgb(249,249,255);
 }
 
-.search {
+.created-search {
   padding-top: 5px;
 }
-.search-bar {
+.created-search-bar {
   display: flex;
   justify-content: center;
   padding: 10px;

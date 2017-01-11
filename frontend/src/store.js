@@ -17,6 +17,9 @@ const mutations = {
   RECEIVE_EVENTS (state, events) {
     state.events = events
   },
+  RECEIVE_CREATED_EVENTS (state, events) {
+    state.createdEvents = events
+  },
   RECEIVE_EVENTS_BY_FILTER (state, events) {
     state.events = events
   },
@@ -51,6 +54,9 @@ const mutations = {
 const actions = {
   getEvents ({ commit }, events) {
     commit('RECEIVE_EVENTS', events)
+  },
+  getCreatedEvents ({ commit }, events) {
+    commit('RECEIVE_CREATED_EVENTS', events)
   },
   getRequest ({ commit }, request) {
     commit('RECEIVE_REQUEST', request)

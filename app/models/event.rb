@@ -45,7 +45,7 @@ class Event < ActiveRecord::Base
     "Indio, CA" => {"lat" => 33.7206, "lng" => -116.2156}
   }
 
-  def self.find_by_search(city, dist, date)
+  def self.find_by_search(city, dist, date, admin_id = false)
     if date == "week"
       date = Date.today + 7.days
     elsif date == "month"
@@ -58,7 +58,11 @@ class Event < ActiveRecord::Base
       date = Date.today + 1.year
     end
 
-    if date && date != "any date"
+    if (date && date != "any date") && admin_id
+      events = Event.where("admin_id = ? AND start_date BETWEEN ? AND ?", admin_id, Date.today, date)
+    elsif admin_id
+      events = Event.where("admin_id = ?", admin_id)
+    elsif date && date != "any date"
       events = Event.where("start_date BETWEEN ? AND ?", Date.today, date)
     else
       events = Event.all

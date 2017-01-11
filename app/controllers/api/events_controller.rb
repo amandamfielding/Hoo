@@ -18,7 +18,9 @@ class Api::EventsController < ApplicationController
   end
 
   def index
-    @events = Event.find_by_search(params[:city], params[:miles], params[:date])
+    # debugger
+    admin_id = current_user.id if params[:created]
+    @events = Event.find_by_search(params[:city], params[:miles], params[:date], admin_id)
     render :index
   end
 
@@ -42,6 +44,6 @@ class Api::EventsController < ApplicationController
   # end
 
   def event_params
-    params.require(:event).permit(:title, :lat, :lng, :city, :state, :event_type, :image_url, :description, :pay, :pay_freq, :start_date, :end_date)
+    params.require(:event).permit(:title, :created, :lat, :lng, :city, :state, :event_type, :image_url, :description, :pay, :pay_freq, :start_date, :end_date)
   end
 end

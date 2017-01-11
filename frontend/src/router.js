@@ -4,6 +4,7 @@ import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import Profile from './components/Profile'
 import Events from './components/Events'
+import CreatedEvents from './components/CreatedEvents'
 import EventShow from './components/EventShow'
 import Home from 'components/Home'
 import App from './App'
@@ -54,6 +55,13 @@ const Router = new VueRouter({
       components: {
         default: EventShow,
         top: Top
+      }
+    },
+    {
+      path: '/created-events',
+      components: {
+        top: Top,
+        default: CreatedEvents
       }
     }
   ]

@@ -1,7 +1,7 @@
 <template>
   <div id='created-events'>
     <div class="created-search">
-      <div class="created-search-bar">
+      <div class="created-search-panel">
         <select v-model="searchParams.city" @change="filter" class="miles">
           <option>San Francisco, CA</option>
           <option>Berkeley, CA</option>
@@ -43,6 +43,7 @@
           <h2 class="event-title">{{ event.title }}</h2>
           <div>{{ event.city }}, {{ event.state }}</div>
           <div>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</div>
+          <div @click="navToCreatedEventShow(event.id)">{{ event.applicant_count }} applicants</div>
         </div>
       </li>
     </ul>
@@ -61,7 +62,7 @@ export default {
       this.$router.replace('/')
     }
   },
-  data: function () {
+  data () {
     return {
       searchParams: {
         city: 'San Francisco, CA',
@@ -76,6 +77,7 @@ export default {
       $.ajax({
         method: 'GET',
         url: '/api/events',
+        data: this.searchParams,
         success: events => {
           this.$store.dispatch('getCreatedEvents', events)
         }
@@ -173,7 +175,7 @@ export default {
 .created-search {
   padding-top: 5px;
 }
-.created-search-bar {
+.created-search-panel {
   display: flex;
   justify-content: center;
   padding: 10px;

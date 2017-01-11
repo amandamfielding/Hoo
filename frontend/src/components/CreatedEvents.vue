@@ -2,14 +2,14 @@
   <div id='created-events'>
     <div class="created-search">
       <div class="created-search-panel">
-        <select v-model="searchParams.city" @change="filter" class="miles">
+        <select v-model="searchParams.city" @change="getCreatedEvents" class="miles">
           <option>San Francisco, CA</option>
           <option>Berkeley, CA</option>
           <option>Napa, CA</option>
           <option>Los Angeles, CA</option>
           <option>Indio, CA</option>
         </select>
-        <select v-model="searchParams.miles" @change="filter" class="miles">
+        <select v-model="searchParams.miles" @change="getCreatedEvents" class="miles">
           <option value="5">5 mi</option>
           <option value="10">10 mi</option>
           <option value="15">15 mi</option>
@@ -21,7 +21,7 @@
         </select>
         <div class="date-div">
           <div class="date-prompt">Within the next:
-            <select v-model="searchParams.date" @change="filter" class="date-search">
+            <select v-model="searchParams.date" @change="getCreatedEvents" class="date-search">
               <option>week</option>
               <option>month</option>
               <option>3 months</option>
@@ -90,16 +90,6 @@ export default {
     },
     navToCreatedEventShow (eventId) {
       this.$router.push('created-events/' + eventId)
-    },
-    filter () {
-      $.ajax({
-        method: 'GET',
-        url: '/api/events',
-        data: this.searchParams,
-        success: events => {
-          this.$store.dispatch('getCreatedEvents', events)
-        }
-      })
     }
   },
   computed: {

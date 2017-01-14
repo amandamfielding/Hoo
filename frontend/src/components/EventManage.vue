@@ -6,17 +6,6 @@
       <li>{{ event.city }}, {{ event.state }}</li>
       <li>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</li>
       <li>${{ event.pay }} per {{ event.pay_freq }}</li>
-      <button class="apply" type="button" @click='submit'>{{ showButton() }}</button>
-      <div id="applyModal" class="modal">
-        <div class="modal-apply">
-          <p class="apply-response">
-            Thank you for applying! The recruiter has been sent your details and will accept or deny your application shortly.
-          </p>
-          <button id="ok" @click='closeApplyModal'>OK</button>
-        </div>
-      </div>
-    </div>
-    <div class="show-right">
       <div class="show-description">{{ event.description }}</div>
       <ul class="event-requirement-list">
           <li  class="event-requirement" v-for='requirement in requirements'>{{ requirement.title }}</li>
@@ -25,7 +14,10 @@
         <div class=""><a :href="event.company_website">Company Website</a></div>
       </div>
     </div>
-
+    <ul class="applicant-list">
+      <li class="applicant" v-for="applicant in allApplicants">
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -33,11 +25,10 @@
 import $ from 'jquery'
 
 export default {
-  name: 'EventShow',
+  name: 'EventManage',
   created () {
     if (window.localStorage.user) {
       this.getEvent(this.$route.params.eventId)
-      this.getRequest(this.$route.params.eventId)
     } else {
       this.$router.replace('/')
     }
@@ -52,50 +43,30 @@ export default {
         }
       })
     },
-    getRequest (eventId) {
-      $.ajax({
-        method: 'GET',
-        url: '/api/requests',
-        data: {event_id: eventId},
-        success: request => {
-          this.$store.dispatch('getRequest', request)
-        }
-      })
-    },
     calculateDate (date) {
       const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
       let newDate = new Date(date)
       return monthNames[newDate.getMonth()] + ' ' + newDate.getDate() + ', ' + newDate.getFullYear()
     },
-    openApplyModal () {
-      let applyModal = document.getElementById('applyModal')
-      applyModal.style.display = 'block'
+    delete () {
+      $.ajax({
+        method: 'DELETE',
+        url: '/api/events/' + this.event.id,
+        success: request => {
+          this.$store.dispatch('deleteRequest', request)
+        }
+      })
     },
-    closeApplyModal () {
-      let applyModal = document.getElementById('applyModal')
-      applyModal.style.display = 'none'
-    },
-    submit () {
-      if (this.$store.state.request) {
-        $.ajax({
-          method: 'DELETE',
-          url: '/api/requests/' + this.event.id,
-          data: {request: {event_id: this.event.id}},
-          success: request => {
-            this.$store.dispatch('deleteRequest', request)
-          }
-        })
-      } else {
-        $.ajax({
-          method: 'POST',
-          url: '/api/requests',
-          data: {request: {event_id: this.event.id}},
-          success: request => {
-            this.$store.dispatch('createRequest', request)
-            this.openApplyModal()
-          }
-        })
-      }
+    edit () {
+      $.ajax({
+        method: 'POST',
+        url: '/api/events',
+        data: {event: {}},
+        success: request => {
+          this.$store.dispatch('createRequest', request)
+          this.openApplyModal()
+        }
+      })
     },
     showAdmin (admin, company) {
       if (company) {

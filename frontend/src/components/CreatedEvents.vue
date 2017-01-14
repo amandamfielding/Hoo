@@ -2,14 +2,14 @@
   <div id='created-events'>
     <div class="created-search">
       <div class="created-search-panel">
-        <select v-model="searchParams.city" @change="filter" class="miles">
+        <select v-model="searchParams.city" @change="getCreatedEvents" class="miles">
           <option>San Francisco, CA</option>
           <option>Berkeley, CA</option>
           <option>Napa, CA</option>
           <option>Los Angeles, CA</option>
           <option>Indio, CA</option>
         </select>
-        <select v-model="searchParams.miles" @change="filter" class="miles">
+        <select v-model="searchParams.miles" @change="getCreatedEvents" class="miles">
           <option value="5">5 mi</option>
           <option value="10">10 mi</option>
           <option value="15">15 mi</option>
@@ -21,7 +21,7 @@
         </select>
         <div class="date-div">
           <div class="date-prompt">Within the next:
-            <select v-model="searchParams.date" @change="filter" class="date-search">
+            <select v-model="searchParams.date" @change="getCreatedEvents" class="date-search">
               <option>week</option>
               <option>month</option>
               <option>3 months</option>
@@ -35,7 +35,7 @@
     </div>
 
     <ul class="created-events-list">
-      <li class="event" v-for='event in createdEvents'>
+      <li class="created-event" v-for='createdEvent in createdEvents'>
         <div class="event-image-container">
           <img @click="navToCreatedEventShow(event.id)" class="event-image" v-bind:id="event.id" v-bind:src="event.image_url" />
         </div>
@@ -90,16 +90,6 @@ export default {
     },
     navToCreatedEventShow (eventId) {
       this.$router.push('created-events/' + eventId)
-    },
-    filter () {
-      $.ajax({
-        method: 'GET',
-        url: '/api/events',
-        data: this.searchParams,
-        success: events => {
-          this.$store.dispatch('getCreatedEvents', events)
-        }
-      })
     }
   },
   computed: {
@@ -114,11 +104,15 @@ export default {
 .created-events-list {
   list-style: none;
   padding: 0;
-  margin-top: 125px;
+  margin-top: 70px;
+  float: right;
+  width: 70%;
 }
 
 .created-event {
-  margin: 2% 16%;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 20px;
   background-color: rgba(226, 226, 255, 0.9);
   padding: 1% 2%;
   display: flex;
@@ -174,18 +168,22 @@ export default {
 
 .created-search {
   padding-top: 5px;
+  position: fixed;
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .created-search-panel {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   padding: 10px;
   background-color: rgba(86, 54, 165, 1);
-  width: 70%;
+  width: 80%;
   color: rgb(249,249,255);
-  position: fixed;
-  top: 64px;
-  left: 14%;
-  z-index: 20;
+  margin-left: 10%;
 }
 
 .city-search {

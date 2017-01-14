@@ -35,7 +35,7 @@
     </div>
 
     <ul class="events-list">
-      <li class="event" v-for='event in allEvents'>
+      <li class="event" v-for="event in allEvents">
         <div class="event-image-container">
           <img @click="navToEventShow(event.id)" class="event-image" v-bind:id="event.id" v-bind:src="event.image_url" />
         </div>

@@ -11,7 +11,7 @@
         <ul id="user-dropdown">
           <li><router-link class="profile-link" to="/profile">My Profile</router-link></li>
           <li><router-link class="events-link" to="/events">All Events</router-link></li>
-          <li v-if="userInfo.admin"><router-link class="events-link" to="/created-events">Manage Events</router-link></li>
+          <li v-if="userInfo.admin"><router-link class="events-link" to="/created-events">Manage My Events</router-link></li>
           <li @click="logout"><router-link class="logout-link" to="/">Log Out</router-link></li>
         </ul>
       </div>

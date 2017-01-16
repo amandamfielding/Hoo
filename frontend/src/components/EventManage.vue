@@ -1,23 +1,17 @@
 <template>
-  <div class="event-show">
-    <div class="show-left">
-      <h2>{{ event.title }}</h2>
-      <span class="show-type">Event type: {{ event.event_type }}</span>
-      <li>{{ event.city }}, {{ event.state }}</li>
-      <li>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</li>
-      <li>${{ event.pay }} per {{ event.pay_freq }}</li>
-      <div class="show-description">{{ event.description }}</div>
-      <ul class="event-requirement-list">
-          <li  class="event-requirement" v-for='requirement in requirements'>{{ requirement.title }}</li>
-      </ul>
-      <div class="show-company">{{ showAdmin(event.admin_name,event.company_name) }}
-        <div class=""><a :href="event.company_website">Company Website</a></div>
-      </div>
-    </div>
-    <ul class="applicant-list">
-      <li class="applicant" v-for="applicant in allApplicants">
-      </li>
+  <div class="event-manage">
+    <h2>{{ event.title }}</h2>
+    <span class="manage-type">Event type: {{ event.event_type }}</span>
+    <li>{{ event.city }}, {{ event.state }}</li>
+    <li>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</li>
+    <li>${{ event.pay }} per {{ event.pay_freq }}</li>
+    <div class="manage-description">{{ event.description }}</div>
+    <ul class="event-requirement-list">
+        <li  class="event-requirement" v-for='requirement in requirements'>{{ requirement.title }}</li>
     </ul>
+    <div class="manage-company">{{ showAdmin(event.admin_name,event.company_name) }}
+      <div class=""><a :href="event.company_website">Company Website</a></div>
+    </div>
   </div>
 </template>
 
@@ -96,115 +90,4 @@ export default {
 
 <style>
 
-.event-show {
-  margin: 8% 12%;
-  display: flex;
-  min-height: 75vh;
-  box-shadow: 0 2px 4px rgb(180,180,190);
-}
-
-.event-show h2 {
-  font-size: 44px;
-  margin: 10px 0;
-}
-
-.show-left {
-  width: 35%;
-  background-color: rgba(226, 226, 255, 0.9);
-  padding: 5%;
-  text-align: center;
-}
-
-.show-left li {
-  margin: 20px 0;
-  font-size: 22px;
-  list-style: none;
-}
-
-.apply {
-  padding: 7px 14px;
-  font-size: 20px;
-  cursor: pointer;
-  margin: 20px 0;
-}
-
-.show-right {
-  width: 55%;
-  background-color: rgba(226, 226, 255, 0.9);
-  padding: 5%;
-  position: relative;
-}
-
-.show-description {
-  margin-bottom: 20px;
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.event-requirement-list {
-  list-style: none;
-  color: rgba(86, 54, 165, 1);
-  display: flex;
-  justify-content: center;
-}
-
-#req-header {
-  font-size: 20px;
-  text-decoration: underline;
-}
-
-.event-requirement {
-  padding: 10px;
-  font-weight: 700;
-  font-size: 16px;
-  background-color: rgb(210,215,225);
-  box-shadow: 0 0 2px white;
-  margin: 3%;
-}
-
-a {
-  color: rgba(86, 54, 165, 1);
-}
-
-.show-company {
-  font-size: 16px;
-  position: absolute;
-  bottom: 7%;
-}
-
-.show-type {
-  font-size: 18px;
-}
-
-.modal-apply {
-  background-color: #fefefe;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 60%;
-  margin: 10% auto;
-}
-
-.apply-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.attach-resume, .cover-letter, .submit {
-  margin: 10px 0;
-}
-
-.cover-letter textarea {
-  padding: 10px;
-  font-size: 18px;
-}
-
-#ok {
-  font-size: 20px;
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
-.apply-response {
-  font-size: 20px;
-}
 </style>

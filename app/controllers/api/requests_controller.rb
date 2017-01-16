@@ -17,8 +17,8 @@ class Api::RequestsController < ApplicationController
   end
 
   def index
-    if params[:event_id]
-      @requests = current_user.requests.where(event_id: params[:event_id])
+    if params[:eventId]
+      @requests = current_user.requests.where(event_id: params[:eventId])
     else
       @requests = Request.all
     end

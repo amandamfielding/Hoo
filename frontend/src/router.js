@@ -7,6 +7,7 @@ import Events from './components/Events'
 import CreatedEvents from './components/CreatedEvents'
 import EventShow from './components/EventShow'
 import EventManage from './components/EventManage'
+import RequestsManage from './components/RequestsManage'
 import Home from 'components/Home'
 import App from './App'
 import Top from './components/Top'
@@ -69,6 +70,13 @@ const Router = new VueRouter({
       path: '/created-events/:eventId',
       components: {
         default: EventManage,
+        top: Top
+      }
+    },
+    {
+      path: '/created-events/:eventId/requests',
+      components: {
+        default: RequestsManage,
         top: Top
       }
     }

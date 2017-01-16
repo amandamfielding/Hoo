@@ -10,11 +10,11 @@
 import $ from 'jquery'
 
 export default {
-  name: 'RequestManage',
+  name: 'RequestsManage',
   created () {
     this.getRequests(this.$route.params.eventId)
   },
-  methods:{
+  methods: {
     getRequests (eventId) {
       $.ajax({
         method: 'GET',

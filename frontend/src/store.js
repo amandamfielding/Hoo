@@ -45,7 +45,7 @@ const mutations = {
     state.request = request
   },
   RECEIVE_REQUEST (state, request) {
-    state.request = request[0]
+    state.request = request
   },
   RECEIVE_REQUESTS (state, requests) {
     state.requests = requests

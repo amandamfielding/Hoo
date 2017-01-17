@@ -12,11 +12,14 @@ class Api::RequestsController < ApplicationController
   end
 
   def show
-    @request = Request.find(params[:id])
-    render :show
+    @request = Request.where(event_id: params[:event_id], user_id: current_user.id)
+    if @request
+      render :show
+    end
   end
 
   def index
+    debugger
     if params[:eventId]
       @requests = current_user.requests.where(event_id: params[:eventId])
     else

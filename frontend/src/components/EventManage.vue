@@ -12,6 +12,7 @@
     <div class="manage-company">{{ showAdmin(event.admin_name,event.company_name) }}
       <div class=""><a :href="event.company_website">Company Website</a></div>
     </div>
+    <button @click="navToRequestsManage">View {{ event.applicant_count }} Request(s)</button>
   </div>
 </template>
 
@@ -42,6 +43,9 @@ export default {
       let newDate = new Date(date)
       return monthNames[newDate.getMonth()] + ' ' + newDate.getDate() + ', ' + newDate.getFullYear()
     },
+    navToRequestsManage (eventId) {
+      this.$router.push(`/created-events/${this.$store.state.event.id}/requests`)
+    },
     delete () {
       $.ajax({
         method: 'DELETE',
@@ -67,13 +71,6 @@ export default {
         return ('Posted by: ' + admin + ' from ' + company)
       } else {
         return ('Posted by: ' + admin)
-      }
-    },
-    showButton () {
-      if (this.$store.state.request) {
-        return ('Cancel Application')
-      } else {
-        return ('Apply')
       }
     }
   },

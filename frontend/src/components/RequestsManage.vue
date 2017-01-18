@@ -32,14 +32,18 @@ export default {
     }
   },
   computed: {
-    requests: function () {
+    requests () {
       return this.$store.state.requests
     },
-    acceptButton: function (request) {
-      if (request.approved) {
-        return 'Reject'
-      } else {
-        return 'Approve'
+    acceptButton (request) {
+      debugger
+      () => {
+        debugger
+        if (request.approved) {
+          return 'Reject'
+        } else {
+          return 'Approve'
+        }
       }
     }
   }

@@ -1,9 +1,8 @@
 <template>
   <ul class="request-list">
-    <li class="request" v-for="request in requests" @click="navToUserProfile">
-      <span>{{ request.fname}} {{ request.lname }}</span>
-      <span></span>
-      <button>{{ acceptButton(request) }}</button>
+    <li class="request" v-for="request in requests">
+      <span @click="navToUserProfile(request.user_id)">{{ request.fname}} {{ request.lname }}</span>
+      <button @click="toggleApproval(request.id)">{{ request.accepted ? "Deny" : "Approve" }}</button>
     </li>
   </ul>
 </template>
@@ -27,24 +26,22 @@ export default {
         }
       })
     },
-    navToUserProfile (e) {
-      this.$router.push(`users/${e.user_id}`)
+    toggleApproval (requestId) {
+      $.ajax({
+        method: 'PATCH',
+        url: `/api/requests/${requestId}`,
+        success: requests => {
+          this.$store.dispatch('getRequests', requests)
+        }
+      })
+    },
+    navToUserProfile (userId) {
+      this.$router.push(`/users/${userId}`)
     }
   },
   computed: {
     requests () {
       return this.$store.state.requests
-    },
-    acceptButton (request) {
-      debugger
-      () => {
-        debugger
-        if (request.approved) {
-          return 'Reject'
-        } else {
-          return 'Approve'
-        }
-      }
     }
   }
 }
@@ -53,6 +50,6 @@ export default {
 <style>
   .request-list {
     position: absolute;
-    top: 200px;
+    top: 100px;
   }
 </style>

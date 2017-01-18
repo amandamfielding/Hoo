@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :events, only: [:show, :index, :create]
     resources :companies, only: [:show, :create]
     resources :requirements, only: [:index, :create]
-    resources :requests, only: [:show, :index, :create, :destroy]
+    resources :requests, only: [:show, :index, :create, :destroy, :update]
     get "test", to: "sessions#test"
   end
 

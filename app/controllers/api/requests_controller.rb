@@ -37,6 +37,16 @@ class Api::RequestsController < ApplicationController
     end
   end
 
+  def update
+    @request = Request.find(params[:id])
+    if @request
+      @request.accepted = !@request.accepted
+      @request.save
+    end
+    @requests = Request.where(event_id: @request.event_id)
+    render :index
+  end
+
   def request_params
     params.require(:request).permit(:event_id, :accepted)
   end

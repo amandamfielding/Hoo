@@ -25,7 +25,6 @@
         <div class=""><a :href="event.company_website">Company Website</a></div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -55,7 +54,7 @@ export default {
     getRequest (eventId) {
       $.ajax({
         method: 'GET',
-        url: '/api/requests',
+        url: `/api/requests/1`,
         data: {event_id: eventId},
         success: request => {
           this.$store.dispatch('getRequest', request)
@@ -124,7 +123,6 @@ export default {
 </script>
 
 <style>
-
 .event-show {
   margin: 8% 12%;
   display: flex;

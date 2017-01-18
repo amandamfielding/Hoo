@@ -10,7 +10,8 @@ const state = {
   errors: [],
   currentUser: (window.localStorage.user) ? JSON.parse(window.localStorage.user) : {},
   request: null,
-  createdEvents: []
+  createdEvents: [],
+  requests: []
 }
 
 const mutations = {
@@ -44,7 +45,10 @@ const mutations = {
     state.request = request
   },
   RECEIVE_REQUEST (state, request) {
-    state.request = request[0]
+    state.request = request
+  },
+  RECEIVE_REQUESTS (state, requests) {
+    state.requests = requests
   },
   DELETE_REQUEST (state, request) {
     state.request = null
@@ -57,6 +61,9 @@ const actions = {
   },
   getCreatedEvents ({ commit }, events) {
     commit('RECEIVE_CREATED_EVENTS', events)
+  },
+  getRequests ({ commit }, requests) {
+    commit('RECEIVE_REQUESTS', requests)
   },
   getRequest ({ commit }, request) {
     commit('RECEIVE_REQUEST', request)

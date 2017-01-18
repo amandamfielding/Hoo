@@ -12,13 +12,15 @@ class Api::RequestsController < ApplicationController
   end
 
   def show
-    @request = Request.find(params[:id])
-    render :show
+    @request = Request.where(event_id: params[:event_id], user_id: current_user.id)[0]
+    if @request
+      render :show
+    end
   end
 
   def index
-    if params[:event_id]
-      @requests = current_user.requests.where(event_id: params[:event_id])
+    if params[:eventId]
+      @requests = current_user.requests.where(event_id: params[:eventId])
     else
       @requests = Request.all
     end
@@ -33,6 +35,16 @@ class Api::RequestsController < ApplicationController
     else
       render json: ["No user currently logged in"], status: 404
     end
+  end
+
+  def update
+    @request = Request.find(params[:id])
+    if @request
+      @request.accepted = !@request.accepted
+      @request.save
+    end
+    @requests = Request.where(event_id: @request.event_id)
+    render :index
   end
 
   def request_params

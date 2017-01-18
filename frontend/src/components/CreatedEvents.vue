@@ -37,13 +37,13 @@
     <ul class="created-events-list">
       <li class="created-event" v-for='createdEvent in createdEvents'>
         <div class="event-image-container">
-          <img @click="navToCreatedEventShow(event.id)" class="event-image" v-bind:id="event.id" v-bind:src="event.image_url" />
+          <img @click="navToCreatedEventShow(createdEvent.id)" class="event-image" v-bind:id="createdEvent.id" v-bind:src="createdEvent.image_url" />
         </div>
         <div class="event-info">
-          <h2 class="event-title">{{ event.title }}</h2>
-          <div>{{ event.city }}, {{ event.state }}</div>
-          <div>{{ calculateDate(event.start_date) }} - {{ calculateDate(event.end_date) }}</div>
-          <div @click="navToCreatedEventShow(event.id)">{{ event.applicant_count }} applicants</div>
+          <h2 class="event-title">{{ createdEvent.title }}</h2>
+          <div>{{ createdEvent.city }}, {{ createdEvent.state }}</div>
+          <div>{{ calculateDate(createdEvent.start_date) }} - {{ calculateDate(createdEvent.end_date) }}</div>
+          <div @click="navToCreatedEventShow(createdEvent.id)">{{ createdEvent.applicant_count }} applicants</div>
         </div>
       </li>
     </ul>

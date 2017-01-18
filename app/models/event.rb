@@ -29,10 +29,15 @@ class Event < ActiveRecord::Base
     class_name: :User
 
   has_many :requests
+  has_many :applicants,
+    through: :requests,
+    source: :user
+
   has_many :event_requirements
   has_many :requirements,
     through: :event_requirements,
     source: :requirement
+
   has_one :company,
     through: :admin,
     source: :company

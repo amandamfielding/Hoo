@@ -21,15 +21,17 @@
         </select>
         <div class="date-div">
           <div class="date-prompt">Within the next:
-            <select v-model="searchParams.date" @change="getCreatedEvents" class="date-search">
-              <option>week</option>
-              <option>month</option>
-              <option>3 months</option>
-              <option>6 months</option>
-              <option>year</option>
-              <option>any date</option>
-            </select>
+            <input v-model="searchParams.date" @change="getCreatedEvents" class="date-search">
           </div>
+        </div>
+        <div class="applicants-div">
+          <input v-model="searchParams.applicants" @change="getCreatedEvents" class="applicants-search"> Applicants
+        </div>
+        <div class="requirements">
+          <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="0">no visible tattoos
+          <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="1">valid driver's license
+          <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="2">valid TIPS certification
+          <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="3">no felonies
         </div>
       </div>
     </div>
@@ -68,6 +70,8 @@ export default {
         city: 'San Francisco, CA',
         miles: '40',
         date: 'any date',
+        applicants: null,
+        requirements: [],
         created: true
       }
     }

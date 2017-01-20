@@ -19,18 +19,29 @@
           <option value="35">35 mi</option>
           <option value="40">40+ mi</option>
         </select>
-        <div class="date-div">
-          <div class="date-prompt">Within the next:
-            <input v-model="searchParams.date" @change="getCreatedEvents" class="date-search">
-          </div>
+        <div class="created-date-div">
+          Within the next:
+          <select v-model="searchParams.date" @change="filter" class="date-search">
+            <option>week</option>
+            <option>month</option>
+            <option>3 months</option>
+            <option>6 months</option>
+            <option>year</option>
+            <option>any date</option>
+          </select>
         </div>
         <div class="applicants-div">
-          <input v-model="searchParams.applicants" @change="getCreatedEvents" class="applicants-search"> Applicants
+          Minimum number of applicants: <input v-model="searchParams.applicants" @change="getCreatedEvents" class="applicants-search">
         </div>
         <div class="requirements">
+          Requirements:
+          <br/>
           <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="0">no visible tattoos
+          <br/>
           <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="1">valid driver's license
+          <br/>
           <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="2">valid TIPS certification
+          <br/>
           <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="3">no felonies
         </div>
       </div>
@@ -104,7 +115,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .created-events-list {
   list-style: none;
   padding: 0;
@@ -160,16 +171,6 @@ export default {
   cursor: pointer;
 }
 
-.pay {
-  position: absolute;
-  right: 0;
-  top: -10px;
-  background: rgba(86, 54, 165, 1);
-  padding: 10px;
-  border-bottom-left-radius: 5px;
-  color: rgb(249,249,255);
-}
-
 .created-search {
   padding-top: 5px;
   position: fixed;
@@ -190,36 +191,31 @@ export default {
   margin-left: 10%;
 }
 
-.city-search {
-  width: 25%;
-  padding: 5px 10px;
-  margin-right: 2%;
-  font-size: 16px;
-}
-
 .miles {
+  width: 100%;
   padding: 5px 10px;
   margin-right: 3%;
   font-size: 16px;
+  margin-bottom: 10px;
 }
 
-.date-prompt {
-  width: auto;
+.created-date-div {
+  width: 100%;
   font-size: 16px;
+  text-align: center;
 }
 
-.date-search {
-  width: 120px;
-  padding: 5px 10px;
-  font-size: 16px;
+.date-div input {
+  width: 90%;
 }
 
-.date-div {
-  padding: 5px 10px;
+.applicants-div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-.date-search option {
-  padding: 5px 10px;
-  font-size: 18px;
+.applicants-div input {
+  width: 30px;
 }
 </style>

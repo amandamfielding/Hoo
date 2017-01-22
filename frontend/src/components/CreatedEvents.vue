@@ -21,7 +21,7 @@
         </select>
         <div class="created-date-div">
           Within the next:
-          <select v-model="searchParams.date" @change="filter" class="date-search">
+          <select v-model="searchParams.date" @change="getCreatedEvents" class="date-search">
             <option>week</option>
             <option>month</option>
             <option>3 months</option>
@@ -31,18 +31,18 @@
           </select>
         </div>
         <div class="applicants-div">
-          Minimum number of applicants: <input v-model="searchParams.applicants" @change="getCreatedEvents" class="applicants-search">
+          Minimum number of applicants: <input v-model="searchParams.applicants" @input="getCreatedEvents" class="applicants-search">
         </div>
         <div class="requirements">
           Requirements:
           <br/>
-          <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="0">no visible tattoos
+          <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="1">no visible tattoos
           <br/>
-          <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="1">valid driver's license
+          <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="2">valid driver's license
           <br/>
-          <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="2">valid TIPS certification
+          <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="3">valid TIPS certification
           <br/>
-          <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="3">no felonies
+          <input type="checkbox" v-model="searchParams.requirements" @change="getCreatedEvents" value="4">no felonies
         </div>
       </div>
     </div>

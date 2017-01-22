@@ -50,7 +50,7 @@ class Event < ActiveRecord::Base
     "Indio, CA" => {"lat" => 33.7206, "lng" => -116.2156}
   }
 
-  def self.find_by_search(city, dist, date, admin_id = false)
+  def self.find_by_search(city, dist, date, created = {})
     if date == "week"
       date = Date.today + 7.days
     elsif date == "month"
@@ -63,10 +63,36 @@ class Event < ActiveRecord::Base
       date = Date.today + 1.year
     end
 
-    if (date && date != "any date") && admin_id
-      events = Event.where("admin_id = ? AND start_date BETWEEN ? AND ?", admin_id, Date.today, date)
-    elsif admin_id
-      events = Event.where("admin_id = ?", admin_id)
+    if created[:admin_id]
+      if (date && date != "any date") && (created[:applicants] != "") && created[:requirements]
+        events = Event.joins(:requests, :event_requirements)
+            .where("events.admin_id = ? AND events.start_date BETWEEN ? AND ?", created[:admin_id], Date.today, date)
+            .group("events.id").having("COUNT(*) >= ?", created[:applicants])
+            .having("event_requirements.requirement_id IN ?", created[:requirements])
+      elsif (date && date != "any date") && created[:requirements]
+        events = Event.joins(:event_requirements)
+            .where("events.admin_id = ? AND events.start_date BETWEEN ? AND ?", created[:admin_id], Date.today, date)
+      elsif (date && date != "any date") && (created[:applicants] != "")
+        events = Event.joins(:requests)
+            .where("events.admin_id = ? AND events.start_date BETWEEN ? AND ?", created[:admin_id], Date.today, date)
+            .group("events.id").having("COUNT(*) >= ?", created[:applicants])
+      elsif (created[:applicants] != "") && created[:requirements]
+        events = Event.joins(:requests, :event_requirements)
+            .where("events.admin_id = ?", created[:admin_id])
+            .group("events.id").having("COUNT(*) >= ?", created[:applicants])
+      elsif (created[:applicants] != "")
+        events = Event.joins(:requests)
+            .where("events.admin_id = ?", created[:admin_id])
+            .group("events.id").having("COUNT(*) >= ?", created[:applicants])
+      elsif created[:requirements]
+        events = Event.joins(:event_requirements)
+            .where("events.admin_id = ?", created[:admin_id]).group("events.id")
+            # .having("event_requirements.requirement_id IN ?", created[:requirements])
+      elsif (date && date != "any date")
+        events = Event.where("events.admin_id = ? AND events.start_date BETWEEN ? AND ?", created[:admin_id], Date.today, date)
+      else
+        events = Event.where("admin_id = ?", created[:admin_id])
+      end
     elsif date && date != "any date"
       events = Event.where("start_date BETWEEN ? AND ?", Date.today, date)
     else

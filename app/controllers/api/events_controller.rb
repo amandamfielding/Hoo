@@ -20,7 +20,6 @@ class Api::EventsController < ApplicationController
   def index
     admin_id = current_user.id if params[:created]
     created = {admin_id: admin_id, applicants: params[:applicants], requirements: params[:requirements]}
-    debugger
     @events = Event.find_by_search(params[:city], params[:miles], params[:date], created)
     render :index
   end

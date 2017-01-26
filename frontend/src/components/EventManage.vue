@@ -19,7 +19,7 @@
       <input type="checkbox" v-model="events.requirements" value="4">no felonies
     </div> -->
     <span>Company Website <input v-model="event.company_website" placeholder="website url"></span>
-    <button @click="submitEventChanges(this.$route.params.eventId)">Update Event</button>
+    <button @click="submitEventChanges">Update Event</button>
     <button @click="navToRequestsManage">View {{ event.applicant_count }} Request(s)</button>
   </div>
 </template>
@@ -48,8 +48,8 @@ export default {
     },
     submitEventChanges (eventId) {
       $.ajax({
-        method: 'POST',
-        url: '/api/events/' + eventId,
+        method: 'PATCH',
+        url: '/api/events/' + this.$route.params.eventId,
         data: {event: this.$store.state.event},
         success: event => {
           this.$store.dispatch('getEvent', event)

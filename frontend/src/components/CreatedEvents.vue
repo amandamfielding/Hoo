@@ -193,8 +193,9 @@ export default {
 
 .miles {
   width: 100%;
+  max-width: 180px;
   padding: 5px 10px;
-  margin-right: 3%;
+  margin: auto;
   font-size: 16px;
   margin-bottom: 10px;
 }

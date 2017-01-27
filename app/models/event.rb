@@ -66,12 +66,15 @@ class Event < ActiveRecord::Base
     if created[:admin_id]
       if (date && date != "any date") && (created[:applicants] != "") && created[:requirements]
         events = Event.joins(:requests, :event_requirements)
-            .where("events.admin_id = ? AND events.start_date BETWEEN ? AND ?", created[:admin_id], Date.today, date)
+            .where("events.admin_id = ? AND event_requirements.requirement_id IN (?) AND events.start_date BETWEEN ? AND ?", created[:admin_id], created[:requirements], Date.today, date)
             .group("events.id").having("COUNT(*) >= ?", created[:applicants])
-            .having("event_requirements.requirement_id IN ?", created[:requirements])
+            .group("events.id").having("COUNT(*) = ?", created[:requirements].length)
+            .order("events.id").distinct
       elsif (date && date != "any date") && created[:requirements]
         events = Event.joins(:event_requirements)
-            .where("events.admin_id = ? AND events.start_date BETWEEN ? AND ?", created[:admin_id], Date.today, date)
+            .where("events.admin_id = ? AND event_requirements.requirement_id IN (?) AND events.start_date BETWEEN ? AND ?", created[:admin_id], created[:requirements], Date.today, date)
+            .group("events.id").having("COUNT(*) = ?", created[:requirements].length)
+            .order("events.id").distinct
       elsif (date && date != "any date") && (created[:applicants] != "")
         events = Event.joins(:requests)
             .where("events.admin_id = ? AND events.start_date BETWEEN ? AND ?", created[:admin_id], Date.today, date)
@@ -86,8 +89,9 @@ class Event < ActiveRecord::Base
             .group("events.id").having("COUNT(*) >= ?", created[:applicants])
       elsif created[:requirements]
         events = Event.joins(:event_requirements)
-            .where("events.admin_id = ?", created[:admin_id]).group("events.id")
-            # .having("event_requirements.requirement_id IN ?", created[:requirements])
+            .where("events.admin_id = ? AND event_requirements.requirement_id IN (?)", created[:admin_id], created[:requirements])
+            .group("events.id").having("COUNT(*) = ?", created[:requirements].length)
+            .order("events.id").distinct
       elsif (date && date != "any date")
         events = Event.where("events.admin_id = ? AND events.start_date BETWEEN ? AND ?", created[:admin_id], Date.today, date)
       else

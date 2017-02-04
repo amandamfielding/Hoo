@@ -32,8 +32,7 @@ class Api::RequestsController < ApplicationController
   end
 
   def destroy
-    @request = Request.find_by(request_params)
-    debugger
+    @request = Request.where(event_id: params[:request][:event_id], user_id: current_user.id)[0]
     if current_user.id == @request.user_id
       @request.destroy
       render :index

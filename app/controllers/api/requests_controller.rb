@@ -33,6 +33,7 @@ class Api::RequestsController < ApplicationController
 
   def destroy
     @request = Request.find_by(request_params)
+    debugger
     if current_user.id == @request.user_id
       @request.destroy
       render :index

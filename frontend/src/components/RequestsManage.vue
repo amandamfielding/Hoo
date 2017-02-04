@@ -10,6 +10,16 @@
 <script>
 import $ from 'jquery'
 
+const nameSort = function (a, b) {
+  if (a.lname < b.lname) {
+    return -1
+  } else if (a.lname > b.lname) {
+    return 1
+  } else {
+    return 0
+  }
+}
+
 export default {
   name: 'RequestsManage',
   created () {
@@ -20,9 +30,9 @@ export default {
       $.ajax({
         method: 'GET',
         url: '/api/requests/',
-        data: {eventId: eventId},
+        data: {eventId: eventId, manage: true},
         success: requests => {
-          this.$store.dispatch('getRequests', requests)
+          this.$store.dispatch('getRequests', requests.sort(nameSort))
         }
       })
     },
@@ -31,7 +41,7 @@ export default {
         method: 'PATCH',
         url: `/api/requests/${requestId}`,
         success: requests => {
-          this.$store.dispatch('getRequests', requests)
+          this.$store.dispatch('getRequests', requests.sort(nameSort))
         }
       })
     },

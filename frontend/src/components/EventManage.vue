@@ -1,26 +1,27 @@
 <template>
   <div class="event-manage">
-    <span>Event title <input v-model="event.title" placeholder="title"></span>
-    <span>Event type <input v-model="event.event_type" placeholder="type"></span>
-    <span>Location <input v-model="event.city" placeholder="city">  <input v-model="event.state" placeholder="state"></span>
-    <span>Beginning Date <input type="date" v-model="event.start_date"></span>
-    <span>Ending Date <input type="date" v-model="event.end_date"></span>
-    <span>$<input v-model="event.pay" placeholder="pay rate"> per <input v-model="event.pay_freq" placeholder="pay frequency"></span>
-    <textarea v-model="event.description" placeholder="description"/>
-    <!-- <div>
+    <span>Event title <input v-model="event.title" placeholder="Add a short, clear name" class="manage-title"></span>
+    <span>Event type <input v-model="event.event_type" class="manage-type"></span>
+    <span>Location <input v-model="event.city" placeholder="City" class="manage-city"> <input v-model="event.state" placeholder="State" class="manage-state"></span>
+    <span>Beginning Date <input type="date" v-model="event.start_date" class="manage-date"></span>
+    <span>Ending Date <input type="date" v-model="event.end_date" class="manage-date"></span>
+    <span>$<input v-model="event.pay" placeholder="pay rate" class="manage-pay"> per <input v-model="event.pay_freq" placeholder="pay frequency" class="manage-freq"></span>
+    <textarea v-model="event.description" placeholder="Add a longer description of the event"/>
+    <span>Event Image URL<input v-model="event.image_url" placeholder="Add an image for the event" class="manage-url"/></span>
+    <span>Company Website <input v-model="event.company_website" placeholder="website url" class="manage-url"></span>
+    <div class="requirements-div">
       Requirements:
-      <br/>
-      <input type="checkbox" v-model="events.requirements" value="1">no visible tattoos
-      <br/>
-      <input type="checkbox" v-model="events.requirements" value="2">valid driver's license
-      <br/>
-      <input type="checkbox" v-model="events.requirements" value="3">valid TIPS certification
-      <br/>
-      <input type="checkbox" v-model="events.requirements" value="4">no felonies
-    </div> -->
-    <span>Company Website <input v-model="event.company_website" placeholder="website url"></span>
-    <button @click="submitEventChanges">Update Event</button>
-    <button @click="navToRequestsManage">View {{ event.applicant_count }} Request(s)</button>
+      <select v-model="event.requirements" multiple>
+        <option value="1">no visible tattoos</option>
+        <option value="2">valid driver's license</option>
+        <option value="3">valid TIPS certification</option>
+        <option value="4">no felonies</option>
+      </select>
+    </div>
+    <div class="button-div">
+      <button @click="submitEventChanges">Update Event</button>
+      <button @click="navToRequestsManage">View {{ event.applicant_count }} Request(s)</button>
+    </div>
   </div>
 </template>
 
@@ -105,12 +106,68 @@ export default {
 
 <style scoped>
 .event-manage {
-  position: absolute;
-  top: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  margin: auto;
+  margin-top: 75px;
 }
 
 .event-manage span {
-  display: block;
+  display: inline;
+  margin: auto;
   margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.event-manage input {
+  font-size: 14px;
+  padding: 5px;
+}
+
+.event-manage textarea {
+  font-size: 14px;
+  padding: 5px;
+  width: 80%;
+  height: 100px;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.manage-title {
+  width: 200px;
+}
+
+.manage-type {
+  width: 150px;
+}
+
+.manage-city {
+  width: 100px;
+}
+
+.manage-state {
+  width: 30px;
+}
+
+.manage-date {
+  width: 130px;
+}
+
+.manage-pay {
+  width: 40px;
+}
+
+.manage-freq {
+  width: 75px;
+}
+
+.manage-url {
+  width: 270px;
+}
+
+.button-div {
+  margin: auto;
 }
 </style>

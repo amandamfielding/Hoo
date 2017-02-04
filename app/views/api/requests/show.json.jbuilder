@@ -1,1 +1,5 @@
-json.partial! 'api/requests/request', request: @request
+if @request
+  json.partial! 'api/requests/request', request: @request
+else
+  {}
+end

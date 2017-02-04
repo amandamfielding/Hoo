@@ -15,6 +15,8 @@ class Api::RequestsController < ApplicationController
     @request = Request.where(event_id: params[:event_id], user_id: current_user.id)[0]
     if @request
       render :show
+    else
+      render {}.to_json
     end
   end
 

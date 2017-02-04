@@ -7,18 +7,16 @@
     <span>Ending Date <input type="date" v-model="event.end_date" class="manage-date"></span>
     <span>$<input v-model="event.pay" placeholder="pay rate" class="manage-pay"> per <input v-model="event.pay_freq" placeholder="pay frequency" class="manage-freq"></span>
     <textarea v-model="event.description" placeholder="Add a longer description of the event"/>
-    <!-- <div>
-      Requirements:
-      <br/>
-      <input type="checkbox" v-model="events.requirements" value="1">no visible tattoos
-      <br/>
-      <input type="checkbox" v-model="events.requirements" value="2">valid driver's license
-      <br/>
-      <input type="checkbox" v-model="events.requirements" value="3">valid TIPS certification
-      <br/>
-      <input type="checkbox" v-model="events.requirements" value="4">no felonies
-    </div> -->
     <span>Company Website <input v-model="event.company_website" placeholder="website url" class="manage-website"></span>
+    <div class="requirements-div">
+      Requirements:
+      <select v-model="event.requirements" multiple>
+        <option value="1">no visible tattoos</option>
+        <option value="2">valid driver's license</option>
+        <option value="3">valid TIPS certification</option>
+        <option value="4">no felonies</option>
+      </select>
+    </div>
     <div class="button-div">
       <button @click="submitEventChanges">Update Event</button>
       <button @click="navToRequestsManage">View {{ event.applicant_count }} Request(s)</button>
@@ -44,6 +42,7 @@ export default {
         method: 'GET',
         url: '/api/events/' + eventId,
         success: event => {
+          debugger
           this.$store.dispatch('getEvent', event)
         }
       })

@@ -19,7 +19,7 @@
     <div class="show-right">
       <div class="show-description">{{ event.description }}</div>
       <ul class="event-requirement-list">
-          <li  class="event-requirement" v-for='requirement in requirements'>{{ requirement.title }}</li>
+          <li  class="event-requirement" v-for='requirement in requirement_titles'>{{ requirement }}</li>
       </ul>
       <div class="show-company">{{ showAdmin(event.admin_name,event.company_name) }}
         <div class=""><a :href="event.company_website">Company Website</a></div>
@@ -115,8 +115,20 @@ export default {
     event: function () {
       return this.$store.state.event
     },
-    requirements: function () {
-      return this.event.requirements
+    requirement_titles: function () {
+      const titles = []
+      this.event.requirements.forEach(id => {
+        if (id === 1) {
+          titles.push('no visible tattoos')
+        } else if (id === 2) {
+          titles.push('valid driver\'s license')
+        } else if (id === 3) {
+          titles.push('valid TIPS certification')
+        } else if (id === 4) {
+          titles.push('no felonies')
+        }
+      })
+      return titles
     }
   }
 }

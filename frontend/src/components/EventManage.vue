@@ -7,7 +7,8 @@
     <span>Ending Date <input type="date" v-model="event.end_date" class="manage-date"></span>
     <span>$<input v-model="event.pay" placeholder="pay rate" class="manage-pay"> per <input v-model="event.pay_freq" placeholder="pay frequency" class="manage-freq"></span>
     <textarea v-model="event.description" placeholder="Add a longer description of the event"/>
-    <span>Company Website <input v-model="event.company_website" placeholder="website url" class="manage-website"></span>
+    <span>Event Image URL<input v-model="event.image_url" placeholder="Add an image for the event" class="manage-url"/></span>
+    <span>Company Website <input v-model="event.company_website" placeholder="website url" class="manage-url"></span>
     <div class="requirements-div">
       Requirements:
       <select v-model="event.requirements" multiple>
@@ -42,7 +43,6 @@ export default {
         method: 'GET',
         url: '/api/events/' + eventId,
         success: event => {
-          debugger
           this.$store.dispatch('getEvent', event)
         }
       })
@@ -163,7 +163,7 @@ export default {
   width: 75px;
 }
 
-.manage-website {
+.manage-url {
   width: 270px;
 }
 

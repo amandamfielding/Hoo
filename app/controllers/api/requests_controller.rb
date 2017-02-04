@@ -21,7 +21,9 @@ class Api::RequestsController < ApplicationController
   end
 
   def index
-    if params[:eventId]
+    if params[:eventId] && params[:manage]
+      @requests = Request.where(event_id: params[:eventId])
+    elsif params[:eventId]
       @requests = current_user.requests.where(event_id: params[:eventId])
     else
       @requests = Request.all
@@ -30,7 +32,7 @@ class Api::RequestsController < ApplicationController
   end
 
   def destroy
-    @request = Request.find_by(request_params)
+    @request = Request.where(event_id: params[:request][:event_id], user_id: current_user.id)[0]
     if current_user.id == @request.user_id
       @request.destroy
       render :index

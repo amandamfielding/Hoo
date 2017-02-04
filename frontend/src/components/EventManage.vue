@@ -11,7 +11,7 @@
     <span>Company Website <input v-model="event.company_website" placeholder="website url" class="manage-url"></span>
     <div class="requirements-div">
       Requirements:
-      <select v-model="event.requirements" multiple>
+      <select v-if="event.requirements" v-model="event.requirements" multiple>
         <option value="1">no visible tattoos</option>
         <option value="2">valid driver's license</option>
         <option value="3">valid TIPS certification</option>
@@ -96,9 +96,6 @@ export default {
   computed: {
     event: function () {
       return this.$store.state.event
-    },
-    requirements: function () {
-      return this.event.requirements
     }
   }
 }

@@ -75,7 +75,7 @@ export default {
       applyModal.style.display = 'none'
     },
     submit () {
-      if (this.$store.state.request) {
+      if (this.$store.state.request && this.$store.state.request.event_id) {
         $.ajax({
           method: 'DELETE',
           url: '/api/requests/' + this.event.id,
@@ -104,7 +104,7 @@ export default {
       }
     },
     showButton () {
-      if (this.$store.state.request) {
+      if (this.$store.state.request && this.$store.state.request.event_id) {
         return ('Cancel Application')
       } else {
         return ('Apply')
@@ -117,17 +117,19 @@ export default {
     },
     requirement_titles: function () {
       const titles = []
-      this.event.requirements.forEach(id => {
-        if (id === 1) {
-          titles.push('no visible tattoos')
-        } else if (id === 2) {
-          titles.push('valid driver\'s license')
-        } else if (id === 3) {
-          titles.push('valid TIPS certification')
-        } else if (id === 4) {
-          titles.push('no felonies')
-        }
-      })
+      if (this.event.requirements) {
+        this.event.requirements.forEach(id => {
+          if (id === 1) {
+            titles.push('no visible tattoos')
+          } else if (id === 2) {
+            titles.push('valid driver\'s license')
+          } else if (id === 3) {
+            titles.push('valid TIPS certification')
+          } else if (id === 4) {
+            titles.push('no felonies')
+          }
+        })
+      }
       return titles
     }
   }

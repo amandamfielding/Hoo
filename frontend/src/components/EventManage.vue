@@ -8,7 +8,7 @@
     <span>Ending Date <input type="date" v-model="event.end_date" class="manage-date"></span>
     <span>$<input v-model="event.pay" placeholder="pay rate" class="manage-pay"> per <input v-model="event.pay_freq" placeholder="pay frequency" class="manage-freq"></span>
     <textarea v-model="event.description" placeholder="Add a longer description of the event"/>
-    <span>Event Image URL<input v-model="event.image_url" placeholder="Add an image for the event" class="manage-url"/></span>
+    <span>Event Image URL <input v-model="event.image_url" placeholder="Add an image for the event" class="manage-url"/></span>
     <span>Company Website <input v-model="event.company_website" placeholder="website url" class="manage-url"></span>
     <div class="requirements-div">
       Requirements
@@ -194,6 +194,26 @@ export default {
 
 .manage-geo {
   width: 60px;
+}
+
+.modal-update {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  margin: 10% auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.update-response {
+  font-size: 20px;
+  text-align: center;
+}
+
+#ok {
+  width: 50px;
+  margin: auto;
 }
 
 .button-div {

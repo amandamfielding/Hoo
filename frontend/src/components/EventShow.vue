@@ -239,12 +239,6 @@ a {
   font-size: 18px;
 }
 
-#ok {
-  font-size: 20px;
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
 .apply-response {
   font-size: 20px;
 }

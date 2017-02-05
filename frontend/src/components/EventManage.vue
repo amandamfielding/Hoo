@@ -3,6 +3,7 @@
     <span>Event title <input v-model="event.title" placeholder="Add a short, clear name" class="manage-title"></span>
     <span>Event type <input v-model="event.event_type" class="manage-type"></span>
     <span>Location <input v-model="event.city" placeholder="City" class="manage-city"> <input v-model="event.state" placeholder="State" class="manage-state"></span>
+    <span>Geocoordinates <input v-model="event.lat" placeholder="Latitude" class="manage-geo"> <input v-model="event.lng" placeholder="Longitude" class="manage-geo"></span>
     <span>Beginning Date <input type="date" v-model="event.start_date" class="manage-date"></span>
     <span>Ending Date <input type="date" v-model="event.end_date" class="manage-date"></span>
     <span>$<input v-model="event.pay" placeholder="pay rate" class="manage-pay"> per <input v-model="event.pay_freq" placeholder="pay frequency" class="manage-freq"></span>
@@ -10,7 +11,7 @@
     <span>Event Image URL<input v-model="event.image_url" placeholder="Add an image for the event" class="manage-url"/></span>
     <span>Company Website <input v-model="event.company_website" placeholder="website url" class="manage-url"></span>
     <div class="requirements-div">
-      Requirements:
+      Requirements
       <select v-if="event.requirements" v-model="event.requirements" multiple>
         <option value="1">no visible tattoos</option>
         <option value="2">valid driver's license</option>
@@ -20,6 +21,14 @@
     </div>
     <div class="button-div">
       <button @click="submitEventChanges">Update Event</button>
+      <div id="event-update-modal" class="modal">
+        <div class="modal-update">
+          <p class="update-response">
+            Your event has been updated!
+          </p>
+          <button id="ok" @click='closeEventUpdateModal'>OK</button>
+        </div>
+      </div>
       <button @click="navToRequestsManage">View {{ event.applicant_count }} Request(s)</button>
     </div>
   </div>
@@ -54,8 +63,17 @@ export default {
         data: {event: this.$store.state.event},
         success: event => {
           this.$store.dispatch('getEvent', event)
+          this.openEventUpdateModal()
         }
       })
+    },
+    openEventUpdateModal () {
+      let eventUpdateModal = document.getElementById('event-update-modal')
+      eventUpdateModal.style.display = 'block'
+    },
+    closeEventUpdateModal () {
+      let eventUpdateModal = document.getElementById('event-update-modal')
+      eventUpdateModal.style.display = 'none'
     },
     calculateDate (date) {
       const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -101,7 +119,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .event-manage {
   display: flex;
   flex-direction: column;
@@ -130,6 +148,16 @@ export default {
   height: 100px;
   margin: auto;
   margin-bottom: 10px;
+}
+
+.requirements-div {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.requirements-div select {
+  margin-left: 10px;
 }
 
 .manage-title {
@@ -164,7 +192,19 @@ export default {
   width: 270px;
 }
 
+.manage-geo {
+  width: 60px;
+}
+
 .button-div {
   margin: auto;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+button {
+  font-size: 14px;
+  padding: 6px 12px;
+  cursor: pointer;
 }
 </style>

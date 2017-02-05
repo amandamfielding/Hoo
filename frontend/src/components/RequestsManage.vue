@@ -1,10 +1,14 @@
 <template>
-  <ul class="request-list">
-    <li class="request" v-for="request in requests">
-      <span @click="navToUserProfile(request.user_id)">{{ request.fname}} {{ request.lname }}</span>
-      <button @click="toggleApproval(request.id)">{{ request.accepted ? "Deny" : "Approve" }}</button>
-    </li>
-  </ul>
+  <div class="request-manage">
+    <h2>Requests for </h2>
+    <ul class="request-list">
+      <li class="request" v-for="request in requests">
+        <span @click="navToUserProfile(request.user_id)">{{ request.fname}} {{ request.lname }}</span>
+        <button @click="toggleApproval(request.id)">{{ request.accepted ? "Deny" : "Approve" }}</button>
+      </li>
+    </ul>
+    <button @click="navToEventManage">Back to Event</button>
+  </div>
 </template>
 
 <script>
@@ -47,6 +51,9 @@ export default {
     },
     navToUserProfile (userId) {
       this.$router.push(`/users/${userId}`)
+    },
+    navToEventManage () {
+      this.$router.push(`/created-events/${this.$route.params.eventId}`)
     }
   },
   computed: {
@@ -58,8 +65,18 @@ export default {
 </script>
 
 <style>
+  .request-manage {
+    font-size: 20px;
+    font-weight: bold;
+    margin: auto;
+    margin-top: 50px;
+  }
+
   .request-list {
-    position: absolute;
-    top: 100px;
+    list-style: none;
+  }
+
+  .request-list span {
+    cursor: pointer;
   }
 </style>

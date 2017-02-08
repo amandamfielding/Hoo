@@ -79,6 +79,13 @@ const Router = new VueRouter({
         default: RequestsManage,
         top: Top
       }
+    },
+    {
+      path: '/users/:userId',
+      components: {
+        default: Profile,
+        top: Top
+      }
     }
   ]
 })

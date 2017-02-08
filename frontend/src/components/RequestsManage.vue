@@ -7,7 +7,7 @@
         <button @click="toggleApproval(request.id)">{{ request.accepted ? "Deny" : "Approve" }}</button>
       </li>
     </ul>
-    <button @click="navToEventManage">Back to Event</button>
+    <button @click="navToEventManage" class="back-event-button">Back to Event</button>
   </div>
 </template>
 
@@ -68,15 +68,26 @@ export default {
   .request-manage {
     font-size: 20px;
     font-weight: bold;
-    margin: auto;
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
   }
 
   .request-list {
     list-style: none;
+    margin: auto;
+  }
+
+  .request-list li {
+    margin-bottom: 10px;
   }
 
   .request-list span {
     cursor: pointer;
+  }
+
+  .back-event-button {
+    width: 150px;
+    margin: auto;
   }
 </style>

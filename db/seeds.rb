@@ -6,22 +6,22 @@ image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v
 about_me:"I am a Software Engineer looking for a job! I deliver excellent results, on-time, without pain or panic. When it comes to writing code, I can be expected to tackle problems with determination, learn new languages, contribute my perspective, and be a committed member of the team.")
 
 janine = User.create!(username:"j-lo",password:"password",fname:"Janine",lname:"Love",gender:"female",dob:DateTime.new(1989, 8, 20),email:"janine@gmail.com",phone_number:"209-614-5450",tips_cert:true, no_vis_tats:true, valid_dl:true, admin:false, no_felonies:true,
-image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1480576832/demo_profile_pic_l6t2lm.jpg", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481874874/amanda_fielding_resume_u5vdje.pdf", about_me:"Math, teaching, software, politics, thought.")
+image_url:"http://www.headshotsnyc.com/wp-content/uploads/galleries/post-44/corporate%20executive%20headshot%20brunette%20window%20background-c85.jpg", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481874874/amanda_fielding_resume_u5vdje.pdf", about_me:"Math, teaching, software, politics, thought.")
 
 alex = User.create!(username:"darcy",password:"password",fname:"Alex",lname:"Bennet",gender:"male",dob:DateTime.new(1989, 5, 19),email:"alex@hotmail.com",phone_number:"714-343-0601",tips_cert:false, no_vis_tats:true, valid_dl:true, admin:false, no_felonies:true,
-image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1480576832/demo_profile_pic_l6t2lm.jpg", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481434940/resume_12-10-16_qaqs8m.pdf", about_me:"Marketing, business, sauve.")
+image_url:"https://static1.squarespace.com/static/53b599ebe4b08a2784696956/t/55ad79a8e4b0f896046cbd4f/1437432233938/?format=300w", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481434940/resume_12-10-16_qaqs8m.pdf", about_me:"Marketing, business, sauve.")
 
-dan = User.create!(username:"dan",password:"password",fname:"Dan",lname:"Sulfaro",gender:"male",dob:DateTime.new(1991, 2, 5),email:"smilethatheals@yahoo.com",phone_number:"209-614-5458",tips_cert:false, no_vis_tats:true, valid_dl:true, admin:false, no_felonies:true,
-image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1480576832/demo_profile_pic_l6t2lm.jpg", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481434940/resume_12-10-16_qaqs8m.pdf", about_me:"")
+dan = User.create!(username:"dan",password:"password",fname:"Dan",lname:"Sulfaro",gender:"male",dob:DateTime.new(1993, 2, 5),email:"smilethatheals@yahoo.com",phone_number:"209-614-5458",tips_cert:false, no_vis_tats:true, valid_dl:true, admin:false, no_felonies:true,
+image_url:"https://static1.squarespace.com/static/53b599ebe4b08a2784696956/t/55ad79a8e4b0f896046cbd4f/1437432233938/?format=300w", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481434940/resume_12-10-16_qaqs8m.pdf", about_me:"CS Minor from University of Michigan. Love the Bay and Poutine.")
 
 winston = User.create!(username:"winnie",password:"password",fname:"Winston",lname:"Zhao",gender:"female",dob:DateTime.new(1994, 2, 14),email:"corrine5ever@gmail.com",phone_number:"714-343-0602",tips_cert:true, no_vis_tats:true, valid_dl:true, admin:false, no_felonies:true,
-image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1480576832/demo_profile_pic_l6t2lm.jpg", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481434940/resume_12-10-16_qaqs8m.pdf", about_me:"gLOVING is life")
+image_url:"https://static1.squarespace.com/static/53b599ebe4b08a2784696956/t/55ad79a8e4b0f896046cbd4f/1437432233938/?format=300w", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481434940/resume_12-10-16_qaqs8m.pdf", about_me:"gLOVING is life")
 
 mickey = User.create!(username:"mickey",password:"password",fname:"Michaelangelo",lname:"Loreti",gender:"male",dob:DateTime.new(1991, 4, 15),email:"mickey@hacker.com",phone_number:"209-614-5457",tips_cert:false, no_vis_tats:true, valid_dl:true, admin:false, no_felonies:true,
-image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1480576832/demo_profile_pic_l6t2lm.jpg", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481434940/resume_12-10-16_qaqs8m.pdf", about_me:"UX/UI Frontend Engineer")
+image_url:"https://static1.squarespace.com/static/53b599ebe4b08a2784696956/t/55ad79a8e4b0f896046cbd4f/1437432233938/?format=300w", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481434940/resume_12-10-16_qaqs8m.pdf", about_me:"UX/UI Frontend Engineer")
 
 micah = User.create!(username:"mee-kah",password:"password",fname:"Micah",lname:"Sapitsky",gender:"male",dob:DateTime.new(1993, 11, 3),email:"coralguy52@gmail.com",phone_number:"714-343-0603",tips_cert:true, no_vis_tats:true, valid_dl:true, admin:false, no_felonies:true,
-image_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/c_fill,h_400,w_400/v1480576832/demo_profile_pic_l6t2lm.jpg", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481434940/resume_12-10-16_qaqs8m.pdf", about_me:"BROgramming")
+image_url:"https://static1.squarespace.com/static/53b599ebe4b08a2784696956/t/55ad79a8e4b0f896046cbd4f/1437432233938/?format=300w", resume_url:"http://res.cloudinary.com/dbsxgncvx/image/upload/v1481434940/resume_12-10-16_qaqs8m.pdf", about_me:"BROgramming")
 
 Company.create!(name:"Cerda Productions",description:"event staffing", website_url:"http://cerdaproductions.com/")
 Company.create!(name:"Dream a Little Dream Events",description:"event planning", website_url: "http://www.dreamalittledreamevents.com/")

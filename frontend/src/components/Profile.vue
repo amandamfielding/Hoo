@@ -4,7 +4,7 @@
       <div class="profile-left">
         <img class="profile-pic" :src="userInfo.image_url" />
         <ul class="profile-details">
-          <li class="profile-name">{{userInfo.fname}} {{ userInfo.lname }}</li>
+          <li class="profile-name">{{ userInfo.fname }} {{ userInfo.lname }}</li>
           <li class="profile-username">@{{ userInfo.username }}</li>
           <li class="age-and-gender">
             <div class="age">{{ userInfo.age }}</div>

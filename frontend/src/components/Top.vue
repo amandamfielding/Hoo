@@ -37,6 +37,7 @@ export default {
       this.$router.replace('/')
     },
     navToProfile: function () {
+      this.$store.dispatch('setCurrentUser')
       this.$router.replace(`/users/${this.userInfo.id}`)
     }
   }

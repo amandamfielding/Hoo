@@ -56,6 +56,9 @@ const mutations = {
   },
   RECEIVE_USER (state, user) {
     state.user = user
+  },
+  EMPTY_USER (state) {
+    state.user = {}
   }
 }
 
@@ -74,6 +77,9 @@ const actions = {
   },
   getUser ({ commit }, user) {
     commit('RECEIVE_USER', user)
+  },
+  emptyUser ({ commit }) {
+    commit('EMPTY_USER')
   },
   getEventsByFilter ({ commit }, events) {
     commit('RECEIVE_EVENTS_BY_FILTER', events)

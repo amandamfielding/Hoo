@@ -9,7 +9,7 @@
       <div class="header-list">
         <img class="top-user-pic" :src="userInfo.image_url" />
         <ul id="user-dropdown">
-          <li><router-link class="profile-link" to="/profile">My Profile</router-link></li>
+          <li><span class="profile-link" @click="navToProfile">My Profile</span></li>
           <li><router-link class="events-link" to="/events">All Events</router-link></li>
           <li v-if="userInfo.admin"><router-link class="events-link" to="/created-events">Manage My Events</router-link></li>
           <li @click="logout"><router-link class="logout-link" to="/">Log Out</router-link></li>
@@ -35,6 +35,9 @@ export default {
     },
     navToHome: function () {
       this.$router.replace('/')
+    },
+    navToProfile: function () {
+      this.$router.replace(`/users/${this.userInfo.id}`)
     }
   }
 }

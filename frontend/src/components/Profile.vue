@@ -1,6 +1,5 @@
 <template>
     <div class="profile">
-
       <div class="profile-left">
         <img class="profile-pic" :src="userInfo.image_url" />
         <ul class="profile-details">
@@ -39,14 +38,14 @@ export default {
   created () {
     if (!window.localStorage.user) {
       this.$router.replace('/')
-    } else if (this.$router.currentRoute.params.userId) {
+    } else if (this.$router.currentRoute.params.userId !== this.$store.state.currentUser.id) {
       this.getUser(this.$router.currentRoute.params.userId)
     }
   },
   name: 'profile',
   computed: {
     userInfo: function () {
-      if (!this.$router.currentRoute.params.userId) {
+      if (this.$router.currentRoute.params.userId === this.$store.state.currentUser.id) {
         return this.$store.state.currentUser
       } else {
         return this.$store.state.user

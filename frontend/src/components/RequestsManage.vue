@@ -1,6 +1,6 @@
 <template>
   <div class="request-manage">
-    <h2>Requests for </h2>
+    <h2 class="request-title">Requests for {{ eventTitle }}</h2>
     <ul class="request-list">
       <li class="request" v-for="request in requests">
         <span @click="navToUserProfile(request.user_id)">{{ request.fname}} {{ request.lname }}</span>
@@ -59,6 +59,9 @@ export default {
   computed: {
     requests () {
       return this.$store.state.requests
+    },
+    eventTitle () {
+      return this.$store.state.event.title
     }
   }
 }
@@ -73,9 +76,14 @@ export default {
     flex-direction: column;
   }
 
+  .request-title {
+    margin: auto;
+  }
+
   .request-list {
     list-style: none;
     margin: auto;
+    margin-top: 20px;
   }
 
   .request-list li {

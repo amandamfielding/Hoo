@@ -1,13 +1,14 @@
 <template>
   <div class="request-manage">
-    <h2>Requests for </h2>
+    <h2 class="request-title">Requests for {{ eventTitle }}</h2>
     <ul class="request-list">
       <li class="request" v-for="request in requests">
         <span @click="navToUserProfile(request.user_id)">{{ request.fname}} {{ request.lname }}</span>
         <button @click="toggleApproval(request.id)">{{ request.accepted ? "Deny" : "Approve" }}</button>
       </li>
     </ul>
-    <button @click="navToEventManage">Back to Event</button>
+    <span>Total Approved Requests: {{ total }}</span>
+    <button @click="navToEventManage" class="back-event-button">Back to Event</button>
   </div>
 </template>
 
@@ -59,6 +60,16 @@ export default {
   computed: {
     requests () {
       return this.$store.state.requests
+    },
+    eventTitle () {
+      return this.$store.state.event.title
+    },
+    total () {
+      let count = 0
+      this.$store.state.requests.forEach(request => {
+        request.accepted ? count += 1 : count += 0
+      })
+      return count
     }
   }
 }
@@ -68,15 +79,33 @@ export default {
   .request-manage {
     font-size: 20px;
     font-weight: bold;
-    margin: auto;
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .request-title {
+    margin: auto;
   }
 
   .request-list {
     list-style: none;
+    margin: auto;
+    margin-top: 0px;
+  }
+
+  .request-list li {
+    margin-bottom: 10px;
   }
 
   .request-list span {
     cursor: pointer;
+  }
+
+  .back-event-button {
+    width: 200px;
+    margin: auto;
+    margin-top: 10px;
   }
 </style>

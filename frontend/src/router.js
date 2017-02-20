@@ -39,13 +39,6 @@ const Router = new VueRouter({
       ]
     },
     {
-      path: '/profile',
-      components: {
-        default: Profile,
-        top: Top
-      }
-    },
-    {
       path: '/events',
       components: {
         top: Top,
@@ -77,6 +70,13 @@ const Router = new VueRouter({
       path: '/created-events/:eventId/requests',
       components: {
         default: RequestsManage,
+        top: Top
+      }
+    },
+    {
+      path: '/users/:userId',
+      components: {
+        default: Profile,
         top: Top
       }
     }

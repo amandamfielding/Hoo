@@ -1,10 +1,9 @@
 <template>
     <div class="profile">
-
       <div class="profile-left">
         <img class="profile-pic" :src="userInfo.image_url" />
         <ul class="profile-details">
-          <li class="profile-name">{{userInfo.fname}} {{ userInfo.lname }}</li>
+          <li class="profile-name">{{ userInfo.fname }} {{ userInfo.lname }}</li>
           <li class="profile-username">@{{ userInfo.username }}</li>
           <li class="age-and-gender">
             <div class="age">{{ userInfo.age }}</div>
@@ -28,26 +27,42 @@
           <div class="qual-tats" v-if=userInfo.no_vis_tats><img class="checkmark" :src=checkMark(userInfo.no_vis_tats) /> No Visible Tattoos</div>
           <div class="qual-felonies" v-if=userInfo.no_felonies><img class="checkmark" :src=checkMark(userInfo.no_felonies) /> No Felonies</div>
         </div>
-        <router-link to="/events" class="events-nav">Back to Events</router-link>
       </div>
-
     </div>
 </template>
 
 <script>
+import $ from 'jquery'
+
 export default {
   created () {
     if (!window.localStorage.user) {
       this.$router.replace('/')
+    } else if (this.$router.currentRoute.params.userId !== this.$store.state.currentUser.id) {
+      this.getUser(this.$router.currentRoute.params.userId)
     }
   },
   name: 'profile',
   computed: {
     userInfo: function () {
-      return this.$store.state.currentUser
+      if (this.$router.currentRoute.params.userId === this.$store.state.currentUser.id) {
+        return this.$store.state.currentUser
+      } else {
+        return this.$store.state.user
+      }
     }
   },
   methods: {
+    getUser (userId) {
+      $.ajax({
+        method: 'GET',
+        url: `/api/users/${userId}`,
+        data: {userId: userId},
+        success: user => {
+          this.$store.dispatch('getUser', user)
+        }
+      })
+    },
     openResumeModal () {
       let resumeModal = document.getElementById('myModal')
       resumeModal.style.display = 'block'
@@ -66,7 +81,6 @@ export default {
 </script>
 
 <style>
-
 .profile {
   margin: 8% 12%;
   display: flex;
@@ -143,6 +157,7 @@ export default {
   bottom: 5%;
   font-size: 16px;
   left: 33%;
+  color: rgba(86, 54, 165, 1);
 }
 
 .checkmark {

@@ -11,7 +11,8 @@ const state = {
   currentUser: (window.localStorage.user) ? JSON.parse(window.localStorage.user) : {},
   request: null,
   createdEvents: [],
-  requests: []
+  requests: [],
+  user: {}
 }
 
 const mutations = {
@@ -52,6 +53,12 @@ const mutations = {
   },
   DELETE_REQUEST (state, request) {
     state.request = null
+  },
+  RECEIVE_USER (state, user) {
+    state.user = user
+  },
+  SET_CURRENT_USER (state) {
+    state.user = state.currentUser
   }
 }
 
@@ -67,6 +74,12 @@ const actions = {
   },
   getRequest ({ commit }, request) {
     commit('RECEIVE_REQUEST', request)
+  },
+  getUser ({ commit }, user) {
+    commit('RECEIVE_USER', user)
+  },
+  setCurrentUser ({ commit }) {
+    commit('SET_CURRENT_USER')
   },
   getEventsByFilter ({ commit }, events) {
     commit('RECEIVE_EVENTS_BY_FILTER', events)

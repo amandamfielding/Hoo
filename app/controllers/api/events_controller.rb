@@ -24,15 +24,15 @@ class Api::EventsController < ApplicationController
     render :index
   end
 
-  # def destroy
-  #   @event = Event.find(params[:id])
-  #   if current_user.id == @event.admin_id || current_user.company_id == @event.company.id
-  #     @event.destroy
-  #     render :index
-  #   else
-  #     render json: ["Only the owner of an event can delete it."], status: 404
-  #   end
-  # end
+  def destroy
+    @event = Event.find(params[:id])
+    if current_user.id == @event.admin_id
+      @event.destroy
+      render :index
+    else
+      render json: ["Only the owner of an event can delete it."], status: 404
+    end
+  end
 
   def update
     @event = Event.find(params[:id])

@@ -88,10 +88,9 @@ export default {
     },
     deleteEvent () {
       $.ajax({
-        method: 'DESTROY',
+        method: 'DELETE',
         url: '/api/events/' + this.$route.params.eventId,
-        success: event => {
-          // this.$store.dispatch('getEvent', event)
+        success: events => {
           this.$router.replace('/created-events')
         }
       })

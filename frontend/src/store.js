@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const state = {
   events: [],
   miles: '',
-  event: [],
+  event: {},
   errors: [],
   currentUser: (window.localStorage.user) ? JSON.parse(window.localStorage.user) : {},
   request: null,

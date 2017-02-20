@@ -1,7 +1,7 @@
 <template>
   <div class="event-manage">
     <span>Event title <input v-model="event.title" placeholder="Add a short, clear name" class="manage-title"></span>
-    <span>Event type <input v-model="event.event_type" class="manage-type"></span>
+    <span>Event type <input v-model="event.event_type" placeholder="What type of event is this?" class="manage-type"></span>
     <span>Location <input v-model="event.city" placeholder="City" class="manage-city"> <input v-model="event.state" placeholder="State" class="manage-state"></span>
     <span>Geocoordinates <input v-model="event.lat" placeholder="Latitude" class="manage-geo"> <input v-model="event.lng" placeholder="Longitude" class="manage-geo"></span>
     <span>Beginning Date <input type="date" v-model="event.start_date" class="manage-date"></span>
@@ -20,16 +20,17 @@
       </select>
     </div>
     <div class="button-div">
-      <button @click="submitEventChanges">Update Event</button>
+      <button @click="submitEvent">{{ event.title ? "Update" : "Create" }} Event</button>
       <div id="event-update-modal" class="modal">
         <div class="modal-update">
           <p class="update-response">
-            Your event has been updated!
+            Your event has been {{ event.title ? "updated!" : "created!" }}
           </p>
           <button id="ok" @click='closeEventUpdateModal'>OK</button>
         </div>
       </div>
-      <button @click="navToRequestsManage">View {{ event.applicant_count }} Request(s)</button>
+      <button v-if="event.title" @click="deleteEvent">Delete Event</button>
+      <button v-if="event.applicant_count" @click="navToRequestsManage">View {{ event.applicant_count }} Request(s)</button>
     </div>
   </div>
 </template>
@@ -56,7 +57,14 @@ export default {
         }
       })
     },
-    submitEventChanges (eventId) {
+    submitEvent () {
+      if (this.$route.params.eventId) {
+        this.submitEventChanges()
+      } else {
+        this.submitEventCreate()
+      }
+    },
+    submitEventChanges () {
       $.ajax({
         method: 'PATCH',
         url: '/api/events/' + this.$route.params.eventId,
@@ -64,6 +72,27 @@ export default {
         success: event => {
           this.$store.dispatch('getEvent', event)
           this.openEventUpdateModal()
+        }
+      })
+    },
+    submitEventCreate () {
+      $.ajax({
+        method: 'POST',
+        url: '/api/events/',
+        data: {event: this.$store.state.event},
+        success: event => {
+          this.$store.dispatch('getEvent', event)
+          this.$router.replace('/created-events')
+        }
+      })
+    },
+    deleteEvent () {
+      $.ajax({
+        method: 'DESTROY',
+        url: '/api/events/' + this.$route.params.eventId,
+        success: event => {
+          // this.$store.dispatch('getEvent', event)
+          this.$router.replace('/created-events')
         }
       })
     },
@@ -219,7 +248,7 @@ export default {
 .button-div {
   margin: auto;
   margin-top: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
 button {

@@ -2,6 +2,7 @@
   <div id='created-events'>
     <div class="created-search">
       <div class="created-search-panel">
+        <span class="created-search-title">Filter Your Events</span>
         <select v-model="searchParams.city" @change="getCreatedEvents" class="miles">
           <option>San Francisco, CA</option>
           <option>Berkeley, CA</option>
@@ -116,6 +117,13 @@ export default {
 </script>
 
 <style scoped>
+.created-search-title {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
 .created-events-list {
   list-style: none;
   padding: 0;

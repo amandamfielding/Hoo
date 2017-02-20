@@ -7,6 +7,7 @@
         <button @click="toggleApproval(request.id)">{{ request.accepted ? "Deny" : "Approve" }}</button>
       </li>
     </ul>
+    <span>Total Approved Requests: {{ total }}</span>
     <button @click="navToEventManage" class="back-event-button">Back to Event</button>
   </div>
 </template>
@@ -62,6 +63,13 @@ export default {
     },
     eventTitle () {
       return this.$store.state.event.title
+    },
+    total () {
+      let count = 0
+      this.$store.state.requests.forEach(request => {
+        request.accepted ? count += 1 : count += 0
+      })
+      return count
     }
   }
 }
@@ -74,6 +82,7 @@ export default {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
+    text-align: center;
   }
 
   .request-title {
@@ -83,7 +92,7 @@ export default {
   .request-list {
     list-style: none;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 0px;
   }
 
   .request-list li {
@@ -95,7 +104,8 @@ export default {
   }
 
   .back-event-button {
-    width: 150px;
+    width: 200px;
     margin: auto;
+    margin-top: 10px;
   }
 </style>

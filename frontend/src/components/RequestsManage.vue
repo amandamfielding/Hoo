@@ -7,7 +7,7 @@
         <button @click="toggleApproval(request.id)">{{ request.accepted ? "Deny" : "Approve" }}</button>
       </li>
     </ul>
-    <span>Total Approved Requests: {{ total }}</span>
+    <span class="request-count">Total Approved Requests: {{ total }}</span>
     <button @click="navToEventManage" class="back-event-button">Back to Event</button>
   </div>
 </template>
@@ -107,5 +107,10 @@ export default {
     width: 200px;
     margin: auto;
     margin-top: 10px;
+  }
+
+  .request-count {
+    font-weight: normal;
+    font-size: 16px;
   }
 </style>

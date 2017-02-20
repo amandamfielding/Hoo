@@ -53,6 +53,13 @@ const Router = new VueRouter({
       }
     },
     {
+      path: '/new-event',
+      components: {
+        default: EventManage,
+        top: Top
+      }
+    },
+    {
       path: '/created-events',
       components: {
         top: Top,

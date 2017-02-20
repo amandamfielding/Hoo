@@ -28,6 +28,9 @@ const mutations = {
   RECEIVE_EVENT (state, event) {
     state.event = event
   },
+  CLEAR_EVENT (state) {
+    state.event = {}
+  },
   LOGIN (state, user) {
     if (window.localStorage.user !== '') {
       state.currentUser = JSON.parse(window.localStorage.user)
@@ -86,6 +89,9 @@ const actions = {
   },
   getEvent ({ commit }, event) {
     commit('RECEIVE_EVENT', event)
+  },
+  clearEvent ({ commit }) {
+    commit('CLEAR_EVENT')
   },
   login ({commit}, user) {
     commit('LOGIN', user)

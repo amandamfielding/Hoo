@@ -12,7 +12,7 @@
           <li><span class="profile-link" @click="navToProfile">My Profile</span></li>
           <li><router-link class="events-link" to="/events">All Events</router-link></li>
           <li v-if="userInfo.admin"><router-link class="events-link" to="/created-events">Manage My Events</router-link></li>
-          <li v-if="userInfo.admin"><router-link class="events-link" to="/new-event">Create New Event</router-link></li>
+          <li><span class="events-link" @click="navToNewEvent">Create New Event</span></li>
           <li @click="logout"><router-link class="logout-link" to="/">Log Out</router-link></li>
         </ul>
       </div>
@@ -40,6 +40,10 @@ export default {
     navToProfile: function () {
       this.$store.dispatch('setCurrentUser')
       this.$router.replace(`/users/${this.userInfo.id}`)
+    },
+    navToNewEvent: function () {
+      this.$store.dispatch('clearEvent')
+      this.$router.replace(`/new-event`)
     }
   }
 }
